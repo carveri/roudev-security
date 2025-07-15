@@ -1,0 +1,483 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// // MODELOS
+
+model Account {
+  id                String  @id @default(uuid())
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  
+  //UnoAMuchos
+  userId            String
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  //@@index([userId], map: "Account_userId_fkey")
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  sessionToken String   @unique
+  expires      DateTime
+  
+  //UnoAMuchos
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  //@@index([userId], map: "Session_userId_fkey")
+}
+
+model User {
+  id                  String     @id @default(uuid())
+  primerNombre        String
+  segundoNombre       String?
+  apellidoPaterno     String
+  apellidoMaterno     String?
+  rutPersonal         String?    @unique
+  password            String     @unique
+  email               String     @unique
+  emailVerified       DateTime?
+  email2              String?
+  emailVerified2      DateTime?
+  emailPersonal       String?
+  telefonoPersonal    String?
+  telefonoLaboral     String?
+  perfilLinkedin      String?
+  perfilGitHub        String?
+  avatar              String?
+  isActive            Boolean    @default(true)
+  createdAt           String     @map("created_at")
+  horaAt              String     @map("hora_at")
+  updatedAt           DateTime   @updatedAt
+  añosDeExperiencia   Int        @default(0)
+  trabajando          Boolean    @default(false)
+  pago                Boolean    @default(false)
+  tipoTrabajoIdeal    String?   
+  tipoTrabajoActual   String?
+  salarioActual       Int?
+  perteneceAlProyecto Boolean @default(true)
+  siguiendo           Boolean @default(false)
+  rangoSalarialMinimo Int @default(500)
+  rangoSalarialMaximo Int @default(2000)
+  equity              Int @default(0)
+  statusEnProyecto    String @default("Empleado")
+  dineroDisponible    Int?
+  fechaIngreso        DateTime?
+  puntosPersonales    Int   @default(0)
+  //UnoAMuchos
+  accounts            Account[]
+
+  //UnoAMuchos
+  sessions            Session[]
+  
+  //MuchasAMuchos proyecto LISTO
+  proyectos           Proyecto[]
+  
+  //UnoAMuchos tarea
+  tareas Tarea[]
+
+  //MuchoaAMuchos equipo LISTO
+  equipos Equipo[]
+
+  //MuchosAMuchos cargo LISTO
+  cargos Cargo[]
+  
+  //UnoAMuchos plan bien 
+  planId      String
+  plan        Plan @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+
+  //MuchosAMuchos forma_pago LISTO
+  formasPago FormaDePago[]
+
+  //UnoAMuchos factura bien
+  facturas Factura[]
+
+
+  UsersOnProductos UsersOnProductos[]
+
+  UsersOnEquipos    UsersOnEquipos[]
+
+  UsersOnCargos   UsersOnCargos[]
+
+  UsersOnFormaDePago UsersOnFormaDePago[]
+  
+}
+
+model Proyecto {
+  id                  String     @id @default(uuid())
+  isActive            Boolean    @default(true)
+  createdAt           String     @map("created_at")
+  horaAt              String     @map("hora_at")
+  updatedAt           DateTime   @updatedAt
+  nombreProyecto      String
+  iconoProyecto       String?
+  fechaInicio         String
+  fechaTermino        String?
+  fechaSuspension     String?
+  fechaActualizacion  String? 
+  statusProyecto      String     @default("Activo")
+  puntosDelProyecto   Int        @default(0)
+  responsableProyecto String
+  presupuestoDelProyecto Int     @default(0)
+  ceo                 String[]   @default([])
+  cto                 String[]   @default([])
+  cfo                 String[]   @default([])
+  coo                 String[]   @default([])
+  empleado            String[]   @default([])
+
+  //MuchasAMuchos LISTO
+  users User[]
+
+  //UnoAMuchos finalidad proyecto bien
+  finalidadProyectoId  String
+  finalidadProyecto    FinalidadProyecto @relation(fields: [finalidadProyectoId], references: [id], onDelete: Cascade)
+  
+  //UnoAMuchos tipo proyecto bien
+  tipoProyectoId       String
+  tipoProyecto         TipoProyecto @relation(fields: [tipoProyectoId], references: [id], onDelete: Cascade)
+  
+  //MuchoAMuchos equipo LISTO
+  equipos Equipo[]
+  
+  //MuchosAMuchos factura LISTO
+  facturas Factura[]
+    
+  //UnoAMuchos tarea bien
+  tareas Tarea[]
+
+  // TABLAS INTERMEDAS
+  UsersOnProductos UsersOnProductos[]
+
+  ProyectosOnEquipos ProyectosOnEquipos[]
+
+  ProyectosOnFactura    ProyectosOnFactura[]
+}
+
+// TABLA INTERMEDIA USER VS PROYECTO 
+
+model UsersOnProductos {
+          
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  proyectoId  String
+  proyecto    Proyecto    @relation(fields: [proyectoId], references: [id]) 
+  assignedAt  DateTime    @default(now())
+  assignedBy  String
+
+  @@id([userId, proyectoId])
+}
+
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Factura {
+  id              String     @id @default(uuid())
+  isActive        Boolean    @default(true)
+  createdAt       String     @map("created_at")
+  horaAt          String     @map("hora_at")
+  updatedAt       DateTime   @updatedAt
+  nombreFactura   String
+  tipoFactura     String     @default("General")
+  mesFacturacion  String
+  añoFacturacion  Int         
+  diaFacturacion  Int
+  valorFacturacion Int       @default(0)
+
+  //UnoAMuchos user bien
+  userId          String
+  user            User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  //MuchosAMuchos proyecto LISTO
+  proyectos Proyecto[]
+
+  ProyectosOnFactura    ProyectosOnFactura[]
+
+}
+
+// TABLA INTERMEDIA PROYECTO VS FACTURA
+model ProyectosOnFactura {
+  proyectoId        String
+  proyecto          Proyecto          @relation(fields: [proyectoId], references: [id])
+  facturaId         String
+  factura           Factura         @relation(fields: [facturaId], references: [id])  
+  assignedAt        DateTime    @default(now())
+  assignedBy        String
+
+  @@id([proyectoId, facturaId])
+
+}
+
+model Plan {
+  id              String     @id @default(uuid())
+  isActive        Boolean    @default(true)
+  createdAt       String     @map("created_at")
+  horaAt          String     @map("hora_at")
+  updatedAt       DateTime   @updatedAt
+  nombrePlan      String
+  
+  //UnoAMuchos user bien
+  users       User[]
+
+}
+
+
+
+model FinalidadProyecto {
+  id              String     @id @default(uuid())
+  isActive        Boolean    @default(true)
+  createdAt       String     @map("created_at")
+  horaAt          String     @map("hora_at")
+  updatedAt       DateTime   @updatedAt
+  nombreFinalidadProyecto String @default("Hobby")
+
+  //UnoAMuchos proyecto bien
+  proyectos       Proyecto[]
+}
+
+model TipoProyecto {
+  id              String     @id @default(uuid())
+  isActive        Boolean    @default(true)
+  createdAt       String     @map("created_at")
+  horaAt          String     @map("hora_at")
+  updatedAt       DateTime   @updatedAt
+  nombreTipoProyecto String @default("App Web")
+
+  //UnoAMuchos proyecto LISTO
+  proyectos       Proyecto[]
+}
+
+
+model Area {
+  id              String     @id @default(uuid())
+  isActive        Boolean    @default(true)
+  createdAt       String     @map("created_at")
+  horaAt          String     @map("hora_at")
+  updatedAt       DateTime   @updatedAt
+  nombreArea      String
+
+  //UnoAMuchos cargo LISTO
+  cargos          Cargo[]
+
+}
+
+
+
+model Cargo{
+  id              String     @id @default(uuid())
+  isActive        Boolean    @default(true)
+  createdAt       String     @map("created_at")
+  horaAt          String     @map("hora_at")
+  updatedAt       DateTime   @updatedAt
+  nombreCargo     String     @default("Ceo")
+  sueldo          Int        
+
+  //UnoAMuchos area bien
+  areaId          String
+  area            Area @relation(fields: [areaId], references: [id], onDelete: Cascade)
+
+  //MuchosAMuchos user LISTO
+  users User[]
+
+
+  // TABLA INTERMEDIA
+  UsersOnCargos   UsersOnCargos[]
+}
+
+
+
+// TABLA INTERMEDIA USER VS CARGO
+model UsersOnCargos {
+  userId        String
+  user          User          @relation(fields: [userId], references: [id])
+  cargoId       String
+  cargo         Cargo         @relation(fields: [cargoId], references: [id])  
+  assignedAt    DateTime      @default(now())
+  assignedBy    String
+
+  @@id([userId, cargoId])
+
+}
+
+model Equipo{
+  id                String     @id @default(uuid())
+  isActive          Boolean    @default(true)
+  createdAt         String     @map("created_at")
+  horaAt            String     @map("hora_at")
+  updatedAt         DateTime   @updatedAt
+  nombreEquipo      String
+  responsableEquipo String
+  puntosDelEquipo   Int   @default(0)
+
+  //MuchoAMuchos proyecto LISTO
+  proyectos Proyecto[]
+
+  //MuchoaAMuchos user LISTO
+  users User[]
+
+  //UnoAMuchos tarea bien
+  tareas      Tarea[]
+
+
+  // TABLAS INTERMEDIAS
+  UsersOnEquipos    UsersOnEquipos[]
+  ProyectosOnEquipos ProyectosOnEquipos[]
+}
+
+
+// TABLA INTERMEDIA USER VS EQUIPO
+model UsersOnEquipos {
+    userId        String
+    user          User         @relation(fields: [userId], references: [id])
+    equipoId      String
+    equipo        Equipo       @relation(fields: [equipoId], references: [id])
+    assignedAt    DateTime     @default(now())
+    assignedBy    String
+
+    @@id([userId, equipoId])
+}
+
+// TABLA INTERMEDIA USER VS EQUIPO
+model ProyectosOnEquipos {
+    proyectoId    String
+    proyecto      Proyecto      @relation(fields: [proyectoId], references: [id])
+    equipoId      String
+    equipo        Equipo        @relation(fields: [equipoId], references: [id])
+    assignedAt    DateTime      @default(now())
+    assignedBy    String
+
+    @@id([proyectoId, equipoId])
+}
+
+
+model Tarea{
+  id              String     @id @default(uuid())
+  isActive        Boolean    @default(true)
+  createdAt       String     @map("created_at")
+  horaAt          String     @map("hora_at")
+  updatedAt       DateTime   @updatedAt
+  nombreTarea     String
+  tipoTarea       String     @default("Historia")
+  statusTarea     String     @default("Activa")
+  fechaInicio     String
+  fechaTermino    String
+  etapaTarea      String     @default("Product Backlog")
+  retornada       Boolean    @default(false)
+  creadorTarea    String     
+  responsableTarea String
+  equipoResponsableTarea String
+  urgenciaTarea   String     @default("Alta")
+  nivelDeAvance   String     @default("Inicial")
+  descripcionDeTarea String  @default("-")
+
+
+  aportantes      String[]   @default([])
+
+  //UnoAMuchos equipo bien
+  equipoId        String
+  equipo          Equipo @relation(fields: [equipoId], references: [id], onDelete: Cascade)
+  
+  //UnoAMuchos proyecto bien
+  proyectoId      String
+  proyecto        Proyecto @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+ 
+  //UnoAMuchos user bien
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+
+}
+
+
+
+
+model FormaDePago {
+  id              String     @id @default(uuid())
+  isActive        Boolean    @default(true)
+  createdAt       String     @map("created_at")
+  horaAt          String     @map("hora_at")
+  updatedAt       DateTime   @updatedAt
+  nombreFormaPago String[]   @default(["Credito"])
+  numeroCuotas    Int        @default(1)
+
+  //MuchosAMuchos user LISTO
+  users User[]
+
+  UsersOnFormaDePago UsersOnFormaDePago[]
+
+}
+
+// TABLA INTERMEDIA USER VS FORMA DE PAGO
+model UsersOnFormaDePago {
+    userId        String
+    user          User         @relation(fields: [userId], references: [id])
+    formaDePagoId String
+    formaDePago   FormaDePago  @relation(fields: [formaDePagoId], references: [id])
+    assignedAt  DateTime    @default(now())
+    assignedBy  String
+
+    @@id([userId, formaDePagoId])
+
+}
+
+model FlujoDeCaja {
+  id              String     @id @default(uuid())
+  isActive        Boolean    @default(true)
+  createdAt       String     @map("created_at")
+  horaAt          String     @map("hora_at")
+  updatedAt       DateTime   @updatedAt
+  ingresosPorVentas Int
+  valorTicket       Int
+  creciemientoDelTicket Int
+  usuarioGratuitos Int
+  usuariosActivos  Int
+  nuevosUsuarios   Int
+  churnedUsers     Int
+  disminucionDeUsuarios Int
+  usuariosActivosFlujo Int
+
+}
+
+model EstadoDeResultados {
+  id              String     @id @default(uuid())
+  isActive        Boolean    @default(true)
+  createdAt       String     @map("created_at")
+  horaAt          String     @map("hora_at")
+  updatedAt       DateTime   @updatedAt
+  costosOperativos Int?
+
+}
+
+model BalanceGeneral {
+  id              String     @id @default(uuid())
+  isActive        Boolean    @default(true)
+  createdAt       String     @map("created_at")
+  horaAt          String     @map("hora_at")
+  updatedAt       DateTime   @updatedAt
+  activoCorriente  Int?
+  activoNoCorriente Int?
+  capitalPropio    Int?
+  
+}

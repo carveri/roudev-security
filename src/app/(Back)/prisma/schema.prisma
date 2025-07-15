@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// // MODELOS
+
+
+model Proyecto {
+  id String @id @default(uuid())
+  nombreProyecto String
+  estadoProyecto String @default("Activo")
+  idUsuario String  @default("1")
+  idFinalidadProyecto String @default("2")
+  idTipoProyecto String @default("4")
+  idSubTipoProyecto String @default("3")
+
+}
