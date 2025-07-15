@@ -10,8 +10,8 @@ const nextConfig: NextConfig = {
   ignoreDuringBuilds: true,
 },
   
-  //distDir:'dist',
-  //output: 'export',
+  distDir:'dist',
+  output: 'export',
   images:{
     
     remotePatterns:[
