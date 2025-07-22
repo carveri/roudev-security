@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 22, "column": 0}, "map": {"version":3,"sources":["file:///home/carveri/2025/sep/roudev/src/app/%28Front%29/%28Private%29/dashboard/page.tsx"],"sourcesContent":["\nimport { getServerSession } from 'next-auth'\nimport { redirect } from 'next/navigation'\nimport { authOptions } from \"./../../../(Back)/api/auth/[...nextauth]/route\";\n\nconst page = async() => {\n\n  const session = await getServerSession(authOptions)\n\n  if(!session){\n      redirect('/api/auth/signin')\n  }\n\n  redirect('/dashboard/home')\n\n  return (\n    <div className='w-full h-full bg-red-400'>\n      sssssssssss\n    </div>\n  )\n}\n\nexport default page"],"names":[],"mappings":";;;;AACA;AACA;AAAA;AACA;;;;;AAEA,MAAM,OAAO;IAEX,MAAM,UAAU,MAAM,CAAA,GAAA,qIAAA,CAAA,mBAAgB,AAAD,EAAE,oKAAA,CAAA,cAAW;IAElD,IAAG,CAAC,SAAQ;QACR,CAAA,GAAA,qLAAA,CAAA,WAAQ,AAAD,EAAE;IACb;IAEA,CAAA,GAAA,qLAAA,CAAA,WAAQ,AAAD,EAAE;IAET,qBACE,8OAAC;QAAI,WAAU;kBAA2B;;;;;;AAI9C;uCAEe","debugId":null}}]
+}

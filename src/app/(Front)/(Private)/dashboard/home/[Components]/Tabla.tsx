@@ -4,14 +4,17 @@ import React, { useState } from 'react'
 import { useRouter } from "next/navigation";
 import ModalEliminar from '../../[Components]/ModalEliminar';
 import { useIdProyectoProUpdated } from '../../../[stores]/homeStore';
+import ModalAgregarUsuarios from '../misProyectos/[Components]/ModalAgregarUsuarios';
 
-const Tabla = ({ruta, status, misProy}) => {
+const Tabla = ({ruta, status, misProy, handleClickPincharAgregar}) => {
 
 
   const idProyectoUpdated = useIdProyectoProUpdated((state) => state.updateIdProyectoId)
   const router = useRouter()
   // ACTIVAR MODAL DE ELIMINAR
   const [activarEliminar, setActivarEliminar] = useState(false)
+
+  
 
   const updateProyecto = (e, id)=>{
     idProyectoUpdated(id)
@@ -24,6 +27,8 @@ const Tabla = ({ruta, status, misProy}) => {
     idProyectoUpdated(id)
     router.push('/dashboard/home/misProyectos/detalleProyecto')
   }
+
+  
   
 
   return (
@@ -33,22 +38,24 @@ const Tabla = ({ruta, status, misProy}) => {
               <tr className='h-11 bg-gray-100 '>
                 <td className='w-[5%] text-center'>Numero</td>
                 <td className='w-[5%]  text-center'> Logo</td>
-                <td className='w-[15%] text-center'>Nombre Proyecto</td>
+                <td className='w-[13%] text-center'>Nombre Proyecto</td>
                 <td className='w-[10%] text-center'>Finalidad</td>
                 <td className='w-[10%] text-center'>Tipo</td>   
-                <td className='w-[6%] text-center'>N° Equipos</td>
+                <td className='w-[7%] text-center'>N° Equipos</td>
+                <td className='w-[8%] text-center'>N° Usuarios</td>
                 <td className='w-[10%] text-center'>Presupuesto (USD)</td>
                 <td className='w-[9%] text-center'>Fecha Inicio</td>
-                <td className='w-[9%] text-center'>Fecha Termino</td>
+                {/* <td className='w-[9%] text-center'>Fecha Termino</td> */}
                 <td className='w-[7%] text-center'>Status</td>
                 <td className='w-[5%] text-center'></td>
+                <td className='w-[5%] text-center '></td>
                 <td className='w-[5%] text-center '></td>
               </tr>
             </thead>
             <tbody>
               {misProy[0].proyectos?.filter((el)=>el.statusProyecto===status).map((el, items)=>{
                   return <tr  onClick={()=>{ruta ? router.push('/dashboard/iniciar'):''} 
-                   }  key={el.id} className={`${ruta ? 'cursor-pointer hover:bg-gray-100': ''} border border-gray-200 h-11  `}>
+                   }  key={el.id} className={`${ruta ? 'cursor-pointer hover:bg-gray-100': ''} border border-gray-200 h-11`}>
                     <td  className='text-center '>
                       {items + 1}
                     </td>
@@ -68,22 +75,28 @@ const Tabla = ({ruta, status, misProy}) => {
                       {el?.equipos.length}
                     </td>
                     <td className='text-center'>
+                      {el?.equipos.length}
+                    </td>
+                    <td className='text-center'>
                       {el?.presupuestoDelProyecto ?? 0}
                     </td>
                     <td className='text-center'>
                       {el?.fechaInicio}
                     </td>
-                    <td className='text-center'>
+                    {/* <td className='text-center'>
                       {`${!el?.fechaTermino ? '-' : el?.fechaTermino}`}
-                    </td> 
+                    </td>  */}
                     <td className={`text-center ${el.statusProyecto === 'Activo' ? 'text-green-500' : el.statusProyecto === 'Suspendido' ? 'text-yellow-500' : 'text-red-500'}`}>
                       {el?.statusProyecto}
                     </td>
                       <td onClick={(e)=>handleClickPincharVer(e, el.id)} className=' text-center text-[11px] text-blue-500 cursor-pointer hover:border-b hover:border-blue-500 font-extrabold'>
                         Ver
                       </td>
-                      <td onClick={(e)=>updateProyecto(e, el.id)} className='flex  py-[11px] h-full justify-center cursor-pointer hover:border-b hover:border-blue-500'>
+                      <td onClick={(e)=>updateProyecto(e, el.id)} className='flex mt-[7px] py-[11px] h-full justify-center cursor-pointer hover:border-b hover:border-blue-500'>
                         {el?.statusProyecto === 'Eliminado' ? '-': <img className='' src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/lapiz.png' width={13} height={13} alt='delete' />} 
+                      </td>
+                      <td onClick={(e)=>handleClickPincharAgregar(e, el.id)} className=' text-center text-[20px] pt-1 text-green-500 cursor-pointer hover:border-b hover:border-blue-500 font-extrabold'>
+                        +
                       </td>
                   </tr>
                 })}
@@ -99,6 +112,7 @@ const Tabla = ({ruta, status, misProy}) => {
           </div>
         
         }
+        
     </>
   )
 }

@@ -35,7 +35,7 @@ useEffect(()=>{
 
   return (
     <>
-      <header className='w-[75%] h-[10%] flex items-center text-tamañoLetra pl-8 font-semibold text-gray-700'>
+      <header className='w-[75%] h-[10%] flex items-center  pl-8 font-semibold text-gray-700'>
         <div>
           Detalles del Proyecto -
         </div> 
@@ -43,7 +43,7 @@ useEffect(()=>{
           {proyecto[0]?.nombreProyecto}
         </div>
       </header>
-      <div className='w-[77%] h-[45%] flex gap-x-3 text-tamañoLetraChica pl-8'>
+      <div className='w-[77%] h-[45%] flex gap-x-3 text-(length:--tamañoLetraChica) pl-8'>
         <div className='w-[33%] h-full grid grid-rows-6 items-center pl-2'>
           <section className='w-full  flex gap-x-3 '>
             <div className='w-[50%]'>
@@ -101,7 +101,7 @@ useEffect(()=>{
 
 
 
-      <div className='w-[71%] h-[100%] flex gap-x-3 text-tamañoLetraChica '>
+      <div className='w-[71%] h-[100%] flex gap-x-3 text-(length:--tamañoLetraChica) '>
         <div className='w-[100%] h-full grid   pl-2'>
         <section className='w-full h-[20%]  flex gap-x-3  mt-4'>
           <div className='w-[20%] '>

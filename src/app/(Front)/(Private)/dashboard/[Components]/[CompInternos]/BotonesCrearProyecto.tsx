@@ -30,7 +30,7 @@ const BotonesCrearProyecto = ({setAbrirModal, presupuestoDelProyecto,  session, 
     console.log(data);
     const ruta = 'proyecto'
     postData({ruta, data})
-    setAbrirModal(false)
+   setAbrirModal(false)
     location.reload()
   }
 
@@ -43,11 +43,11 @@ const BotonesCrearProyecto = ({setAbrirModal, presupuestoDelProyecto,  session, 
   return (
     <div className='h-[35%] w-full flex justify-end items-end gap-x-2'>
                 {nombreProyecto !== '' && 
-                    <button onClick={handleClickCrearProyecto}  className='h-[100%] w-[30%]  rounded cursor-pointer bg-blue-500 hover:bg-blue-600  hover:duration-300  text-white font-bold text-tamañoLetraChica'>
+                    <button onClick={handleClickCrearProyecto}  className='h-[100%] w-[30%]  rounded cursor-pointer bg-blue-500 hover:bg-blue-600  hover:duration-300  text-white font-bold text-(length:--tamañoLetraChica)'>
                     Crear Proyecto
                   </button>
                 }
-                  <button onClick={handleClickVolverCrearProyecto}  className='h-[100%] w-[20%]  rounded cursor-pointer bg-colorBotonCerrar hover:bg-hoverColorBotonCerrar  hover:duration-300  text-white font-bold text-tamañoLetraChica'>
+                  <button onClick={handleClickVolverCrearProyecto}  className='h-[100%] w-[20%]  rounded cursor-pointer bg-black hover:bg-hoverColorBotonCerrar  hover:duration-300  text-white font-bold text-(length:--tamañoLetraChica)'>
                     Cerrar
                   </button>
                 </div>

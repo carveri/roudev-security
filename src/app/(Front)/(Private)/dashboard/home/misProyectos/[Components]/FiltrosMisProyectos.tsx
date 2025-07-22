@@ -5,6 +5,7 @@ import { dataStatus } from '../utils/dataStatus'
 import Tabla from '../../[Components]/Tabla'
 import ModalCrearProyecto from '../../../[Components]/ModalCrearProyecto'
 import { IFiltrosMisProyectos } from "../../../../../../Interfaces/IHome";
+import ModalAgregarUsuarios from './ModalAgregarUsuarios'
 
 const FiltrosMisProyectos = ({misProy, session}) => {
 
@@ -12,6 +13,8 @@ const FiltrosMisProyectos = ({misProy, session}) => {
     const [abrirFiltrosStatus, setAbrirFiltrosStatus] = useState(false)
 
     const [status, setStatus] = useState('Activo')
+
+    const [abrirAgregar, setAbrirAgregar] = useState(false)
 
 
     console.log('mis proo;', misProy);
@@ -57,11 +60,15 @@ const FiltrosMisProyectos = ({misProy, session}) => {
     }
   }
 
+  const handleClickPincharAgregar =(e, id)=>{
+    setAbrirAgregar(!abrirAgregar)
+  } 
+
 
   return (
     <>
     <div className={`${abrirModal && ' opacity-15'} h-[8%] w-[75%] flex items-end justify-end mb-3 -mt-5 `}>
-          <button onClick={handleClickAbrirFiltroFechaInicio} className='w-24 px-1 h-7 flex items-center justify-between text-(length:--tamañoLetraChica) border-b border-gray-200'>
+          <button onClick={handleClickAbrirFiltroFechaInicio} className='w-24 px-1 h-7 cursor-pointer flex items-center justify-between text-(length:--tamañoLetraChica) border-b border-gray-200'>
             <div>
               Fecha Inicio
             </div>
@@ -70,7 +77,7 @@ const FiltrosMisProyectos = ({misProy, session}) => {
             </div>
           </button>
           
-          <button onClick={handleClickAbrirFiltroStatus} className='ml-4 w-24 px-1 h-7 flex items-center justify-between text-(length:--tamañoLetraChica) border-b border-gray-200'>
+          <button onClick={handleClickAbrirFiltroStatus} className='cursor-pointer ml-4 w-24 px-1 h-7 flex items-center justify-between text-(length:--tamañoLetraChica) border-b border-gray-200'>
             <div>
               {status}
             </div>
@@ -93,7 +100,7 @@ const FiltrosMisProyectos = ({misProy, session}) => {
             <div className="w-[9%] grid items-center">
               <img className="w-[100%] h-[100%]" src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/mas.png' width={15} height={15} alt="s"/> 
             </div>
-            <div className="text-(length:--tamañoLetraChica) w-[90%] grid items-center text-gray-800 ">
+            <div className="text-(length:--tamañoLetraChica) cursor-pointer w-[90%] grid items-center text-gray-800 ">
               Crear un Proyecto
             </div> 
           </button>
@@ -103,10 +110,11 @@ const FiltrosMisProyectos = ({misProy, session}) => {
               ruta = {false}
               status={status}
               misProy={misProy}
+              handleClickPincharAgregar={handleClickPincharAgregar}
             />
           </div>
           {abrirModal &&
-            <div className="w-[70%] grid justify-items-center">
+            <div className="w-[100%] grid justify-items-center">
             <ModalCrearProyecto
                 abrirModal={abrirModal} 
                 setAbrirModal={setAbrirModal}
@@ -115,6 +123,16 @@ const FiltrosMisProyectos = ({misProy, session}) => {
             />
             </div>
             }
+
+            {abrirAgregar &&
+          <div className='w-[100%] ml-3 flex justify-end '>
+            <ModalAgregarUsuarios
+            setAbrirAgregar={setAbrirAgregar}
+
+            />
+          </div>
+        
+        }
     </>
     
   )

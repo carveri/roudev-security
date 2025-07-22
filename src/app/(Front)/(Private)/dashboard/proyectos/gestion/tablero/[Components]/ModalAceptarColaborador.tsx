@@ -94,22 +94,24 @@ const ModalAceptarColaborador = ({acepColaborador, setabrirModalAceptar}) => {
     
       return (
         <div>
-            <form  className={`bg-white w-[23%] h-[20%]  px-7  rounded-md mt-28  fixed top-14 ml-[1350px] grid  text-tamañoLetraChica`}>
-                  <header className=' w-full h-[30%]  flex items-center justify-center  text-gray-600 font-semibold text-tamañoLetra '>
+            <form  className={`bg-white w-[23%] h-[20%]  px-7  rounded-md mt-28  fixed top-14 ml-[1350px] grid  text-(length:--tamañoLetraChica)`}>
+                  <header className=' w-full h-[30%]  flex items-center justify-center  text-gray-600 font-semibold text-(length:--tamañoLetra) '>
                     <img width={18} height={18} src="https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/check2.png" alt="check" />
                     <div className="pl-2 mt-1 h-full text-[16px] flex items-center justify-center">Petición Enviada</div>
                   </header>
                   <main className='h-[50%]  '>
-                    <div className={`flex text-tamañoLetraChica`}>
+                    <div className={`flex text-(length:--tamañoLetraChica)`}>
                       Se envio correctamente la peticion al responsable de la tarea, cuando confirme si acepta o rechaza tu colaboración seras notificado.
                     </div>
                     
                     
                    
                   </main>
-                  <div className='h-[60%] w-full flex justify-end items-end gap-x-2'>
-                   
-                    <button onClick={handleClickVolverCrearEquipo}  className='h-[100%] w-[20%]  rounded cursor-pointer bg-colorBotonCerrar hover:bg-hoverColorBotonCerrar  hover:duration-300  text-white font-bold text-tamañoLetraChica'>
+                  <div className='h-[60%] w-full flex justify-end items-end gap-x-2 text-(length:--tamañoLetraChica)'>
+                    <button onClick={handleClickVolverCrearEquipo}  className='h-[100%] w-[35%]  rounded cursor-pointer bg-blue-500 hover:bg-hoverColorBotonCerrar  hover:duration-300  text-white font-semibold text-(length:--tamañoLetraChica)'>
+                      Cancelar Petición
+                    </button>
+                    <button onClick={handleClickVolverCrearEquipo}  className='h-[100%] w-[20%]  rounded cursor-pointer bg-black hover:bg-hoverColorBotonCerrar  hover:duration-300  text-white font-semibold text-(length:--tamañoLetraChica)'>
                       Cerrar
                     </button>
                   </div>

@@ -313,7 +313,7 @@ const handleClickCrearProyecto=(e)=>{
                
                 
                   <div className="flex w-full h-full justify-end gap-x-2 text-[12px]">
-                    <button  onClick={handleVolverCrearProyecto}  className={` h-[90%] w-[7%] rounded cursor-pointer bg-colorBotonVer hover:bg-hoverColorBotonVolver  hover:duration-300  text-white font-bold `}>
+                    <button  onClick={handleVolverCrearProyecto}  className={` h-[90%] w-[7%] rounded cursor-pointer bg-violet-600 hover:bg-hoverColorBotonVolver  hover:duration-300  text-white font-bold `}>
                       Volver
                     </button>
                     <button   onClick={handleClickCrearProyecto}  className={`${nombrePro === proyecto[0]?.statusProyecto && 'opacity-10 cursor-text'} h-[90%] w-[12%]  rounded cursor-pointer bg-blue-500 hover:bg-blue-600  hover:duration-300  text-white font-bold `}>

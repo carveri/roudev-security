@@ -3,12 +3,12 @@ import InternoModalCrearProyecto from "./[CompInternos]/InternoModalCrearProyect
 
 const ModalCrearProyecto = ({abrirModal,  posicion, setAbrirModal, session}) => {
   return(
-    <>
+    <div className="w-full">
       <InternoModalCrearProyecto
         session={session}
         setAbrirModal={setAbrirModal}
       />
-    </>
+    </div>
   )
 }
 

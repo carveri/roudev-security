@@ -4,7 +4,7 @@ import { authOptions } from "../../../(Back)/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 
 export const metadata = {
-  title: "Dashboard",
+  title: "Dashboard-sep",
   description: "Gestiona bien tu startUp",
 };
 

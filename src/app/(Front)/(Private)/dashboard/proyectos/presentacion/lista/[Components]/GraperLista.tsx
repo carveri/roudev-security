@@ -32,9 +32,11 @@ const GraperLista = ({session}) => {
         
         
 
+        const ress = false
 
   return (
     <>
+    
       <TablaLista
           abrirModalTareaLista={abrirModalTareaListaFUn}
           tareasActivas={tareasStatus}

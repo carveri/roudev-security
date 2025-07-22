@@ -3,11 +3,15 @@
 import {useEffect, useState} from 'react'
 import { useIdProyectoPro, useIdResponsableTarea, useIdTareaSelecccionado } from '../../../../../[stores]/homeStore'
 import { getDataCompleja } from '../../../../../../React/Fetch/getDataCompleja'
-
+import { useRouter } from "next/navigation";
+import Link from 'next/link';
 
 const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBooleano, acepColaborador, setabrirModalAceptar}) => {
 
+    const router = useRouter()
     console.log('session en tablero:', session);
+
+    const [vacioTablero, setVacioTablero] = useState(false)
 
     // ESTADOS DESDE ZUSTAND
           const idProyy = useIdProyectoPro((state) => state.idProyecto)
@@ -64,11 +68,18 @@ const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBoolea
             //props.abrirModalTareaStatef(abrirModalTareaStates, setAbrirModalTareaStates)
         }
 
+
+        useEffect(()=>{
+
+        }, [])
         
     
     
   return (
-    <div className='w-full h-[100%] z-10 grid grid-cols-6 gap-x-3 px-2 text-(length:--tamañoLetraChica) '>
+    <>
+        
+
+        <div className='w-full h-[100%] z-10 grid grid-cols-6 gap-x-3 px-2 text-(length:--tamañoLetraChica) '>
         <div className='w-full h-full'>
             <header className='w-full h-[8%] grid place-content-center font-semibold text-blue-600'>
                 Product Backlog
@@ -265,6 +276,10 @@ const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBoolea
         
         
     </div>
+    
+    
+    </>
+    
   )
 }
 

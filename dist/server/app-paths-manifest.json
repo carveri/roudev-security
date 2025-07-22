@@ -1,0 +1,4 @@
+{
+  "/(Front)/(Private)/dashboard/page": "app/(Front)/(Private)/dashboard/page.js",
+  "/(Front)/(Public)/(home)/page": "app/(Front)/(Public)/(home)/page.js"
+}

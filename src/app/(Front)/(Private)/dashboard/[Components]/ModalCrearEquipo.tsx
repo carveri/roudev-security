@@ -21,7 +21,7 @@ const ModalCrearEquipo = ({setActivoEquipo, session}) => {
     
     //const [nombreProyecto, setNombreProyecto] = useState('')
     const [nombreEquipo, setNombreEquipo] = useState('')
-    const [proyecto, setProyecto] = useState('')
+    const [proyecto, setProyecto] = useState('-')
     const [responsable, setResponsable] = useState('-')
     const [integrante, setIntegrante] = useState('-')
   
@@ -174,8 +174,8 @@ const ModalCrearEquipo = ({setActivoEquipo, session}) => {
     return (
       <div className="bg-red-400 w-full ">
           <div className="w-[80%] bg-cyan-400">
-            <form  className={`bg-white w-[23%] h-[70%] py-4 px-10  rounded-md mt-16  shadow-2xl fixed top-14 grid justify-self-center text-tamañoLetraChica`}>
-                <header className='w-full h-[10%] py-10 grid place-content-center  text-gray-600 font-semibold text-tamañoLetra'>
+            <form  className={`bg-white w-[23%] h-[70%] py-4 px-10  rounded-md mt-16  shadow-2xl fixed top-14 grid justify-self-center text-(length:--tamañoLetraChica)`}>
+                <header className='w-full h-[10%] py-10 grid place-content-center  text-gray-600 font-semibold text-(length:--tamañoLetra)'>
                   Crear Equipo
                 </header>
                 <main className='h-[90%] grid grid-rows-4 -mt-14 gap-y-2'>
@@ -191,12 +191,12 @@ const ModalCrearEquipo = ({setActivoEquipo, session}) => {
                     <label className='h-1 text-gray-600 pb-5' htmlFor="">Proyectos vinculados al equipo</label>
                     <button onClick={handleClickModalCrearProyecto} name='selectMisProyectos' className=' cursor-pointer rounded h-9  bg-white border border-gray-100 flex  items-center justify-between px-4'>
                         <div>
-                                {proyecto}      
+                          {proyecto}      
                         </div>
                         <img src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png' width={10} height={10} alt="sd"/>                    
                     </button>
                     {abrirTipos &&
-                      <ul className="mt-[60px] w-[81%] z-50   absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
+                      <ul className="mt-[60px] w-[81%] z-50  -ml-[225px] absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
                         {proyectosUser[0]?.proyectos.map((el)=>{
                           return <button  onClick={(e)=>handleClickSelectProyecto(e, el.id, el.nombreProyecto)} name="vselectMisProyectos" key={el.id} className="pl-4 w-full justify-start h-9  border border-gray-100 flex items-center cursor-pointer hover:bg-gray-100 ">
                             <div className="mr-2">
@@ -225,7 +225,7 @@ const ModalCrearEquipo = ({setActivoEquipo, session}) => {
   
                     </button>
                     {abrirResponsable &&
-                      <ul className="mt-[60px] w-[81%] z-50   absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
+                      <ul className="mt-[60px] w-[81%] z-50 -ml-[225px]  absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
                         {userOnProyecto[0]?.users.map((el)=>{
                           return <button onClick={(e)=>handleClickSelectProyecto(e, el.id, el.primerNombre)} name="ResponsableEquipo" key={el.id} className=" pl-4 flex gap-x-2 w-full justify-start h-9  border border-gray-100 items-center cursor-pointer hover:bg-gray-100 ">
                               <div className="">
@@ -252,7 +252,7 @@ const ModalCrearEquipo = ({setActivoEquipo, session}) => {
   
                     </button>
                     {abrirIntegrante &&
-                      <ul className="mt-[60px] w-[81%] z-50   absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
+                      <ul className="mt-[60px] w-[81%] z-50  -ml-[225px] absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
                         {userOnProyecto[0]?.users.map((el)=>{
                           return <button onClick={(e)=>handleClickSelectProyecto(e, el.id, el.primerNombre)} name="selectIntegrante" key={el.id} className=" pl-4 flex gap-x-2 w-full justify-start h-9  border border-gray-100 items-center cursor-pointer hover:bg-gray-100 ">
                               <div className="">
@@ -271,10 +271,10 @@ const ModalCrearEquipo = ({setActivoEquipo, session}) => {
                  
                 </main>
                 <div className='h-[50%] w-full flex justify-end items-end gap-x-2'>
-                  <button onClick={handleClickCrearEquipo}  className='h-[70%] w-[30%]  rounded cursor-pointer bg-blue-500 hover:bg-blue-600  hover:duration-300  text-white font-bold text-tamañoLetraChica'>
+                  <button onClick={handleClickCrearEquipo}  className='h-[70%] w-[30%]  rounded cursor-pointer bg-blue-500 hover:bg-blue-600  hover:duration-300  text-white font-bold text-(length:--tamañoLetraChica)'>
                     Crear Equipo
                   </button>
-                  <button onClick={handleClickVolverCrearEquipo}  className='h-[70%] w-[20%]  rounded cursor-pointer bg-colorBotonCerrar hover:bg-hoverColorBotonCerrar  hover:duration-300  text-white font-bold text-tamañoLetraChica'>
+                  <button onClick={handleClickVolverCrearEquipo}  className='h-[70%] w-[20%]  rounded cursor-pointer bg-black hover:bg-hoverColorBotonCerrar  hover:duration-300  text-white font-bold text-(length:--tamañoLetraChica)'>
                     Cerrar
                   </button>
                 </div>

@@ -55,9 +55,9 @@ const InternoModalCrearProyecto = ({session, setAbrirModal}) => {
   
 
   return (
-    <div>
-        <form  className={`bg-white w-[23%] h-[70%] py-4 px-10  rounded-md mt-20 shadow-2xl fixed top-[38px] grid justify-self-center text-tamañoLetraChica`}>
-              <header className='w-full h-[10%] py-10 grid place-content-center  text-gray-600 font-semibold text-tamañoLetra'>
+    <div className='w-[80%] '>
+        <form  className={`bg-white w-[23%] h-[70%] py-4 px-10  rounded-md mt-20 shadow-2xl fixed top-[38px] grid justify-self-center text-(length:--tamañoLetraChica)`}>
+              <header className='w-full h-[10%] py-10 grid place-content-center  text-gray-600 font-semibold text-(length:--tamañoLetraChica)'>
                 Crear Proyecto
               </header>
               <main className='h-[99%] grid grid-rows-5 -mt-16'>

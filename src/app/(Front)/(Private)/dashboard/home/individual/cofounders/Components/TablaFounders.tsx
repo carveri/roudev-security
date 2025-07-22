@@ -8,7 +8,7 @@ import ModalCrearFounder from './ModalCrearFounder'
 
 const TablaFounders = ({res, bears, userId}) => {
 
-  // console.log('table del ceo:', res);
+  console.log('table del ceo:', res);
   
   // console.log('userID:', userId);
   

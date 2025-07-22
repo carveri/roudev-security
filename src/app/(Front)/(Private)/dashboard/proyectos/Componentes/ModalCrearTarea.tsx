@@ -87,8 +87,8 @@ const ModalCrearTarea = () => {
     
       return (
         <div>
-            <form className={`bg-white w-[23%] h-[70%] py-4 px-10  rounded-md mt-8 shadow-2xl fixed top-14 grid justify-self-center text-tamañoLetraChica`}>
-                  <header className='w-full h-[10%]  grid place-content-center  text-gray-600 font-semibold text-tamañoLetra'>
+            <form className={`bg-white w-[23%] h-[70%] py-4 px-10  rounded-md mt-8 shadow-2xl fixed top-14 grid justify-self-center text-(length:--tamañoLetraChica)`}>
+                  <header className='w-full h-[10%]  grid place-content-center  text-gray-600 font-semibold text-(length:--tamañoLetra)'>
                     Crear Equipo
                   </header>
                   <main className='h-[90%] grid grid-rows-4 -mt-14'>

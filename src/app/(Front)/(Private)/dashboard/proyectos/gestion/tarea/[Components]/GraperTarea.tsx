@@ -235,7 +235,7 @@ const GraperTarea = ({session}) => {
         
       </header>
       <section className='w-full h-[90%] grid grid-cols-2 gap-x-32'>
-        <div className=' h-full px-10 '>
+        <div className=' h-full w-full  px-10 '>
           <header className='w-full h-[14%] flex items-center justify-center font-semibold text-gray-500'>
             Detalles de la Tarea
           </header>
@@ -252,43 +252,32 @@ const GraperTarea = ({session}) => {
                 <div>
                   Proyecto al que va a pertenecer la tarea
                 </div>
-                <button onClick={handleClickCrearPro} className=' font-semibold text-gray-500 py-[2px] px-2 text-[12px] hover:border-b hover:text-blue-600 hover:border-blue-800'>
+                <button onClick={handleClickCrearPro} className='cursor-pointer font-semibold text-gray-500 py-[2px] px-2 text-[12px] hover:border-b hover:text-blue-600 hover:border-blue-800'>
                   + Crear Proyecto
                 </button>
-              </label>
-
-
-             
-             
+              </label>     
               <div className='grid'> 
                   <button onClick={handleClickModalCrearProyecto} name='tipoDelProyecto' className=' cursor-pointer rounded h-9  bg-white border border-gray-100 flex  items-center justify-between px-4'>
                       <div>
                           {proyecto2}      
                       </div>
-                    <img src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png' width={10} height={10} alt="sd"/>                    
+                      <img src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png' width={10} height={10} alt="sd"/>                    
                   </button>
-                  {abrirTipos &&
-                    <ul className="mt-[40px] w-[23%] z-50   absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
-                      {proyectos[0]?.proyectos.map((el)=>{
-                        return <button name="selectTipoProyecto" onClick={(e)=>handleClickSelectProyecto(e, el.id, el.nombreProyecto)} key={el.id} className="pl-4 w-full justify-start h-9  border border-gray-100 flex items-center cursor-pointer hover:bg-gray-100 ">
-                            <div className="mr-2">
-                              <img src={`${!el.iconoProyecto ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/resumen5.png' : el.iconoProyecto}`} width={15} height={15} alt="sd"/>
-                            </div>
-                            <div>
-                              {el.nombreProyecto}
-                            </div>
-                            </button>
-                            })}
-                    </ul>
-                    }
+                     {abrirTipos &&
+                        <ul className="mt-[40px] w-[23%] z-50 bg-white -ml-[940px]   absolute  left-3/5 max-h-[72px] overflow-auto  ">
+                          {proyectos[0]?.proyectos.map((el)=>{
+                            return <button name="selectTipoProyecto" onClick={(e)=>handleClickSelectProyecto(e, el.id, el.nombreProyecto)} key={el.id} className="pl-4 w-full flex justify-start items-center h-9  border border-gray-100  cursor-pointer hover:bg-gray-100 ">
+                                <div className="mr-2">
+                                  <img src={`${!el.iconoProyecto ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/resumen5.png' : el.iconoProyecto}`} width={15} height={15} alt="sd"/>
+                                </div>
+                                <div>
+                                  {el.nombreProyecto}
+                                </div>
+                                </button>
+                                })}
+                          </ul>  
+                      }
               </div>
-
-
-
-
-
-
-
             </div>
             <div className='w-full h-[20%] '>
               <label htmlFor="nombreTarea" className='w-full h-[40%]  flex items-center justify-start'>
@@ -296,13 +285,13 @@ const GraperTarea = ({session}) => {
               </label>
               <div className='grid'> 
                   <button onClick={handleClickModalCrearProyecto} name='urgenciaDeLaTarea' className=' cursor-pointer rounded h-9  bg-white border border-gray-100 flex  items-center justify-between px-4'>
-                      <div>
-                          {urgencia}      
+                      <div className="flex ">
+                          {urgencia}   
                       </div>
                     <img src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png' width={10} height={10} alt="sd"/>                    
                   </button>
                   {abrirUrgencia &&
-                    <ul className="mt-[40px] w-[23%] z-50   absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
+                    <ul className="mt-[40px] w-[23%] z-50 -ml-[940px] absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
                       {dataUrgenciasProyecto.map((el)=>{
                         return <button name="selectTipoUrgencia" onClick={(e)=>handleClickSelectProyecto(e, el.id, el.nombre)} key={el.id} className="pl-4 w-full justify-start h-9  border border-gray-100 flex items-center cursor-pointer hover:bg-gray-100 ">
                             <div className="mr-2">
@@ -360,14 +349,14 @@ const GraperTarea = ({session}) => {
               <label htmlFor="nombreTarea" className='w-full h-[40%] mt- flex items-center justify-start'>
                 Creador de la Tarea
               </label>
-             <div className='pl-3 w-full h-[35px] font-semibold text-blue-500'>{session?.user?.name} {session?.user?.apellidoPaterno}</div>
+             <div className='pl-3 w-full h-[35px] font-semibold text-blue-500 capitalize'>{session?.user?.name} {session?.user?.apellidoPaterno}</div>
             </div>
             <div className='w-full h-[20%] '>
               <label htmlFor="nombreTarea" className='w-full h-[40%]  flex items-center justify-between '>
                 <div>
                   Equipo Responsable
                 </div>
-                <button onClick={handleClickAbrirModalEqui} className='font-semibold text-gray-500 py-[2px] px-2 text-[12px] hover:border-b hover:text-blue-600 hover:border-blue-800'>
+                <button onClick={handleClickAbrirModalEqui} className='cursor-pointer font-semibold text-gray-500 py-[2px] px-2 text-[12px] hover:border-b hover:text-blue-600 hover:border-blue-800'>
                   + Crear Equipo
                 </button>
               </label>
@@ -382,7 +371,7 @@ const GraperTarea = ({session}) => {
                     <img src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png' width={10} height={10} alt="sd"/>                    
                   </button>
                   {abrirEquipo &&
-                    <ul className="mt-[40px] w-[23%] z-50   absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
+                    <ul className="mt-[40px] w-[23%] z-50 -ml-[280px]  absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
                       {equipo2.map((el)=>{
                         return <button name="selectEquipoResponsable" onClick={(e)=>handleClickSelectProyecto(e, el.id, el.nombreEquipo)} key={el.id} className="pl-4 w-full justify-start h-9  border border-gray-100 flex items-center cursor-pointer hover:bg-gray-100 ">
                             <div className="mr-2">
@@ -418,7 +407,7 @@ const GraperTarea = ({session}) => {
                     <img src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png' width={10} height={10} alt="sd"/>                    
                   </button>
                   {abrirResponsable &&
-                    <ul className="mt-[40px] w-[23%] z-50   absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
+                    <ul className="mt-[40px] w-[23%] z-50 -ml-[280px]  absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
                       {usarioPorProyecto[0]?.users.map((el)=>{
                         return <button name="selectUsuariosProyecto" onClick={(e)=>handleClickSelectProyecto(e, el.id, el.primerNombre)} key={el.id} className="pl-4 w-full justify-start h-9  border border-gray-100 flex items-center cursor-pointer hover:bg-gray-100 ">
                             <div className="mr-2">
@@ -456,7 +445,7 @@ const GraperTarea = ({session}) => {
       
     </form>
     {activarModalPro && 
-        <div className='ml-[550px]'>
+        <div className='flex justify-center'>
           <ModalCrearProyecto 
             abrirModal = {false}
             posicion={3}
@@ -466,7 +455,7 @@ const GraperTarea = ({session}) => {
         </div>
       }
       {activarModalEqui && 
-        <div className='ml-[550px]'>
+        <div className='flex justify-center'>
           <ModalCrearEquipo
             setActivoEquipo={setActivarModalEqui}
             session = {session}
