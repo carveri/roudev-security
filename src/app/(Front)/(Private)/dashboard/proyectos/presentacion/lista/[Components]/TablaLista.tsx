@@ -62,10 +62,10 @@ const TablaLista = ({abrirModalTareaLista, tareasActivas}) => {
                 <td className={`w-[${anchoCasilla}%] text-center`}></td>
               </tr>
             </thead>
-            <tbody className='  w-[69%]  fixed  z-40 h-[482px] max-h-[482px] overflow-auto'>
+            <tbody className='  w-[69%] fixed  z-40 h-[482px] max-h-[482px] overflow-auto'>
               {tareasActivas?.map((el, items)=>{
                   return <tr onClick={()=>{ruta ? router.push('/dashboard/iniciar'):''} 
-                   }  key={el.id} className={`${ruta ? 'cursor-pointer hover:bg-gray-100': ''} border border-gray-200 h-10  `}>
+                   }  key={el.id} className={`${ruta ? 'cursor-pointer hover:bg-gray-100': ''} border border-gray-200 h-10   `}>
                     <td  className={`w-[${anchoCasilla2}px] text-center `}>
                       {items + 1}
                     </td>
@@ -104,7 +104,7 @@ const TablaLista = ({abrirModalTareaLista, tareasActivas}) => {
                     <td className={`w-[${anchoCasilla2}px] text-center `}>
                       {el?.etapaTarea}
                     </td>
-                    <td onClick={()=>handleClickELimnarTarea(el.id)} className={`hover:border-b border-blue-500 py-3 flex justify-center font-semibold w-[100px] text-center  cursor-pointer text-blue-500 hover:underline`}>
+                    <td onClick={()=>handleClickELimnarTarea(el.id)} className={`hover:border-b border-blue-500 py-3 flex justify-center font-semibold w-[124px] text-center  cursor-pointer text-blue-500 hover:underline`}>
                       <img className='w-3 h-3 ' src="https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/eliminar.png" alt="sd" />
                     </td>
 

@@ -75,7 +75,7 @@ const Tabla = ({ruta, status, misProy, handleClickPincharAgregar}) => {
                       {el?.equipos.length}
                     </td>
                     <td className='text-center'>
-                      {el?.equipos.length}
+                      1
                     </td>
                     <td className='text-center'>
                       {el?.presupuestoDelProyecto ?? 0}

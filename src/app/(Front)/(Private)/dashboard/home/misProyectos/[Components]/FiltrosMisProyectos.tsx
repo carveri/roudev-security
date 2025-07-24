@@ -1,13 +1,18 @@
 'use client'
 
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { dataStatus } from '../utils/dataStatus'
 import Tabla from '../../[Components]/Tabla'
 import ModalCrearProyecto from '../../../[Components]/ModalCrearProyecto'
 import { IFiltrosMisProyectos } from "../../../../../../Interfaces/IHome";
 import ModalAgregarUsuarios from './ModalAgregarUsuarios'
+import { useIdProyectoPro, useIdProyectoProUpdated, useProyectoPorUser } from '../../../../[stores]/homeStore'
+import { getData } from '../../../../../React/Fetch/getData'
+import { getDataLista } from '../../../../../React/Fetch/getDataLista'
 
 const FiltrosMisProyectos = ({misProy, session}) => {
+
+
 
     const [abrirModal, setAbrirModal] = useState(false)
     const [abrirFiltrosStatus, setAbrirFiltrosStatus] = useState(false)
@@ -16,8 +21,20 @@ const FiltrosMisProyectos = ({misProy, session}) => {
 
     const [abrirAgregar, setAbrirAgregar] = useState(false)
 
+    const [proyecto, setProyecto] = useState([])
+
 
     console.log('mis proo;', misProy);
+
+    
+  
+    //const {proyectosUser, getProyectosUser} = useProyectoPorUser()
+    const idProyy = useIdProyectoPro((state) => state.updateIdProyecto)
+
+
+
+    
+
     
 
     const handleClickCrearProyecto =()=>{
@@ -25,7 +42,7 @@ const FiltrosMisProyectos = ({misProy, session}) => {
   }
 
   const handleClickAbrirFiltroFechaInicio =()=>{
-    console.log('sdds');
+    console.log('proyecto');
     
   }
 
@@ -61,8 +78,25 @@ const FiltrosMisProyectos = ({misProy, session}) => {
   }
 
   const handleClickPincharAgregar =(e, id)=>{
+    console.log('id del proyecto;', id);
+    
+    idProyy(id)
     setAbrirAgregar(!abrirAgregar)
   } 
+
+
+  const traerProyecto = async()=>{
+      const ruta = 'proyecto2'
+      const url = idProyy
+      const res = await getDataLista({ruta, url})
+      setProyecto(res)
+    }
+    
+    useEffect(()=>{
+      traerProyecto()
+    }, [])
+  console.log('proyecto es un objeto:', proyecto);
+  
 
 
   return (

@@ -30,7 +30,7 @@ export default  function RootLayout({children,}: Readonly<{children: React.React
 
   return  <div className='w-full h-full  grid place-items-center'>
   <div className='w-[95%] h-[90%] '>
-    <header className='w-full h-[5%] font-semibold text-gray-600 text-tamañoLetra '>
+    <header className='w-full h-[5%] font-semibold text-gray-600 text-(length:--tamañoLetra) '>
       Perfil
     </header>
     <div className="w-full  h-[5%] flex">
@@ -42,7 +42,7 @@ export default  function RootLayout({children,}: Readonly<{children: React.React
             height={20}
             alt='as'
           />
-          <div className="text-tamañoLetraChica">
+          <div className="text-(length:--tamañoLetraChica)">
           Jorge Gomez Figueroa
           </div>
         </div>
@@ -79,7 +79,7 @@ export default  function RootLayout({children,}: Readonly<{children: React.React
             <div>
               {<img src={el.icono} width={16} height={16} alt='sd' />}
             </div>
-            <div className="text-tamañoLetraChica">
+            <div className="text-(length:--tamañoLetraChica)">
               {el.nombre}
             </div>
           </div>
@@ -89,7 +89,7 @@ export default  function RootLayout({children,}: Readonly<{children: React.React
       {children}
     </main>
     <div className="w-[75%] h-[10%] flex justify-end items-start">
-      <button onClick={()=>router.push('/dashboard/home/individual/cofounders')} className="text-tamañoLetraChica font-semibold w-[7%] h-[40%] bg-violet-500 text-white">
+      <button onClick={()=>router.push('/dashboard/home/individual/cofounders')} className="text-(length:--tamañoLetraChica) font-semibold w-[7%] h-[40%] bg-violet-500 text-white">
         Volver
       </button>
     </div>
