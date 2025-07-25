@@ -11,6 +11,10 @@ const TablaFounders = ({res, bears, userId}) => {
   console.log('table del ceo:', res);
   
   // console.log('userID:', userId);
+
+
+  console.log('usuario ceo:', userId);
+  
   
 
     const router = useRouter()
@@ -41,6 +45,10 @@ const TablaFounders = ({res, bears, userId}) => {
         router.push('/dashboard/startUps/contactosStartUps')
       }
 
+      const arregloCeo = Array(userId)
+      console.log('array final:', arregloCeo);
+      
+
   return (
     <>
     <table className={`${activarCrearFounder && 'opacity-15'} border border-gray-200   w-full text-(length:--tamañoLetraChica)`}>
@@ -63,14 +71,14 @@ const TablaFounders = ({res, bears, userId}) => {
             </tr>
           </thead>
           <tbody>
-            {res[0]?.users?.map((el, items)=>{
+            {arregloCeo.map((el, items)=>{
                 return <tr  onClick={()=>{ruta ? router.push('/dashboard/iniciar'):''} 
                  }  key={items} className={`${ruta ? 'cursor-pointer hover:bg-gray-100': ''} border border-gray-200 h-11 `}>
                   <td  className='text-center '>
                     {items + 1}
                   </td>
                   <td className='w-full  grid place-content-center  h-11'>
-                    {<img src={`${!el.avatar ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/azure.png' : el?.avatar}`} width={17} height={17} alt='d' />}
+                    {<img src={`${!el?.avatar ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/azure.png' : el?.avatar}`} width={17} height={17} alt='d' />}
                   </td>
                   <td className='text-center'>
                     {el?.primerNombre}

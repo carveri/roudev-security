@@ -27,12 +27,7 @@ const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBoolea
            const [tareasActivas, setTareasActivas] = useState([])
             const [tareasFinalizadas, setTareasFinalizadas] = useState([])
             const [abrirModalTareaStates, setAbrirModalTareaStates] = useState(false)
-            //const abrirModalTareaState = false
-            //const [abrirModalTareaState, setAbrirModalTareaState] = useState(false)
-            //abrirModalTareaState(2,3)
-            //const userIdZustand = 'c814075d-b44c-4474-970c-3b62c087d3f3'
 
-            //console.log('resultado de la wea que estoy haciendo:', abrirModalTareaState);
 
             
 
@@ -69,9 +64,7 @@ const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBoolea
         }
 
 
-        useEffect(()=>{
-
-        }, [])
+        
         
     
     

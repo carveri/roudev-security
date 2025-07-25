@@ -59,7 +59,7 @@ const SelectAbriri = ({ nombre, name, setId, session}) => {
                        
         </button>
             {abrirFinalidad &&
-            <ul className="mt-[60px] w-[81%] z-50   absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
+            <ul className="mt-[60px] w-[81%] z-50   absolute   max-h-[72px] overflow-auto  bg-white">
             {finalidadProyectoId.map((el)=>{
                 return <button onClick={(e)=>handleClickSelectProyecto(e, el.id, el.nombreFinalidadProyecto)} name="selectFinalidadProyecto" key={el.id} className=" pl-4 flex gap-x-2 w-full justify-start h-9  border border-gray-100 items-center cursor-pointer hover:bg-gray-100 ">
                             

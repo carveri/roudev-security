@@ -50,7 +50,7 @@ const Navbar = ({setActivarPerfil,activarPerfil, setActivarConectar, activarCone
       </div>
       <div className="flex gap-3 py-2">
         
-        <input className="rounded pl-3 bg-white border  border-gray-200 text-(length:--tamañoLetraChica) h-5.5 w-96 py-1" type="text" placeholder={`Buscar`}/>
+        <input className="rounded pl-3 bg-white border focus:outline-none border-gray-200 text-(length:--tamañoLetraChica) h-7.5 w-96 py-1" type="text" placeholder={`Buscar`}/>
         <ul className="flex gap-x-2 pr-3 ">
           {dataNavbar.map((el)=>{
             return <button name={el.nombre} onClick={handleClickNavbar} className="cursor-pointer hover:border-b hover:border-gray-500 px-2  " key={el.id}>

@@ -31,14 +31,14 @@ const page = () => {
     getProo()
   }, [bears])
 
- // console.log('isproo:', isProoo);
+ //console.log('isproo:', isProoo);
   
 
   // traer ceo y cto
   const getNoEmpleado  = async()=>{
 
     const ruta = 'user'
-    const url = 'a140c95f-acb0-4129-8901-e047f2535e93'
+    const url = isProoo[0]?.ceo
     const res = await getDataLista({ruta, url})
     setUserId(res)
   }

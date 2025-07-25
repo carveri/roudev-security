@@ -62,7 +62,7 @@ const SelectAbrir2 = ({setId}) => {
                    
                   </button>
                   {abrirTipos &&
-                    <ul className="mt-[60px] w-[81%] z-50   absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
+                    <ul className="mt-[60px] w-[81%] z-50   absolute  max-h-[72px] overflow-auto  bg-white">
                       {tipoProyectoId.map((el)=>{
                         return <button name="selectTipoProyecto" onClick={(e)=>handleClickSelectProyecto(e, el.id, el.nombreTipoProyecto)} key={el.id} className="pl-4 w-full justify-start h-9  border border-gray-100 grid items-center cursor-pointer hover:bg-gray-100 ">
                           {el.nombreTipoProyecto}

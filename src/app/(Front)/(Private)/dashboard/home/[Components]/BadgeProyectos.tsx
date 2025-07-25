@@ -41,16 +41,16 @@ const BadgeProyectos = ({res}) => {
    console.log('idproyectopinchado:', idProyecto);
    
    
-    
+    const limiteString = 16
 
   return (
     <header className='w-full h-[5%]  grid justify-items-end text-(length:--tamañoLetraChica) '>
         {res.length>0 ?
           <div onClick={()=>setActivo(!activo)} className='w-[12%] py-2  h-[32px] border-b border-gray-300  flex items-center justify-between px-2 cursor-pointer'>
           
-          <section className='flex self-center py-1'>
-            <img className='mr-2' src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/angular.png' width={15} height={13} alt='ssd'/>
-            {proyectos}
+          <section className='flex self-center py-1 capitalize'>
+            <img className='mr-2' src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/azure.png' width={15} height={13} alt='ssd'/>
+            {proyectos.length > limiteString ? proyectos.slice(0,limiteString) + '...' : proyectos}
           </section>
           <section>
             <img src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png' width={12} height={12} alt='sd'/>
@@ -63,10 +63,10 @@ const BadgeProyectos = ({res}) => {
         
         {activo &&
             
-            <ul className='w-[8%] h-[200px] mt-[38px] z-50   absolute  left-4/5 max-h-[96px] overflow-auto bg-white'>
+            <ul className='w-[8%] h-[200px] mt-[38px] z-50   absolute   max-h-[96px] overflow-auto bg-white'>
             {res[0]?.proyectos?.map((el, index)=>{
               return <li onClick={(e)=>handleClickListaProyectos(el?.id, el?.nombreProyecto, el?.iconoProyecto, el?.ceo, index)} value={el?.nombreProyecto} key={el.id} className='flex w-full h-[32px] cursor-pointer  hover:bg-gray-100'>
-                {<><img className='py-2' src={`${!el.iconoProyecto ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/angular.png' : el.iconoProyecto}`} width={15} height={4} alt='as' /> <div className='ml-2 grid place-items-center'>{el.nombreProyecto}</div></>}
+                {<><img className='py-2' src={`${!el.iconoProyecto ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/aws.png' : el.iconoProyecto}`} width={15} height={4} alt='as' /> <div className='ml-2 grid place-items-center capitalize'>{el?.nombreProyecto.length > limiteString ? el?.nombreProyecto.slice(0,limiteString) + '...' : el?.nombreProyecto}</div></>}
                 
               </li>
             })}

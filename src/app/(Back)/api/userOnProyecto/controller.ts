@@ -18,9 +18,11 @@ class UserOnProyecto {
         const url = new URL(req.url)
 
         const proyectoId:any = url.searchParams.get("proyectoId")
+        const ceo:any = url.searchParams.get("ceo")
 
         const getAllProyecto2 = await prisma.proyecto.findMany({
             where:{
+                
                 id: proyectoId
             },
             include:{

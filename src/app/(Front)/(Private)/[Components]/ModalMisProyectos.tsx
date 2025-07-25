@@ -69,7 +69,7 @@ const ModalMisProyectos = ({setActivar, session}) => {
                     <img  src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/iconoLupa.png' width={11} height={11} alt='as' />
                 </div>
                 <div className='w-[90%] h-full  grid  items-center py-3'>
-                    <input type="text" placeholder="Buscar Mis Proyectos" className="w-[93%] pl-2 border border-gray-200 h-full rounded"/>
+                    <input type="text" placeholder="Buscar Mis Proyectos" className="focus:outline-none w-[93%] pl-2 border border-gray-200 h-full rounded"/>
                 </div>
             </article>
         </section>

@@ -198,7 +198,7 @@ const handleClickCrearProyecto=(e)=>{
                 <div className='grid mt-1'>
                   <label className='h-1 text-gray-600 pb-5' htmlFor="">Nombre del Proyecto</label>
                   <div className="flex">
-                    <input  onChange={handleChangeNombreProyecto} readOnly={!abrirNombre} placeholder={proyecto[0]?.nombreProyecto} onClick={handleClickModalCrearProyecto}  className={`${!abrirNombre ? 'bg-gray-100 opacity-80 cursor-default ': 'cursor-pointer '} w-[90%]  rounded h-9   border border-gray-200 flex  items-center justify-between px-4`}/>
+                    <input  onChange={handleChangeNombreProyecto} readOnly={!abrirNombre} placeholder={proyecto[0]?.nombreProyecto} onClick={handleClickModalCrearProyecto}  className={`${!abrirNombre ? 'bg-gray-100 opacity-80 cursor-default ': 'cursor-pointer '} w-[90%] focus:outline-none rounded h-9   border border-gray-200 flex  items-center justify-between px-4`}/>
                     <img onClick={handleClickUpdatedNombreProyecto} className={`${abrirNombre ? 'border-b border-blue-500' : ''} hover:bg-gray-100 w-10 h-9 py-3 px-3 cursor-pointer`}    src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/lapiz.png' width={15} height={15} alt="as" />           
                   </div>
                 </div>

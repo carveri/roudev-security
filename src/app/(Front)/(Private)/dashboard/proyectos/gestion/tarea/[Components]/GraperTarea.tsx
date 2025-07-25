@@ -244,7 +244,7 @@ const GraperTarea = ({session}) => {
               <label htmlFor="nombreTarea" className='w-full h-[40%] flex items-center justify-start'>
                 Nombre de la Tarea
               </label>
-              <input name='nombreTarea' onChange={handleChangeTarea} type="text" id='nombreTarea' className=' pl-3 w-full h-[35px] border-2 border-gray-100 rounded' placeholder='Crear un calendario...' />
+              <input name='nombreTarea' onChange={handleChangeTarea} type="text" id='nombreTarea' className='capitalize focus:outline-none pl-3 w-full h-[35px] border-2 border-gray-100 rounded' placeholder='Crear un calendario...' />
             </div>
             
             <div className='w-full h-[20%] '>
@@ -258,7 +258,7 @@ const GraperTarea = ({session}) => {
               </label>     
               <div className='grid'> 
                   <button onClick={handleClickModalCrearProyecto} name='tipoDelProyecto' className=' cursor-pointer rounded h-9  bg-white border border-gray-100 flex  items-center justify-between px-4'>
-                      <div>
+                      <div className="capitalize">
                           {proyecto2}      
                       </div>
                       <img src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png' width={10} height={10} alt="sd"/>                    
@@ -365,7 +365,7 @@ const GraperTarea = ({session}) => {
 
               <div className='grid'> 
                   <button onClick={handleClickModalCrearProyecto} name='equipoDeLaTarea' className=' cursor-pointer rounded h-9  bg-white border border-gray-100 flex  items-center justify-between px-4'>
-                      <div>
+                      <div className="capitalize">
                           {equipo}      
                       </div>
                     <img src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png' width={10} height={10} alt="sd"/>                    

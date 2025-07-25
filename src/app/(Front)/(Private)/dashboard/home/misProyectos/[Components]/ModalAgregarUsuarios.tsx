@@ -245,7 +245,7 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
                 }
                 {pinchado ==='Email' &&
                     <div className=' h-20 mt-2 z-10'>
-                        <input  type="text" placeholder='juan@gmail.com' className='pl-4 border border-gray-200 h-10 w-full'/>
+                        <input  type="text" placeholder='juan@gmail.com' className='focus:outline-none pl-4 border border-gray-200 h-10 w-full'/>
                     </div>
                 }
 

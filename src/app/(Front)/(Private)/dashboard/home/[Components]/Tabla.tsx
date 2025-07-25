@@ -28,6 +28,7 @@ const Tabla = ({ruta, status, misProy, handleClickPincharAgregar}) => {
     router.push('/dashboard/home/misProyectos/detalleProyecto')
   }
 
+  console.log('mis proyyyyectos:', misProy);
   
   
 
@@ -62,7 +63,7 @@ const Tabla = ({ruta, status, misProy, handleClickPincharAgregar}) => {
                     <td className='w-full  grid place-content-center '>
                       {<img src={`${!el?.iconoProyecto ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/pregunta.png' : el?.iconoProyecto}`} width={17} height={17} alt='d' />}
                     </td>
-                    <td className='text-center'>
+                    <td className='text-center capitalize'>
                       {el?.nombreProyecto.length > 20 ? el?.nombreProyecto.slice(0,20) + '...' : el?.nombreProyecto}
                     </td>
                     <td className='text-center'>
@@ -75,7 +76,7 @@ const Tabla = ({ruta, status, misProy, handleClickPincharAgregar}) => {
                       {el?.equipos.length}
                     </td>
                     <td className='text-center'>
-                      1
+                      {el?.users.length}
                     </td>
                     <td className='text-center'>
                       {el?.presupuestoDelProyecto ?? 0}

@@ -22,15 +22,6 @@ const FiltrosMisProyectos = ({misProy, session}) => {
     const [abrirAgregar, setAbrirAgregar] = useState(false)
 
     
-
-
-    console.log('mis proo;', misProy);
-
-    console.log('sessiondel filtros:', session);
-    
-
-    
-  
     //const {proyectosUser, getProyectosUser} = useProyectoPorUser()
     const idProyy = useIdProyectoPro((state) => state.updateIdProyecto)
 

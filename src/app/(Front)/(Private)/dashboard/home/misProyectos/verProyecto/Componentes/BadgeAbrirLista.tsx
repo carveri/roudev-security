@@ -109,7 +109,7 @@ const BadgeAbrirLista = ({nombre, handleClickSelectProyecto, valorAPintar, abrir
             
                   </div>
                   {abrirLista &&
-                    <ul className="mt-[55px] w-[61%] z-50   absolute  left-3/5 max-h-[72px] overflow-auto  bg-white">
+                    <ul className="mt-[55px] w-[61%] z-50   absolute   max-h-[72px] overflow-auto  bg-white">
                       {data.map((el)=>{
                         //const {id, condicion} = el
                         return <button name={nombreSelect} onClick={(e)=>handleClickSelectProyecto(e, el.id, el[condicion])} key={el.id} className="pl-4 w-full justify-start h-9  border border-gray-100 grid items-center cursor-pointer hover:bg-gray-100 ">

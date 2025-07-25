@@ -10,7 +10,7 @@ import { dataEmpleados } from '../utils/dataEmpleados'
 import ModalCrearEmpleado from './ModalCrearEmpleado'
 //import { dataFounders } from '../utils/dataFounders'
 
-const TablaEmpleados = ({res}) => {
+const TablaEmpleados = ({res, bears, userId}) => {
 
   console.log('reultado empleados:', res);
   
@@ -40,6 +40,12 @@ const TablaEmpleados = ({res}) => {
         router.push('/dashboard/startUps/contactosStartUps')
       }
 
+
+      console.log('userid:', userId);
+      
+      const arregloEmpleado = Array(userId)
+      console.log('array final empleados:', arregloEmpleado);
+
   return (
     <>
     <table className={`${activarCrearEmpleado && 'opacity-15'} border border-gray-200   w-full text-(length:--tamañoLetraChica)`}>
@@ -63,11 +69,10 @@ const TablaEmpleados = ({res}) => {
             </tr>
           </thead>
           <tbody>
-            {res[0]?.users?.map((el, items)=>{
+            {userId?.map((el, items)=>{
 
                   
-                  return <tr  onClick={()=>{ruta ? router.push('/dashboard/iniciar'):''} 
-                 }  key={el.id} className={`${ruta ? 'cursor-pointer hover:bg-gray-100': ''} border border-gray-200 h-11  `}>
+                  return <tr onClick={()=>{ruta ? router.push('/dashboard/iniciar'):''}} key={el?.id} className={`${ruta ? 'cursor-pointer hover:bg-gray-100': ''} border border-gray-200 h-11  `}>
                   <td  className='text-center '>
                     {items + 1}
                   </td>
@@ -81,19 +86,19 @@ const TablaEmpleados = ({res}) => {
                     {el?.apellidoPaterno}
                   </td>
                   <td className='text-center'>
-                    {el?.area}
+                    {!el?.area ? '-': el?.area}
                   </td>
                   <td className='text-center'>
-                    {el?.equipo}
+                    {!el?.equipo? '-': el?.equipo}
                   </td>
                   <td className='text-center'>
                     {el?.statusEnProyecto}
                   </td>
                   <td className='text-center'>
-                    {el?.fechaInicio}
+                    {!el?.fechaInicio ? '-': el?.fechaInicio}
                   </td>
                   <td className='text-center'>
-                    {el?.statusProyecto}
+                    {el.isActive ? 'Activo': 'Desactivo'}
                   </td>
                   <td className='text-center text-green-600'>
                     {el?.email}

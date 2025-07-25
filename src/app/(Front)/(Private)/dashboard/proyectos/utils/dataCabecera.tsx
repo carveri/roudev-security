@@ -7,12 +7,6 @@ export const dataCabecera = [
         icono: 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/resumen5.png',
         href: '/dashboard/proyectos'
     },
-    // {
-    //     id:'2',
-    //     nombre: 'Crear Equipo',
-    //     icono: 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/mas2.png',
-    //     href: '/dashboard/proyectos/gestion/equipo'
-    // },
     {
         id:'2',
         nombre: 'Tablero',

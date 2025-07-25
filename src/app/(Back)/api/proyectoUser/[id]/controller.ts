@@ -13,6 +13,7 @@ class DetalleProyectoUser {
                 proyectos:{
                     include:{
                         tipoProyecto:true,
+                        users:true,
                         finalidadProyecto: {
                             select:{
                                 nombreFinalidadProyecto: true
