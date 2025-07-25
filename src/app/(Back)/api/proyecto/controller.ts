@@ -27,22 +27,6 @@ class Proyecto {
                 tipoProyectoId,
                 ceo,
                 empleado,
-                // users:{
-                //     connect:[
-                //     {
-                //         id:id1
-                //     },
-                //     // {
-                //     //     id:id2
-                //     // },
-                //     // {
-                //     //     id:id3
-                //     // },
-                //     // {
-                //     //     id:id2
-                //     // }
-                // ]
-                // },
                 users:{
                     connect:todos
                 },
@@ -55,6 +39,9 @@ class Proyecto {
 
     getProyecto =async()=>{
         const getAllProyecto = await prisma.proyecto.findMany({
+            include:{
+                users: true
+            },
             orderBy:{
                 nombreProyecto:'asc'
             }

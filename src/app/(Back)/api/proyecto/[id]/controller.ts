@@ -57,7 +57,7 @@ class ProyectoDetalle {
     // updated 
     updatedOneProyecto = async(req:Request, {params}:IParams)=>{
         const {id} = await params
-        const {nombreProyecto, statusProyecto, puntosDelProyecto, ceo, finalidadProyectoId, tipoProyectoId} = await req.json()
+        const {todos,nombreProyecto, empleado,statusProyecto, puntosDelProyecto, ceo, finalidadProyectoId, tipoProyectoId} = await req.json()
         const updatedOneProyecto = await prisma.proyecto.update({
             where:{
                 id: id
@@ -69,6 +69,10 @@ class ProyectoDetalle {
                 ceo,
                 finalidadProyectoId,
                 tipoProyectoId,
+                empleado,
+                users:{
+                    connect:todos
+                },
                 
             }
         })

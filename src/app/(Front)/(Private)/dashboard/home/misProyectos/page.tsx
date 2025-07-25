@@ -10,6 +10,9 @@ const page = async() => {
   // traer el usuario
   const session = await getServerSession(authOptions)
 
+  console.log('session en page misproyectos:', session);
+  
+
   // traer los proyectoss
   const ruta = 'proyectoUser'
   const url = session?.user?.id
@@ -29,7 +32,9 @@ const page = async() => {
         :
         <>
           <div className='w-full h-full grid place-items-center'>
-            <BadgeVacio />
+            <BadgeVacio
+            session={session}
+            />
           </div>
         </>
     }

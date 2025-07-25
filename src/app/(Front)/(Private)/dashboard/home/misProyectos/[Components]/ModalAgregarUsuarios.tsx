@@ -5,6 +5,9 @@ import { useIdProyectoPro, useProyectoPorUser } from '../../../../[stores]/homeS
 import { getData } from '../../../../../React/Fetch/getData'
 import { getDataLista } from '../../../../../React/Fetch/getDataLista'
 import { postData } from '../../../../../React/Fetch/postData'
+import { updateData } from '../../../../../React/Fetch/updateData'
+
+//import { usePathname } from 'next/navigation'
 
 const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
 
@@ -15,6 +18,8 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
 
     const idProyy = useIdProyectoPro((state) => state.idProyecto)
 
+    const [proyecto, setProyecto] = useState([])
+
 
     const [abrirTipos, setAbrirTipos] = useState(false)
     const [abrirUsuario, setAbrirUsuario] = useState(true)
@@ -23,6 +28,12 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
     const [pinchado, setPinchado] = useState('Email')
 
     const [usuariosAll, setUsuariosAll] = useState([])
+
+    const [todos, setTodos] = useState([])
+    const [empleado, setempleado] = useState([])
+
+
+    const [activarChecked, setActivarChecked] = useState(false)
 
     //const clonUsuarioAll = [...usuariosAll]
 
@@ -93,27 +104,86 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
 
     //console.log({usuario});
 
-
+    //let todos1 = []
+    //let inicio: string[] = []
+    
     const handleClickUsarioClick =(e, id, nombre, apellido)=>{
         
         console.log({nombre});
-        console.log({id});
+        console.log('idddd:', id);
         
         setUsuario(nombre)
         setApellido(apellido)
 
+        todos.push({"id":id})
+        setTodos([...todos])
 
-        const ruta = 'proyecto'
-        const data = {
+        //para empleados 
+        empleado.push(id)
+        setempleado([...empleado])
+        // if(e.target.name === nombre){
+        //     console.log('pincho el correctp');
+            
+        // }
+        // else {
+        //     console.log('mala la wea');
+            
+        // }
 
-        }
-        postData({ruta, data})
-        setAbrirUsuario(!abrirUsuario)
-        
+
+    }
+
+
+    const traerProyecto = async()=>{
+      const ruta = 'proyecto2'
+      const url = idProyy
+      const res = await getDataLista({ruta, url})
+      setProyecto(res)
     }
     
+    useEffect(()=>{
+      traerProyecto()
+    }, [])
+  //console.log('proyecto es un objeto:', proyecto);
+    
 
-    console.log('id del proyecto desde zustand: ', idProyy);
+    //console.log('id del proyecto desde zustand: ', idProyy);
+
+    const handleChangeCheckedUsers =(e)=>{
+        if(e.target.value === 'on'){
+            setActivarChecked(true)
+        }
+        //console.log(e.target.value);
+        
+    }
+
+    const handleClickSeleccionarUsers = ()=>{
+        console.log('todos al enviar desde el select:', 'x');
+        //setTodos(todos)
+    }
+
+
+    const handleClickConfirmarAgregarUsuario =()=>{
+        console.log('todos al enviar:', {todos});
+
+        const ruta = 'proyecto'
+        const id = idProyy
+        const data={
+           // nombreProyecto: "pro 3 del chino con los españoles",
+            empleado: empleado,
+            todos: todos
+            
+        }
+        updateData({ruta, id, data})
+
+
+        alert('usuarios agregados al proyecto !!')
+        //console.log('que me da empleados:', empleado);
+        location.reload()
+        
+        
+        
+    }
     
     
 
@@ -128,7 +198,7 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
                     Nombre del Proyecto: 
                 </div>
                 <div className='h-12 flex items-center ml-2 capitalize'>
-                    proyectooo 1
+                    {proyecto[0]?.nombreProyecto}
                 </div>
             </section>
             <section>
@@ -204,17 +274,20 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
                         
                             <div className='absolute w-[19.7%]   max-h-[240px] overflow-auto'>
                             {usuariosAll.map((el)=>{
-                            return <div onClick={(e)=>handleClickUsarioClick(e, el.id, el.primerNombre, el.apellidoPaterno)} key={el.id} className='border-b border-gray-100 hover:bg-gray-200 h-10 flex items-center pl-3 gap-x-2 cursor-pointer z-50   w-[98%]'>
-                            <div>
-                                <img className='w-3 h-3' src={`${!el.avatar ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/poAdmin2.png': el?.avatar}`} alt="s" />
-                            </div>
-                            <div className='capitalize'>
-                                {el?.primerNombre} {el?.apellidoPaterno}
-                            </div>
-                        </div>
+                            return <button name={el?.primerNombre} onClick={(e)=>handleClickUsarioClick(e, el.id, el.primerNombre, el.apellidoPaterno)} key={el.id} className={`${abrirTipos && 'opacity-25'} border-b border-gray-100 hover:bg-blue-200 h-10 flex items-center pl-3 gap-x-2 cursor-pointer z-50 justify-between  w-[98%]`}>
+                            <div className='flex items-center gap-x-2'>
+                                <div>
+                                    <img className='w-3 h-3' src={`${!el.avatar ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/poAdmin2.png': el?.avatar}`} alt="s" />
+                                </div>
+                                <div className='capitalize'>
+                                    {el?.primerNombre} {el?.apellidoPaterno}
+                                </div>
+                                </div>
+                                <input name={el?.primerNombre} id={el?.id} onChange={handleChangeCheckedUsers} checked={activarChecked} className='mr-2' type="checkbox" />
+                        </button>
                         })}
                         <div className='w-full h-10 flex justify-end items-center'>
-                            <button className='bg-blue-500 h-[70%] w-[25%] font-semibold cursor-pointer text-white rounded'>Seleccionar</button>
+                            <button onClick={handleClickSeleccionarUsers} className='bg-blue-500 h-[70%] w-[25%] font-semibold cursor-pointer text-white rounded'>Seleccionar</button>
                         </div>
                         </div>
                         
@@ -227,7 +300,7 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
             </section>
            
                   <div className='z-10 flex h-[75px] text-white  gap-x-2 justify-end font-semibold text-(length:--tamañoLetraChica)'>
-                    <button type='button' className='bg-blue-500 w-[100px] h-[45%] rounded cursor-pointer'>
+                    <button onClick={handleClickConfirmarAgregarUsuario} type='button' className='bg-blue-500 w-[100px] h-[45%] rounded cursor-pointer'>
                         Confirmar
                     </button>
                     <button type='button' onClick={()=>setAbrirAgregar(false)} className='bg-black w-[60px] h-[45%] rounded cursor-pointer'>

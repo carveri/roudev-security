@@ -21,10 +21,13 @@ const FiltrosMisProyectos = ({misProy, session}) => {
 
     const [abrirAgregar, setAbrirAgregar] = useState(false)
 
-    const [proyecto, setProyecto] = useState([])
+    
 
 
     console.log('mis proo;', misProy);
+
+    console.log('sessiondel filtros:', session);
+    
 
     
   
@@ -85,17 +88,7 @@ const FiltrosMisProyectos = ({misProy, session}) => {
   } 
 
 
-  const traerProyecto = async()=>{
-      const ruta = 'proyecto2'
-      const url = idProyy
-      const res = await getDataLista({ruta, url})
-      setProyecto(res)
-    }
-    
-    useEffect(()=>{
-      traerProyecto()
-    }, [])
-  console.log('proyecto es un objeto:', proyecto);
+  
   
 
 

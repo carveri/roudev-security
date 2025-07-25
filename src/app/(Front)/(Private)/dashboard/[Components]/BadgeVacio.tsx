@@ -3,7 +3,7 @@
 import {useState} from 'react'
 import ModalCrearProyecto from './ModalCrearProyecto';
 
-const BadgeVacio = () => {
+const BadgeVacio = ({session}) => {
 
 
     const [abrirModal, setAbrirModal] = useState(false)
@@ -29,7 +29,7 @@ const BadgeVacio = () => {
                     abrirModal={abrirModal}
                     setAbrirModal = {setAbrirModal}
                     posicion = 'fidex'
-                    session=''
+                    session={session}
                 />
             </div>
         }

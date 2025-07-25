@@ -7,7 +7,9 @@ const BotonesCrearProyecto = ({setAbrirModal, presupuestoDelProyecto,  session, 
 
     const userIdSession = session?.user?.id
 
-    console.log('fechafinalxxx:', fechaTermino);
+    //console.log('fechafinalxxx:', fechaTermino);
+    console.log('userid:', userIdSession);
+    
     
 
     // ENVIO DEL FORMULARIO AL BACK
@@ -30,7 +32,7 @@ const BotonesCrearProyecto = ({setAbrirModal, presupuestoDelProyecto,  session, 
     console.log(data);
     const ruta = 'proyecto'
     postData({ruta, data})
-   setAbrirModal(false)
+    setAbrirModal(false)
     location.reload()
   }
 
