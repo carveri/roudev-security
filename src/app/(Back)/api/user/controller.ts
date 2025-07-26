@@ -49,7 +49,7 @@ class User {
     getUser =async()=>{
         const getUser = await prisma.user.findMany({
             orderBy: {
-                apellidoPaterno: 'asc'
+                primerNombre: 'asc'
             }
         })
         return getUser

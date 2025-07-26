@@ -158,27 +158,6 @@ export const useUserOnProyecto = create((set)=>
 
 
 
-// // traer proyectos por userId
-// export const useProyectoPorUserId = create((set)=>
-// ({
-//     proyectoPorUserId: [],
-    
-//     getUserOnProyecto: async(proyectoId)=>{
-//         const ruta = 'proyecto2'
-//             const elem1 = 'proyectoId'
-//             const param1 = bears ?? '9888686d-de2d-4ec4-8ee2-f4f249827419'
-//             const elem2 = 'userId'
-//             const param2 = idCeo[0] ?? 'c814075d-b44c-4474-970c-3b62c087d3f3'
-//             const getProo = async()=>{
-//             const proyectoPorUserId = await getDataCompleja2({ruta, elem1, param1, elem2, param2})  
-//             }
-                        
-//         set(state => ({
-//             ...state, 
-//             proyectoPorUserId
-//         }))
-//     }
-// }))
 
 
 // traer finalidades del proyecto
@@ -212,6 +191,66 @@ export const useTipoProyectos = create((set)=>
         set(state => ({
             ...state, 
             tipoProyecto
+        }))
+    }
+}))
+
+
+// traer nombre del creador de una tarea
+
+export const useGetCreadorTarea = create((set)=>
+({
+    creadorTarea: [],
+    
+    getCreadorTarea: async(tareas)=>{
+        const ruta = 'user'
+        const url = tareas[0]?.creadorTarea
+        const creadorTarea = await getDataLista({ruta, url})
+              
+                        
+        set(state => ({
+            ...state, 
+            creadorTarea
+        }))
+    }
+}))
+
+
+// traer nombre del responsable de una tarea
+
+export const useGetResponsableTarea = create((set)=>
+({
+    responsableTarea: [],
+    
+    getResponsableTarea: async(tareas)=>{
+        const ruta = 'user'
+        const url = tareas[0]?.responsableTarea
+        const responsableTarea = await getDataLista({ruta, url})
+              
+                        
+        set(state => ({
+            ...state, 
+            responsableTarea
+        }))
+    }
+}))
+
+
+// traer nombre del equipo responsable de una tarea
+
+export const useGetEquipoResponsableTarea = create((set)=>
+({
+    equipoResponsableTarea: [],
+    
+    getEquipoResponsableTarea: async(tareas)=>{
+        const ruta = 'equipo'
+        const url = tareas[0]?.equipoResponsableTarea
+        const equipoResponsableTarea = await getDataLista({ruta, url})
+              
+                        
+        set(state => ({
+            ...state, 
+            equipoResponsableTarea
         }))
     }
 }))

@@ -72,6 +72,8 @@ const GraperTarea = ({session}) => {
                 getProyectos()
               }, [])
           
+        console.log('usuarioproyecto', usarioPorProyecto) 
+        
 
   const [activarBoton, setActivarBoton] = useState(false)
 
@@ -229,7 +231,7 @@ const GraperTarea = ({session}) => {
 
 
   return (
-    < >
+    <>
     <form onSubmit={handleSubmitCrearTarea} className={`${activarModalPro && 'opacity-10'} ${activarModalEqui && 'opacity-10'} w-[75%] h-[95%] text-(length:--tamañoLetraChica)  px-16`} action="">
       <header className='w-full h-[4%]  flex items-center justify-center'>
         

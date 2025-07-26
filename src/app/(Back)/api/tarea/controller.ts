@@ -43,7 +43,7 @@ export class Tarea {
             where:{
                 proyectoId: proyectoId,
                 AND:{
-                    userId: userId,
+                
                     statusTarea: status,
                    // etapaTarea: filtro
                 }

@@ -75,6 +75,9 @@ const ModalTareas = ({setAbrirModalTareas, acepColaborador, session}) => {
                       getUserId()
                   }, [idProyy])
 
+
+            console.log('USERID:', userId);
+            
                   
                   
             // boton para abrir aceptar cambios
@@ -135,10 +138,10 @@ const ModalTareas = ({setAbrirModalTareas, acepColaborador, session}) => {
                     
                     
                     <div className='flex items-center h-12'>
-                      {userId?.id === session.user.id ?
-                        <>
-                          
-                        </>:
+                      {tareas[0]?.responsableTarea === session.user.id ?
+                        <div className="text-violet-600 font-semibold pl-1 underline">
+                          Eres el Responsable de esta tarea
+                        </div>:
                         <>
                           <input onClick={handleClickCheckBox} onChange={handleChangeCheckBox} checked={activarCheck}  className="cursor-pointer w-[16px] h-[16px] "  type="checkbox" /><div  onClick={()=>setActivarCheck(!activarCheck)} className={`pl-2 font-semibold text-blue-500 cursor-pointer hover:underline py-3`}>Quiero aportar a la Tarea</div>
                         </>

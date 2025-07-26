@@ -165,8 +165,8 @@ const ModalCrearEquipo = ({setActivoEquipo, session}) => {
       postData({ruta, data})
       
       setActivoEquipo(false)
-      router.push('/dashboard/proyectos/gestion/tarea')
-      //router.refresh()
+      
+      router.refresh()
       
     }
     
