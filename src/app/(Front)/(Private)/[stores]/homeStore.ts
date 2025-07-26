@@ -254,3 +254,22 @@ export const useGetEquipoResponsableTarea = create((set)=>
         }))
     }
 }))
+
+
+// traer los usuarios de la tabla intermeda, pasandole el proyectid
+// traer tareas 
+export const useUsersOnProyectos = create((set)=>
+({
+    usersOnProyectos: [],
+    
+    getUsersOnProyectos: async(idProyecto)=>{
+        const ruta = 'usersOnProyectos'
+        const url = idProyecto
+        const usersOnProyectos = await getDataLista({ruta, url})
+                        
+        set(state => ({
+            ...state, 
+            usersOnProyectos
+        }))
+    }
+}))

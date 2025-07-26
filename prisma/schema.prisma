@@ -173,7 +173,7 @@ model Proyecto {
 // TABLA INTERMEDIA USER VS PROYECTO 
 
 model UsersOnProyectos {
-          
+ // id          String     @id @default(uuid())        
   userId      String
   user        User        @relation(fields: [userId], references: [id])
   proyectoId  String

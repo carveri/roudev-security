@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { dataEquiposProyecto1 } from './utils/dataEquiposProyecto1'
-import { useIdProyectoProUpdated, useProyectoUpdate } from '../../../../[stores]/homeStore'
+import { useIdProyectoProUpdated, useProyectoUpdate, useUsersOnProyectos } from '../../../../[stores]/homeStore'
 import ModalEliminar from '../../../[Components]/ModalEliminar'
 import TablaCargoUsuario from '../[Components]/TablaCargoUsuario'
 
@@ -12,6 +12,7 @@ const page = () => {
   const idProyectoZustand = useIdProyectoProUpdated((state) => state.idProyectoUpdated)
 
   const {proyecto, getProyecto} = useProyectoUpdate() 
+  const {usersOnProyectos, getUsersOnProyectos} = useUsersOnProyectos()
 
   // abrir la modal de eliminar
   const [abrirModal, setAbrirModal] = useState(false)
@@ -20,19 +21,26 @@ const page = () => {
 
   const router = useRouter()
 
-  const handleClickEliminarProyecto =()=>{
-      const ruta = 'proyecto'
-      const url = idProyectoZustand
-      setAbrirModal(!abrirModal)
-      //deleteData({ruta, url})
-      //console.log('id del proy que voy a aeliminar;', idProyectoZustand);
-  }
+  // const handleClickEliminarProyecto =()=>{
+  //     const ruta = 'proyecto'
+  //     const url = idProyectoZustand
+  //     setAbrirModal(!abrirModal)
+  //     //deleteData({ruta, url})
+  //     //console.log('id del proy que voy a aeliminar;', idProyectoZustand);
+  // }
 
 useEffect(()=>{
     getProyecto(idProyectoZustand)
+    getUsersOnProyectos(idProyectoZustand)
   }, [])
- console.log('prororo;', proyecto);
+ //console.log('prororo;', proyecto);
   
+
+
+
+//  console.log('id del proye:', idProyectoZustand);
+ 
+ 
 
   return (
     <>
@@ -120,7 +128,9 @@ useEffect(()=>{
         <header className='w-full h-12 grid place-content-center font-semibold text-gray-600'>
           Modificar el Cargo del Usuario
         </header>
-        <TablaCargoUsuario />
+        <TablaCargoUsuario
+          usersOnProyectos={usersOnProyectos}
+        />
       </div>
 
      
@@ -135,9 +145,9 @@ useEffect(()=>{
         <button onClick={()=>router.back()} className='cursor-pointer w-[80%] font-semibold h-[100%] bg-violet-300 hover:bg-violet-500 text-white text-[11px] rounded'>
           Volver
         </button>
-        <button onClick={()=>router.back()} className='cursor-pointer w-[80%] font-semibold h-[100%] bg-blue-500 hover:bg-blue-600 text-white text-[11px] rounded'>
+        {/* <button onClick={()=>router.back()} className='cursor-pointer w-[80%] font-semibold h-[100%] bg-blue-500 hover:bg-blue-600 text-white text-[11px] rounded'>
           Guardar Cambios
-        </button>
+        </button> */}
       </div>
     </div>
     {abrirModal &&
