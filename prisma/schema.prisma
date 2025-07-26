@@ -110,7 +110,7 @@ model User {
   facturas Factura[]
 
 
-  UsersOnProductos UsersOnProductos[]
+  UsersOnProductos UsersOnProyectos[]
 
   UsersOnEquipos    UsersOnEquipos[]
 
@@ -163,7 +163,7 @@ model Proyecto {
   tareas Tarea[]
 
   // TABLAS INTERMEDAS
-  UsersOnProductos UsersOnProductos[]
+  UsersOnProductos UsersOnProyectos[]
 
   ProyectosOnEquipos ProyectosOnEquipos[]
 
@@ -172,12 +172,14 @@ model Proyecto {
 
 // TABLA INTERMEDIA USER VS PROYECTO 
 
-model UsersOnProductos {
+model UsersOnProyectos {
           
   userId      String
   user        User        @relation(fields: [userId], references: [id])
   proyectoId  String
   proyecto    Proyecto    @relation(fields: [proyectoId], references: [id]) 
+  cargo       String      @default("-")
+  permisos    String[]    @default(["-", "-"])
   assignedAt  DateTime    @default(now())
   assignedBy  String
 

@@ -12,7 +12,7 @@ const page = () => {
   }
 
   return (
-    <div className='w-[75%] h-full text-tamañoLetraChica'>
+    <div className='w-[75%] h-full text-(length:--tamañoLetraChica)'>
         <header className='w-full h-[7%]  flex items-center justify-center'>
             Estado de Resultados
         </header>
@@ -24,7 +24,7 @@ const page = () => {
                                              {dataTablaEstadoDeResultados.map((el)=>{
                                                  
                                                      return <button disabled={true} key={el.id} name={el.id} onClick={()=>abrirModalTarea(el.id)} className={`rounded w-full h-[45px]`}>
-                                                     <div className='  text-tamañoLetraChica'> 
+                                                     <div className='  text-(length:--tamañoLetraChica)'> 
                                                          <article className='flex  px-2'>
                                                              <div className='w-[80%] grid justify-start'>
                                                                  {el.nombreItem}
@@ -47,7 +47,7 @@ const page = () => {
                                              {dataTablaTesoreria.map((el)=>{
                                                  
                                                      return <button disabled={true} key={el.id} name={el.id} onClick={()=>abrirModalTarea(el.id)} className={`rounded w-full h-[45px]`}>
-                                                     <div className='  text-tamañoLetraChica'> 
+                                                     <div className='  text-(length:--tamañoLetraChica)'> 
                                                          <article className='flex  px-2'>
                                                              <div className='w-[80%] grid justify-start'>
                                                                  {el.nombreItem}

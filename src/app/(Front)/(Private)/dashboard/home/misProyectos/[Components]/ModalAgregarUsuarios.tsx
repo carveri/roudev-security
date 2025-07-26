@@ -63,6 +63,11 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
             nombre: 'Teams',
             icono: 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/azure.png',
         },
+        {
+            id:'5',
+            nombre: 'Zoom',
+            icono: 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/react.png',
+        },
 
     ]
 
@@ -188,7 +193,7 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
     
 
   return (
-    <div className='w-[25%] h-[700px] -mt-[650px]  text-(length:--tamañoLetraChica) px-8'>
+    <div className='w-[25%] h-[700px] -mt-[700px]  text-(length:--tamañoLetraChica) px-8'>
         <header className='h-[15%] grid place-items-center font-semibold text-blue-600'>
             Agregar Usuarios al Proyecto
         </header>
@@ -213,7 +218,7 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
                 <div className='mb-2 '>
                     Invitar por:
                 </div>
-                <div className='border mb-[2px] justify-between px-2 border-gray-200 hover:bg-gray-100 cursor-pointer h-10 flex items-center pl-3' onClick={()=>setAbrirTipos(!abrirTipos)}>
+                <div className='border mb-[4px] justify-between px-2 border-gray-200 hover:bg-gray-100 cursor-pointer h-10 flex items-center pl-3' onClick={()=>setAbrirTipos(!abrirTipos)}>
                     <div className='flex items-center gap-x-2 '>
                         <div>
                             <img className='w-4 h-4' src={`${!imgPinchado ?'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/aws.png': imgPinchado}`} alt="as" />
@@ -228,16 +233,21 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
                 </div>
                 {abrirTipos &&
                     <>
-                        <div className=' w-[20%] z-50 ml-80 absolute  left-3/5 max-h-[120px] overflow-auto bg-white'>
+                        <div className=' w-[20%] z-50 ml-80 absolute  left-3/5 max-h-[135px] overflow-auto bg-white'>
                             {formasDeInvitacion.map((el)=>{
-                            return <div  key={el.id} onClick={(e)=>handleClickInvitar(e,el.id, el.nombre, el.icono)} className='bg-white pl-4 h-9 gap-x-2 z-50 flex items-center mb-2 capitalize cursor-pointer hover:bg-gray-100'>
+                               
+                            return (
+                             el.nombre !== pinchado &&
+
+
+                            <div  key={el.id} onClick={(e)=>handleClickInvitar(e,el.id, el.nombre, el.icono)} className='bg-white pl-4 h-9 gap-x-2 z-50 flex items-center mb-2 capitalize cursor-pointer hover:bg-gray-100'>
                             <div>
                                 <img className='w-4 h-4' src={`${el.icono}`} alt="s" />
                             </div>
                             <div>
                                 {el.nombre}
                             </div>
-                        </div>
+                        </div>)
                     })}
                     </div>
                     </>
@@ -297,9 +307,14 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
                     </div>
                     </>
                 }
+                {pinchado === 'Zoom' &&
+                    <div>
+                        soy zoom!!!!!!!!!!!!!
+                    </div> 
+                }
             </section>
            
-                  <div className='z-10 flex h-[75px] text-white  gap-x-2 justify-end font-semibold text-(length:--tamañoLetraChica)'>
+                  <div className='z-10 flex h-[70px] text-white  gap-x-2 justify-end font-semibold text-(length:--tamañoLetraChica)'>
                     <button onClick={handleClickConfirmarAgregarUsuario} type='button' className='bg-blue-500 w-[100px] h-[45%] rounded cursor-pointer'>
                         Confirmar
                     </button>

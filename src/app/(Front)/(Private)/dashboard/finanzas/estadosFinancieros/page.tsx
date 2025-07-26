@@ -13,7 +13,7 @@ const page = () => {
     const router = useRouter()
 
   return (
-    <div className='w-[75%] h-full text-tamañoLetraChica'>
+    <div className='w-[75%] h-full text-(length:--tamañoLetraChica)'>
         <header className='w-full h-[7%] flex items-center justify-center '>
             Flujo de Caja
         </header>

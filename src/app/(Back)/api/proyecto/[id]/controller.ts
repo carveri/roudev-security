@@ -24,6 +24,7 @@ class ProyectoDetalle {
                         users: true
                     }
                 }
+                
             }},
         )
         return oneProyecto

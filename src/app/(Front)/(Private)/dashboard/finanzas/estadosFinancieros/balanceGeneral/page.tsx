@@ -12,7 +12,7 @@ const page = () => {
   }
 
   return (
-    <div className='w-[75%] h-full  text-tamañoLetraChica px-10'>
+    <div className='w-[75%] h-full  text-(length:--tamañoLetraChica) px-10'>
         <header className='w-full h-[7%]  flex items-center justify-center'>
             Balance General
         </header>
@@ -56,7 +56,7 @@ const page = () => {
                                   {dataTablaBalanceGeneral.map((el)=>{
                                       if(el.masaPatrimonial === 'ANC'){
                                           return <button disabled={true} key={el.id} name={el.id} onClick={()=>abrirModalTarea(el.id)} className={`rounded w-full h-[25px]`}>
-                                          <div className='  text-tamañoLetraChica'> 
+                                          <div className='  text-(length:--tamañoLetraChica)'> 
                                               <article className='flex  px-2'>
                                                   <div className='w-[92%] grid justify-start'>
                                                       {el.nombreItem}
@@ -97,7 +97,7 @@ const page = () => {
                                   {dataTablaBalanceGeneral.map((el)=>{
                                       if(el.masaPatrimonial === 'PC'){
                                           return <button disabled={true} key={el.id} name={el.id} onClick={()=>abrirModalTarea(el.id)} className={`rounded w-full h-[25px]`}>
-                                          <div className='  text-tamañoLetraChica'> 
+                                          <div className='  text-(length:--tamañoLetraChica)'> 
                                               <article className='flex  px-2'>
                                                   <div className='w-[92%] grid justify-start'>
                                                       {el.nombreItem}
@@ -122,7 +122,7 @@ const page = () => {
                                   {dataTablaBalanceGeneral.map((el)=>{
                                       if(el.masaPatrimonial === 'PNC'){
                                           return <button disabled={true} key={el.id} name={el.id} onClick={()=>abrirModalTarea(el.id)} className={`rounded w-full h-[25px]`}>
-                                          <div className='  text-tamañoLetraChica'> 
+                                          <div className='  text-(length:--tamañoLetraChica)'> 
                                               <article className='flex  px-2'>
                                                   <div className='w-[92%] grid justify-start'>
                                                       {el.nombreItem}
@@ -147,7 +147,7 @@ const page = () => {
                                   {dataTablaBalanceGeneral.map((el)=>{
                                       if(el.masaPatrimonial === 'P'){
                                           return <button disabled={true} key={el.id} name={el.id} onClick={()=>abrirModalTarea(el.id)} className={`rounded w-full h-[25px]`}>
-                                          <div className='  text-tamañoLetraChica'> 
+                                          <div className='  text-(length:--tamañoLetraChica)'> 
                                               <article className='flex  px-2'>
                                                   <div className='w-[92%] grid justify-start'>
                                                       {el.nombreItem}

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { dataEquiposProyecto1 } from './utils/dataEquiposProyecto1'
 import { useIdProyectoProUpdated, useProyectoUpdate } from '../../../../[stores]/homeStore'
 import ModalEliminar from '../../../[Components]/ModalEliminar'
+import TablaCargoUsuario from '../[Components]/TablaCargoUsuario'
 
 const page = () => {
 
@@ -35,7 +36,7 @@ useEffect(()=>{
 
   return (
     <>
-      <header className='w-[75%] h-[10%] flex items-center  pl-8 font-semibold text-gray-700'>
+      <header className='w-[75%] h-[10%] flex items-center  pl-8 font-semibold text-gray-700 '>
         <div>
           Detalles del Proyecto -
         </div> 
@@ -43,115 +44,99 @@ useEffect(()=>{
           {proyecto[0]?.nombreProyecto}
         </div>
       </header>
-      <div className='w-[77%] h-[45%] flex gap-x-3 text-(length:--tamañoLetraChica) pl-8'>
-        <div className='w-[33%] h-full grid grid-rows-6 items-center pl-2'>
-          <section className='w-full  flex gap-x-3 '>
+      <div className='w-[75%] h-[75%] flex gap-x-3 text-(length:--tamañoLetraChica) pl-8 mt-3'>
+        <div className='w-[30%] h-full grid grid-rows-9 items-center pl-2'>
+          {/* <section className='w-full  flex gap-x-3 '>
             <div className='w-[50%]'>
               Nombre del Proyecto:
             </div>
             <div className='w-[50%] capitalize '>
               {proyecto[0]?.nombreProyecto}
             </div>
-          </section>
+          </section> */}
         <section className='w-full  flex gap-x-3'>
-          <div className='w-[50%]'>
+          <div className='w-[70%]'>
             Icono del Proyecto:
           </div>
-          <div className='w-[50%]'>
+          <div className='w-[30%]'>
             <img className='w-4 h-4' src={`${!proyecto[0]?.iconoProyecto ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/nextjs.png': proyecto[0]?.iconoProyecto}`} alt="sd" />
           </div>
         </section>
         <section className='w-full  flex gap-x-3'>
-          <div className='w-[50%]'>
+          <div className='w-[70%]'>
             Estado del Proyecto:
           </div>
-          <div className='w-[50%] text-green-500'>
+          <div className='w-[30%] text-green-500'>
             {proyecto[0]?.statusProyecto}
           </div>
         </section>
         <section className='w-full  flex gap-x-3'>
-          <div className='w-[50%]'>
+          <div className='w-[70%]'>
             Fecha de Creacion del Proyecto:
           </div>
-          <div className='w-[50%]'>
+          <div className='w-[30%]'>
             {proyecto[0]?.fechaInicio}
           </div>
         </section>
         <section className='w-full  flex gap-x-3'>
-          <div className='w-[50%]'>
+          <div className='w-[70%]'>
             Fecha Ultima actulizacion del Proyecto:
           </div>
-          <div className='w-[50%]'>
+          <div className='w-[30%]'>
             {!proyecto[0]?.fechaActualizacion ? '-': proyecto[0]?.fechaActualizacion}
           </div>
         </section>
         <section className='w-full  flex gap-x-3'>
-          <div className='w-[50%]'>
+          <div className='w-[70%]'>
             Fecha Termino del Proyecto:
           </div>
-          <div className='w-[50%]'>
+          <div className='w-[30%]'>
             {proyecto[0]?.fechaTermino}
           </div>
         </section>
-      </div>
-
-
-
-
-
-
-
-      <div className='w-[71%] h-[100%] flex gap-x-3 text-(length:--tamañoLetraChica) '>
-        <div className='w-[100%] h-full grid   pl-2'>
-        <section className='w-full h-[20%]  flex gap-x-3  mt-4'>
-          <div className='w-[20%] '>
+        <section className='w-full  flex gap-x-3'>
+          <div className='w-[70%] '>
             N° Equipos en el Proyecto:
           </div>
-          <div className='w-[80%]'>
+          <div className='w-[30%]'>
             {proyecto[0]?.equipos.length}
           </div>
         </section>
-        <section className='w-full  h-[75%] flex gap-x-3 mt-5 '>
-          <div className='w-[20%]'>
-            Equipos del Proyecto:
-          </div>
-          <div className='w-[70%] h-[90%] grid grid-cols-3 gap-2 max-h-[400px] overflow-auto '>
-                {proyecto[0]?.equipos.map((el)=>{
-                return <div key={el.id} className=' flex gap-x-2 z-50 py-2 hover:bg-gray-100 cursor-pointer'>
-                  <div>
-                    <img className='w-4 h-4' src={`${!el.iconoEquipo ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/azure.png': el?.iconoEquipo}`} alt="s" />
-                  </div>
-                  <div>
-                    {el?.nombreEquipo.length > 25 ? el?.nombreEquipo.slice(0,25) + '...' : el?.nombreEquipo}
-                  </div>
-                </div>
-              })}
-          </div>
-          
-        </section>
-        <section className='w-full h-[20%] flex gap-x-3 -mt-3'>
-          <div className='w-[20%]'>
+        <section className='w-full  flex gap-x-3'>
+          <div className='w-[70%]'>
             N° Integrantes  del Proyecto:
           </div>
-          <div className='w-[80%] '>
+          <div className='w-[30%] '>
             30
           </div>
-        </section>        
+        </section>
       </div>
+
+
+
+
+
+      <div className='w-[70%] '>
+        <header className='w-full h-12 grid place-content-center font-semibold text-gray-600'>
+          Modificar el Cargo del Usuario
+        </header>
+        <TablaCargoUsuario />
       </div>
+
+     
 
       
 
 
       
     </div>
-    <div className='w-[75%] h-[40%] flex items-end justify-end '>
-      <div className='w-[11%] h-[12%] flex items-center justify-end gap-x-2 '>
-        <button onClick={()=>router.back()} className=' w-[80%] font-semibold h-[100%] bg-violet-400 hover:bg-violet-500 text-white text-[11px] rounded'>
+    <div className='w-[75%] h-[6%] flex items-end justify-end '>
+      <div className='w-[19%] h-[80%] flex items-center justify-end gap-x-2 '>
+        <button onClick={()=>router.back()} className='cursor-pointer w-[80%] font-semibold h-[100%] bg-violet-300 hover:bg-violet-500 text-white text-[11px] rounded'>
           Volver
         </button>
-        <button onClick={handleClickEliminarProyecto} className='border-b border-gray-300 hover:border-b hover:border-gray-800 w-[20%] h-[100%] flex items-center justify-center'>
-          <img className='w-[14px] h-[14px]' src="https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/eliminar.png" alt="sd" />
+        <button onClick={()=>router.back()} className='cursor-pointer w-[80%] font-semibold h-[100%] bg-blue-500 hover:bg-blue-600 text-white text-[11px] rounded'>
+          Guardar Cambios
         </button>
       </div>
     </div>
