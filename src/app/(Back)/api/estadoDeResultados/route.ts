@@ -1,12 +1,14 @@
 
 import { NextResponse } from "next/server"
-import { estadoDeResultados1 } from "./controller"
+import { NextjsEstadoController } from "../../(modules)/estado/infrastructure/controllers/nextjs/NextjsEstadoController"
 
+
+const controller = new NextjsEstadoController()
 
 // ruta post
 export const POST = async(req:Request)=>{
     try {
-        return NextResponse.json(await estadoDeResultados1.postEstadoDeResultados(req))
+        return NextResponse.json(await controller.create(req))
     } catch (error) {
         return NextResponse.json(error)
     }
@@ -15,7 +17,7 @@ export const POST = async(req:Request)=>{
 // tuta get
 export const GET = async(req:Request)=>{
     try {
-        return NextResponse.json(await estadoDeResultados1.getEstadoDeResultados())
+        return NextResponse.json(await controller.getAll())
     } catch (error) {
         return NextResponse.json(error)
     }

@@ -9,14 +9,6 @@ export class PrismaBalanceRepository implements BalanceRepository {
 
     // 1) CREATE
     async create(balance:Balance):Promise<void>{
-
-        // const {id, activoCorriente, activoNoCorriente, capitalPropio} = balance
-
-        // console.log('id:', id);
-        // console.log('activorr:', activoCorriente);
-        
-        
-
         await prisma.balanceGeneral.create({
             data: {
                 id:balance.id,
