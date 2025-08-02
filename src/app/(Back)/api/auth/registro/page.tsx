@@ -18,7 +18,7 @@ const page = async() => {
                     alt="Picture of the author"
                 />
               </header> 
-              <p className='text-lg '>
+              <p className='text-lg text-blue-800 font-semibold'>
                 Roudev
               </p>
             </article>
@@ -34,7 +34,7 @@ const page = async() => {
                   />
                 </header>
                 <main className='w-[90%] text-(length:--tamañoLetra)'>
-                  <header className='font-bold text-colorFormularioLogin pb-1 text-base'>
+                  <header className='font-bold text-[#267c61] pb-1 text-base'>
                     {el.titulo}
                   </header>
                     <article>
@@ -44,11 +44,11 @@ const page = async() => {
               </li>
             })}
           </ul>
-          <div className=' h-[16%] grid place-content-end '>
-            <Link className=' cursor-pointer font-semibold pl-2 text-white grid place-content-center rounded  bg-blue-500 w-36 h-10 text-(length:--tamañoLetraChica)' href={'/api/auth/login'}>Volver al login</Link>
+          <div className='h-[20%]  grid place-content-end '>
+            <Link className='h-9 cursor-pointer font-semibold pl-2 text-white grid place-content-center rounded  bg-gradient-to-r from-gray-600 to-gray-800 hover:bg-gray-200 w-36  text-(length:--tamañoLetraChica)' href={'/api/auth/login'}>Volver al login</Link>
           </div>
         </article>
-        <article className='grid justify-items-center'>
+        <article className='grid justify-items-center -mt-14'>
           <FormRegistro/>
         </article>
       </section>

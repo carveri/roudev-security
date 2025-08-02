@@ -27,14 +27,14 @@ const page = async() => {
               />
               
             </header> 
-            <p className="text-colorTextoNavbar font-semibold">
+            <p className="text-blue-800 font-semibold">
               Roudev
             </p>
           </article>
           <article className='text-xl text-gray-700 pl-2 w-full h-24 py-4 mb-2 ' >
             El ERP de gestion de proyectos, tareas y seguimiento de Units Economics para StartUps.
           </article>
-          <article className='text-lg w-full h-2/6 pt-4 pl-2 text-gray-600'>
+          <article className='text-lg w-full h-2/6 pt-4 pl-2 text-gray-500'>
             Software de gestion de proyectos y tareas, con metodologias agiles, para StartUps que necesitan orden en su gestion interna del dia a dia, pago por uso y recomendacion de tareas  
           </article>
           <IngresarYGratis />

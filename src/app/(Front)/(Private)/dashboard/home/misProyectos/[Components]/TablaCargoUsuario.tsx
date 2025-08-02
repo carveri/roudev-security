@@ -95,21 +95,22 @@ const TablaCargoUsuario = ({usersOnProyectos}) => {
 
   return (
         <>
-          <table className={`${activarEliminar ? 'opacity-15': ''} border border-gray-200   w-full  z-40   max-h-[30px] overflow-auto `}>
+          <table className={`${activarEliminar ? 'opacity-15': ''} border border-gray-200    w-full  z-40   max-h-[30px] overflow-auto `}>
             <thead className=''>
               <tr className='h-10 bg-gray-100 '>
                 <td className='w-[7%] text-center'>Numero</td>
                 <td className='w-[7%]  text-center'> Avatar</td>
                 <td className='w-[15%] text-center'>Nombre Usuario</td>
+                <td className='w-[15%] text-center'>Area</td>
                 <td className='w-[15%] text-center'>Cargo</td>
-                <td className='w-[50%] text-center'>Permisos</td>  
+                <td className='w-[35%] text-center'>Permisos</td>  
                 <td className='w-[7%] text-center'></td>  
                 
               </tr>
             </thead>
             <tbody>
               {usersOnProyectos.map((el, items)=>{
-                  return <tr onClick={()=>{ruta ? router.push('/dashboard/iniciar'):''} 
+                  return <tr key={items} onClick={()=>{ruta ? router.push('/dashboard/iniciar'):''} 
                    }   className={`${ruta ? 'cursor-pointer hover:bg-gray-100': ''} border border-gray-200 h-10`}>
                     <td  className='text-center '>
                       {items + 1}
@@ -119,6 +120,9 @@ const TablaCargoUsuario = ({usersOnProyectos}) => {
                     </td>
                     <td className='text-center capitalize'>
                       {el?.user?.primerNombre} {el?.user?.apellidoPaterno}
+                    </td>
+                    <td className='text-center capitalize'>
+                      {el?.cargo}
                     </td>
                     <td className='text-center capitalize'>
                       {el?.cargo}
@@ -135,7 +139,7 @@ const TablaCargoUsuario = ({usersOnProyectos}) => {
                 })}
             </tbody>
         </table>
-        <div className=' ml-[950px] -mt-52'>
+        <div className=' ml-[950px] -mt-96'>
           {abrirModalUpdateCargo && 
             <ModalUpdateCargo
               setabrirModalUpdateCargo={setabrirModalUpdateCargo}

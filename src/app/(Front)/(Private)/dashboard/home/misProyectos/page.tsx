@@ -10,7 +10,7 @@ const page = async() => {
   // traer el usuario
   const session = await getServerSession(authOptions)
 
-  console.log('session en page misproyectos:', session);
+  //console.log('session en page misproyectos:', session);
   
 
   // traer los proyectoss

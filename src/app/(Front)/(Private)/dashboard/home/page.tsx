@@ -15,17 +15,25 @@ const page = async() => {
 
   const session = await getServerSession(authOptions)
 
-  const ruta = 'proyectoUser'
-  const url = session?.user?.id
-  const dataMisPoyectos = await getDataLista({ruta, url})
+  const gestion = async(ruta:string, url:string)=>{
+    const data = await getDataLista({ruta, url})
+    return data
+  }
 
+  const numeroDeProyectos = await gestion('proyectoUser', session?.user?.id)
+  const numeroDeEmpleados = await gestion('usersOnProyectos', '77bd7d73-4575-4c3b-b23e-e4de0bf5a44c')
+
+  //console.log('n: proyec:', numeroDeProyectos);
+  
+  //console.log('¿numero de emple', numeroDeEmpleados);
+  
 
   const dataCuadrosHome =[
     {
         id:1,
         nombre: 'N° Proyectos Activos',
         icono: 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/proyecto.png',
-        numero: dataMisPoyectos[0]?.proyectos.length
+        numero: numeroDeProyectos[0]?.proyectos.length
     },
     {
         id:2,
@@ -50,7 +58,7 @@ const page = async() => {
 
   return (
     <>
-      {dataMisPoyectos.length>0 ? 
+      {numeroDeProyectos.length>0 ? 
         <div className='w-[75%] h-full   '>
           <div className='w-full h-[8%] grid grid-cols-4 gap-x-24 text-(length:--tamañoLetraChica)'>
             {dataCuadrosHome.map((el)=>{
@@ -89,7 +97,9 @@ const page = async() => {
           </main>
         </div>:
       <div className='w-full h-full grid place-items-center'>
-        <BadgeVacio/>
+        <BadgeVacio
+          session={session}
+        />
       </div> 
     }  
     </>

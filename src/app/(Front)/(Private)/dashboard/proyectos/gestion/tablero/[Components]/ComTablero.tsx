@@ -1,55 +1,34 @@
 'use client'
 
-import {useEffect, useState} from 'react'
-import { useIdProyectoPro, useIdResponsableTarea, useIdTareaSelecccionado } from '../../../../../[stores]/homeStore'
-import { getDataCompleja } from '../../../../../../React/Fetch/getDataCompleja'
+import {useEffect} from 'react'
+import { useGetTareas, useIdProyectoPro, useIdResponsableTarea, useIdTareaSelecccionado } from '../../../../../[stores]/homeStore'
 import { useRouter } from "next/navigation";
-import Link from 'next/link';
+
 
 const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBooleano, acepColaborador, setabrirModalAceptar}) => {
 
     const router = useRouter()
     console.log('session en tablero:', session);
 
-    const [vacioTablero, setVacioTablero] = useState(false)
-
     // ESTADOS DESDE ZUSTAND
           const idProyy = useIdProyectoPro((state) => state.idProyecto)
           const proyectoId = idProyy
 
-          // ESTADOS DESDE ZUSTAND
-                const idTareaSeleccioando = useIdTareaSelecccionado((state) => state.updateTareaSeleccionadoId)
-                //const tareaSeleccionadaId = idTareaSeleccioando
+    // ESTADOS DESDE ZUSTAND
+            const idTareaSeleccioando = useIdTareaSelecccionado((state) => state.updateTareaSeleccionadoId)
+        //const tareaSeleccionadaId = idTareaSeleccioando
           
-                // zustand
-                  const idResponsableTarea = useIdResponsableTarea((state) => state.updateIdResponsableTarea)
+        // zustand
+            const idResponsableTarea = useIdResponsableTarea((state) => state.updateIdResponsableTarea)
 
-           const [tareasActivas, setTareasActivas] = useState([])
-            const [tareasFinalizadas, setTareasFinalizadas] = useState([])
-            const [abrirModalTareaStates, setAbrirModalTareaStates] = useState(false)
 
+           //traer tareas desde zustand
+           const {tareas, getTareas} = useGetTareas()
 
             
-
-    // FUNCION PARA TRAER LAS TAREAS ACTIVAS Y FINALIZADAS
-          const getTareas =async(status:string, set)=>{
-                  const ruta = 'tarea'
-                  const elem1 = 'proyectoId'
-                  const param1 = proyectoId
-                  const elem2 = 'userId'
-                  const param2 = session?.user?.id
-                  const elem3 = 'status'
-                  const param3 = status
-      
-                  const res = await getDataCompleja({ruta, elem1, param1, elem2, param2, elem3, param3})
-                  set(res)
-                  }
-    
     
             useEffect(()=>{
-                    getTareas('Activa' , setTareasActivas)
-                    getTareas('Finalizada', setTareasFinalizadas)
-                    
+                    getTareas(proyectoId, session?.user?.id)
                 }, [idProyy])
 
         
@@ -62,23 +41,16 @@ const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBoolea
             setabrirModalAceptar(false)
             //props.abrirModalTareaStatef(abrirModalTareaStates, setAbrirModalTareaStates)
         }
-
-
-        
-        
-    
     
   return (
     <>
-        
-
         <div className='w-full h-[100%] z-10 grid grid-cols-6 gap-x-3 px-2 text-(length:--tamañoLetraChica) '>
         <div className='w-full h-full'>
             <header className='w-full h-[8%] grid place-content-center font-semibold text-blue-600'>
                 Product Backlog
             </header>
             <main className='w-full h-[90%] flex-col'>
-                {tareasActivas?.map((el)=>{
+                {tareas?.map((el)=>{
                     if(el?.etapaTarea === 'Product Backlog'){
                         return <button key={el?.id} name={el?.id} onClick={()=>abrirModalTarea(el.id, el.responsableTarea)} className={`rounded w-full h-[65px] cursor-pointer mb-1  ${el.urgenciaTarea === 'Alta' ? 'border border-gray-200 hover:border-2 hover:border-red-500' : el.urgenciaTarea === 'Media' ? 'border border-gray-200  hover:border-2 hover:border-yellow-500' : el.urgenciaTarea === 'Baja' ? 'border border-gray-200  hover:border-2 hover:border-green-500' : ''}`}>
                         <div className='  text-tamañoLetraChica'> 
@@ -110,7 +82,7 @@ const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBoolea
                 Diseño UX / UI
             </header>
             <main className='w-full h-[90%] flex-col'>
-                {tareasActivas?.map((el)=>{
+                {tareas?.map((el)=>{
                     if(el?.etapaTarea === 'Diseño'){
                         return <button key={el?.id} name={el?.id} onClick={()=>abrirModalTarea(el.id, el.responsableTarea)} className={`rounded w-full h-[65px] cursor-pointer mb-1  ${el.urgenciaTarea === 'Alta' ? 'border border-gray-200 hover:border-2 hover:border-red-500' : el.urgenciaTarea === 'Media' ? 'border border-gray-200  hover:border-2 hover:border-yellow-500' : el.urgenciaTarea === 'Baja' ? 'border border-gray-200  hover:border-2 hover:border-green-500' : ''}`}>
                         <div className='  text-tamañoLetraChica'> 
@@ -142,7 +114,7 @@ const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBoolea
                 Desarrollo
             </header>
             <main className='w-full h-[90%] flex-col'>
-                {tareasActivas?.map((el)=>{
+                {tareas?.map((el)=>{
                     if(el?.etapaTarea === 'Desarrollo'){
                         return <button key={el?.id} name={el?.id} onClick={()=>abrirModalTarea(el.id, el.responsableTarea)} className={`rounded w-full h-[65px] cursor-pointer mb-1  ${el.urgenciaTarea === 'Alta' ? 'border border-gray-200 hover:border-2 hover:border-red-500' : el.urgenciaTarea === 'Media' ? 'border border-gray-200  hover:border-2 hover:border-yellow-500' : el.urgenciaTarea === 'Baja' ? 'border border-gray-200  hover:border-2 hover:border-green-500' : ''}`}>
                         <div className='  text-tamañoLetraChica'> 
@@ -174,7 +146,7 @@ const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBoolea
                 Quality Assurance
             </header>
             <main className='w-full h-[90%] flex-col'>
-                {tareasActivas?.map((el)=>{
+                {tareas?.map((el)=>{
                     if(el?.etapaTarea === 'QA'){
                         return <button key={el?.id} name={el?.id} onClick={()=>abrirModalTarea(el.id, el.responsableTarea)} className={`rounded w-full h-[65px] cursor-pointer mb-1  ${el.urgenciaTarea === 'Alta' ? 'border border-gray-200 hover:border-2 hover:border-red-500' : el.urgenciaTarea === 'Media' ? 'border border-gray-200  hover:border-2 hover:border-yellow-500' : el.urgenciaTarea === 'Baja' ? 'border border-gray-200  hover:border-2 hover:border-green-500' : ''}`}>
                         <div className='  text-tamañoLetraChica'> 
@@ -206,7 +178,7 @@ const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBoolea
                 Debugger
             </header>
             <main className='w-full h-[90%] flex-col'>
-                {tareasActivas?.map((el)=>{
+                {tareas?.map((el)=>{
                     if(el?.etapaTarea === 'Debugger'){
                         return <button key={el?.id} name={el?.id} onClick={()=>abrirModalTarea(el.id, el.responsableTarea)} className={`rounded w-full h-[65px] cursor-pointer mb-1  ${el.urgenciaTarea === 'Alta' ? 'border border-gray-200 hover:border-2 hover:border-red-500' : el.urgenciaTarea === 'Media' ? 'border border-gray-200  hover:border-2 hover:border-yellow-500' : el.urgenciaTarea === 'Baja' ? 'border border-gray-200  hover:border-2 hover:border-green-500' : ''}`}>
                         <div className='  text-tamañoLetraChica'> 
@@ -238,7 +210,7 @@ const ComTablero = ({session, abrirModalTareas, setAbrirModalTareas, traerBoolea
                 Producción
             </header>
             <main className='w-full h-[90%] flex-col'>
-                {tareasActivas?.map((el)=>{
+                {tareas?.map((el)=>{
                     if(el?.etapaTarea === 'Produccion'){
                         return <button key={el?.id} name={el?.id} onClick={()=>abrirModalTarea(el.id, el.responsableTarea)} className={`rounded w-full h-[65px] cursor-pointer mb-1  ${el.urgenciaTarea === 'Alta' ? 'border border-gray-200 hover:border-2 hover:border-red-500' : el.urgenciaTarea === 'Media' ? 'border border-gray-200  hover:border-2 hover:border-yellow-500' : el.urgenciaTarea === 'Baja' ? 'border border-gray-200  hover:border-2 hover:border-green-500' : ''}`}>
                         <div className='  text-tamañoLetraChica'> 

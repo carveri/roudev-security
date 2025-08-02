@@ -273,3 +273,27 @@ export const useUsersOnProyectos = create((set)=>
         }))
     }
 }))
+
+
+
+// traer todos
+export const useGetTareas = create((set)=>
+({
+    tareas: [],
+    
+    getTareas: async(proyectoId, idUser)=>{
+        const ruta = 'tarea'
+        const elem1 = 'proyectoId'
+        const param1 = proyectoId
+        const elem2 = 'userId'
+        const param2 = idUser
+        const elem3 = 'status'
+        const param3 = 'Activa'
+        const tareas = await getDataCompleja({ruta, elem1, param1, elem2, param2, elem3, param3})
+                        
+        set(state => ({
+            ...state, 
+            tareas
+        }))
+    }
+}))

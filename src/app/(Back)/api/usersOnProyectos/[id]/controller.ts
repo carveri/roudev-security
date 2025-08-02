@@ -10,6 +10,7 @@ class DetalleUsersOnProyectos {
         },
         include:{
             user: true
+            
         }
        })  
        return getData

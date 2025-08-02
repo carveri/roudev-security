@@ -53,3 +53,9 @@ export interface IFiltrosMisProyectos {
     misPro: IMisPro[],
 
 }
+
+
+export interface IGestion {
+    ruta: string
+    url: string
+}

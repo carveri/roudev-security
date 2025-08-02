@@ -31,7 +31,7 @@ const page = () => {
     getProo()
   }, [bears])
 
- //console.log('isproo:', isProoo);
+ console.log('isproo:', isProoo);
   
 
   // traer ceo y cto

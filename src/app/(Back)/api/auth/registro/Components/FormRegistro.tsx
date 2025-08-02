@@ -3,7 +3,7 @@ import { createUser } from "@/app/(Back)/actions/registroUsers"
 
 const FormRegistro = () => {
   return (
-    <form action={createUser}  className='bg-gray-700 mt-14 w-[73%] h-[90%] text-white  py-7  px-11 border border-1-gray rounded-md text-(length:--tamañoLetraChica)'>
+    <form action={createUser}  className='bg-gradient-to-r from-gray-600 to-gray-800 mt-14 w-[75%] h-[90%] text-white  py-7  px-11 border border-1-gray rounded-md text-(length:--tamañoLetraChica)'>
               <header className='w-full h-[7%] grid place-content-center   font-semibold text-base'>
                 Registro
               </header>

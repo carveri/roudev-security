@@ -4,21 +4,11 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import ModalEliminar from '../../../../[Components]/ModalEliminar'
 import { useGetCreadorTarea, useGetEquipoResponsableTarea, useGetResponsableTarea, useIdTareaSelecccionado, useTareaStatus } from '../../../../../[stores]/homeStore'
-import { getData } from '../../../../../../React/Fetch/getData'
-import { getDataLista } from '../../../../../../React/Fetch/getDataLista'
 
 const TablaLista = ({abrirModalTareaLista, tareasActivas}) => {
 
-  // const [equipoRes, setEquipoRes] = useState([])
-  // const [abrirModalEliminar, setAbrirModalEliminar] = useState(false)
-
   const [activarEliminar, setActivarEliminar] = useState(false)
-
   const idTareaSeleccioando = useIdTareaSelecccionado((state) => state.updateTareaSeleccionadoId)
-
-  const [responsable, setResponsable] = useState([])
-  const [creador, setCreador] = useState([])
-  const [equipo, setEquipo] = useState([])
 
     const router = useRouter()
 
@@ -28,65 +18,22 @@ const TablaLista = ({abrirModalTareaLista, tareasActivas}) => {
     const anchoCasilla2 = 120
 
 
-    console.log('TAREAAS ACTIVAS:', tareasActivas);
-
-
-    // // traer al responsable de la tarea
-    // const getResponsableTarea = async()=>{
-    //   const ruta = 'user'
-    //   const url = tareasActivas[0]?.responsableTarea
-    //   const res = await getDataLista({ruta, url})
-    //   setResponsable(res)
-    // }
-
-    // traer al responsable de la tarea
-    // const getCreadorTarea = async()=>{
-    //   const ruta = 'user'
-    //   const url = tareasActivas[0]?.creadorTarea
-    //   const res = await getDataLista({ruta, url})
-    //   setCreador(res)
-    // }
-
     const {creadorTarea, getCreadorTarea} = useGetCreadorTarea()
     const {responsableTarea, getResponsableTarea} = useGetResponsableTarea()
     const {equipoResponsableTarea, getEquipoResponsableTarea} = useGetEquipoResponsableTarea()
 
-    // // traer al responsable de la tarea
-    // const getEquipoResponsable = async()=>{
-    //   const ruta = 'equipo'
-    //   const url = tareasActivas[0]?.equipoResponsableTarea
-    //   const res = await getDataLista({ruta, url})
-    //   setEquipo(res)
-    // }
+  
 
     useEffect(()=>{
       getResponsableTarea(tareasActivas)
       getCreadorTarea(tareasActivas)
       getEquipoResponsableTarea(tareasActivas)
     }, [])
-    
-    console.log('respo:', responsable);
-    console.log('creador:', creador);
-    console.log('equipo:', equipo);
-    
-    
-    
 
-    // // traer equipo del responsable
-    // const getEquipoDelResponsable = async()=>{
-    //   const ruta = 'equipo'
-    //   const url = ''
-    //   const equipoResponsable = await getDataLista({ruta, url})
-    //   setEquipoRes(equipoResponsable)
-    // }
-
-   const tareasActivas2 =[]
-
-
+    
     const handleClickELimnarTarea =(id)=>{
       idTareaSeleccioando(id)
       setActivarEliminar(!activarEliminar)
-
     }
     
 
@@ -126,7 +73,8 @@ const TablaLista = ({abrirModalTareaLista, tareasActivas}) => {
                       {responsableTarea?.primerNombre} {responsableTarea?.apellidoPaterno}
                     </td>
                     <td className={`w-[${anchoCasilla2}px] text-center capitalize`}>
-                      {equipoResponsableTarea[0]?.nombreEquipo}
+                      
+                      {equipoResponsableTarea[0]?.nombreEquipo.length > 17 ? equipoResponsableTarea[0]?.nombreEquipo.slice(0,17) + '...' : equipoResponsableTarea[0]?.nombreEquipo}
                     </td>
                     <td className={`w-[${anchoCasilla2}px] text-center `}>
                       <div onClick={()=>abrirModalTareaLista(el.id)} className='text-blue-500 hover:text-blue-700 cursor-pointer font-semibold'>{el?.aportantes.length}  Colaboradores</div>
@@ -150,7 +98,7 @@ const TablaLista = ({abrirModalTareaLista, tareasActivas}) => {
                     <td className={`w-[${anchoCasilla2}px] text-center `}>
                       {el?.etapaTarea}
                     </td>
-                    <td onClick={()=>handleClickELimnarTarea(el.id)} className={`hover:border-b border-blue-500 py-3 flex justify-center font-semibold w-[124px] text-center  cursor-pointer text-blue-500 hover:underline`}>
+                    <td onClick={()=>handleClickELimnarTarea(el.id)} className={` hover:border-b border-blue-500 py-3 flex justify-center font-semibold w-[124px] text-center  cursor-pointer text-blue-500 hover:underline`}>
                       <img className='w-3 h-3 ' src="https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/eliminar.png" alt="sd" />
                     </td>
 

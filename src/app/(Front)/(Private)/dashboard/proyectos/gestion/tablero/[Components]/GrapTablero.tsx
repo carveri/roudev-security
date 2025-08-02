@@ -26,7 +26,7 @@ const GrapTablero = ({session}) => {
           getTareas(tareaSeleccionadaId)
         }, [idTareaSeleccioando])
   
-        console.log('tareas desde zusss:', tareas);
+        //console.log('tareas desde zusss:', tareas);
         
     
       // VALOR DEL CHECKBOX
