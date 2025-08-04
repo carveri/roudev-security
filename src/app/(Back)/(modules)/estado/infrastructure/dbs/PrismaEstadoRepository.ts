@@ -4,59 +4,52 @@ import { EstadoRepository } from "../../domain/ports/EstadoRepository";
 import { EstadoId } from "../../domain/valueObjects/EstadoId";
 import { format } from "date-fns";
 
-// aca va prisma puro
 
 export class PrismaEstadoRepository implements EstadoRepository{
-    
-    async create(estado: Estado):Promise<void>{
-        const {id, isActive, updatedAt,  costosOperativos} = estado
+
+    async create(estado:Estado):Promise<void>{
+        const {id, costosOperativos} = estado
         await prisma.estadoDeResultados.create({
-            data:{
-                id:id.value,
-                isActive: isActive.value,
+            data: {
+                id:id,
+                costosOperativos:costosOperativos,
                 createdAt: format(new Date(), 'dd/MM/yyyy'),
-                horaAt: format(new Date(), 'H:mm'),
-                updatedAt: updatedAt.value,
-                costosOperativos:costosOperativos.value,
+                horaAt: format(new Date(), 'H:mm')
             }
         })
-        return console.log('guardado');
-        
     }
 
     async getAll():Promise<Estado[]>{
-        const getAll =  await prisma.estadoDeResultados.findMany()
-        return getAll
+        return await prisma.estadoDeResultados.findMany()
     }
 
-    async getOneById(id:EstadoId): Promise<Estado | null> {
-        const getAll = await prisma.estadoDeResultados.findMany({
+    async getOneById(id: EstadoId): Promise<Estado | null> {
+        return await prisma.estadoDeResultados.findMany({
             where:{
                 id:id
             }
         })
-        return getAll || null
     }
 
     async update(estado: Estado): Promise<void> {
-        const {id, costosOperativos} = estado
-        
         await prisma.estadoDeResultados.update({
-            where:{
-                id:id
-            },
-            data:{
-                costosOperativos
-            }
+           where:{
+            id: estado.id
+           },
+           data:{
+                costosOperativos:estado.costosOperativos,
+                createdAt: format(new Date(), 'dd/MM/yyyy'),
+                horaAt: format(new Date(), 'H:mm')
+           } 
         })
-        
     }
 
     async delete(id: EstadoId): Promise<void> {
-        await prisma.estadoDeResultados.delete({
+        return await prisma.estadoDeResultados.delete({
             where:{
-               id:id
+                id:id
             }
         })
     }
+
 }

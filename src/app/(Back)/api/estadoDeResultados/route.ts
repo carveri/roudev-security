@@ -3,6 +3,7 @@ import { NextResponse } from "next/server"
 import { NextjsEstadoController } from "../../(modules)/estado/infrastructure/controllers/nextjs/NextjsEstadoController"
 
 
+
 const controller = new NextjsEstadoController()
 
 // ruta post

@@ -7,7 +7,6 @@ export class EstadoGetOneById{
     constructor(private repository:EstadoRepository){}
 
     async run(id:EstadoId):Promise<Estado | null>{
-        return await this.repository.getOneById(id) || null
+        return this.repository.getOneById(id)
     }
-
 }

@@ -1,5 +1,4 @@
 
-
 export class EstadoId {
     value: string
 

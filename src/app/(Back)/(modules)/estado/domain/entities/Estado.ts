@@ -1,28 +1,14 @@
-import { CostosOperativos } from "../valueObjects/CostosOperativos"
-import { EstadoCreatedAt } from "../valueObjects/EstadoCreatedAt"
-import { EstadoHoraAt } from "../valueObjects/EstadoHoraAt"
+import { EstadoCostosOperativos } from "../valueObjects/EstadoCostosOperativos"
 import { EstadoId } from "../valueObjects/EstadoId"
-import { EstadoIsActive } from "../valueObjects/EstadoIsActive"
-import { EstadoUpdatedAt} from "../valueObjects/EstadoUpdatedAt"
 
 
 export class Estado {
-    
-    id: EstadoId
-    isActive: EstadoIsActive
-    createdAt: EstadoCreatedAt
-    horaAt: EstadoHoraAt
-    updatedAt: EstadoUpdatedAt
-    costosOperativos: CostosOperativos
-    
-    constructor(id: EstadoId, isActive: EstadoIsActive, createdAt: EstadoCreatedAt, horaAt: EstadoHoraAt,  updatedAt:EstadoUpdatedAt, constosOperativos:CostosOperativos){
+
+    id:EstadoId
+    costosOperativos: EstadoCostosOperativos
+
+    constructor(id:EstadoId, costosOperativos:EstadoCostosOperativos){
         this.id = id
-        this.isActive= isActive
-        this.createdAt = createdAt
-        this.horaAt = horaAt
-        this.updatedAt = updatedAt
-        this.costosOperativos = constosOperativos
+        this.costosOperativos = costosOperativos
     }
-
-
 }

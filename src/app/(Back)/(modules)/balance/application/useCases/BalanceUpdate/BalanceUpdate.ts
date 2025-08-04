@@ -12,7 +12,12 @@ export class BalanceUpdate{
     // metodo run o disparador
     async run(id: string, activoCorriente:number, activoNoCorriente:number, capitalPropio:number):Promise<void>{
 
-        const balanceGeneral = new Balance(id,activoCorriente, activoNoCorriente, capitalPropio)
+        const balanceGeneral = new Balance(
+            id,
+            activoCorriente,
+            activoNoCorriente,
+            capitalPropio
+        )
         return this.repository.update(balanceGeneral)
     }
 }

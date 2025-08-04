@@ -1,9 +1,9 @@
 
-
-export class EstadoHoraAt {
-    value: string
+export class EstadoCostosOperativos{
+    value:string
 
     constructor(value:string){
         this.value = value
     }
+
 }
