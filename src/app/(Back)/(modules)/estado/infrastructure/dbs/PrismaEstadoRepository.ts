@@ -8,11 +8,11 @@ import { format } from "date-fns";
 export class PrismaEstadoRepository implements EstadoRepository{
 
     async create(estado:Estado):Promise<void>{
-        const {id, costosOperativos} = estado
+        //const {id, costosOperativos} = estado
         await prisma.estadoDeResultados.create({
             data: {
-                id:id,
-                costosOperativos:costosOperativos,
+                id:estado.id,
+                costosOperativos:estado.costosOperativos,
                 createdAt: format(new Date(), 'dd/MM/yyyy'),
                 horaAt: format(new Date(), 'H:mm')
             }
