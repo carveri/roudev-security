@@ -1,12 +1,14 @@
 
 import { NextResponse } from "next/server"
-import { cargo1 } from "./controller"
+import { NCargoController } from "../../(modules)/cargo/infrastructure/controllers/NCargoController"
 
+
+export const controller = new NCargoController()
 
 // ruta post
 export const POST = async(req:Request)=>{
     try {
-        return NextResponse.json(await cargo1.postCargo(req))
+        return NextResponse.json(await controller.create(req))
     } catch (error) {
         return NextResponse.json(error)
     }
@@ -15,7 +17,7 @@ export const POST = async(req:Request)=>{
 // tuta get
 export const GET = async(req:Request)=>{
     try {
-        return NextResponse.json(await cargo1.getCargo())
+        return NextResponse.json(await controller.getAll())
     } catch (error) {
         return NextResponse.json(error)
     }
