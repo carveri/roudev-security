@@ -1,15 +1,14 @@
-import { EstadoCreate } from "../../estado/applications/useCases/EstadoCreate/EstadoCreate"
-import { EstadoDelete } from "../../estado/applications/useCases/EstadoDelete/EstadoDelete"
-import { EstadoGetAll } from "../../estado/applications/useCases/EstadoGetAll/EstadoGetAll"
-import { EstadoGetOneById } from "../../estado/applications/useCases/EstadoGetOneById/EstadoGetOneById"
-import { EstadoUpdate } from "../../estado/applications/useCases/EstadoUpdate/EstadoUpdate"
-import { PrismaEstadoRepository } from "../../estado/infrastructure/dbs/PrismaEstadoRepository"
+import { EstadoCreate } from "../../estado/application/useCases/EstadoCreate/EstadoCreate";
+import { EstadoDelete } from "../../estado/application/useCases/EstadoDelete/EstadoDelete";
+import { EstadoGetAll } from "../../estado/application/useCases/EstadoGetAll/EstadoGetAll";
+import { EstadoGetOneById } from "../../estado/application/useCases/EstadoGetOneById/EstadoGetOneById";
+import { EstadoUpdate } from "../../estado/application/useCases/EstadoUpdate/EstadoUpdate";
+import { EstadoPrismaRepository } from "../../estado/infrastructure/dbs/relational/EstadoPrismaRepository";
 
-// gestor
-const estadoRepository = new PrismaEstadoRepository()
+const estadoRepository = new EstadoPrismaRepository()
 
 export const EstadoContainer = {
-    estado: {
+    estado:{
         create: new EstadoCreate(estadoRepository),
         getAll: new EstadoGetAll(estadoRepository),
         getOneById: new EstadoGetOneById(estadoRepository),

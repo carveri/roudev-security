@@ -1,10 +1,11 @@
 
 import { NextResponse } from "next/server"
-import { NextjsEstadoController } from "../../(modules)/estado/infrastructure/controllers/nextjs/NextjsEstadoController"
+import { NEstadoController } from "../../(modules)/estado/infrastructure/controllers/NEstadoController"
 
 
 
-const controller = new NextjsEstadoController()
+
+const controller = new NEstadoController()
 
 // ruta post
 export const POST = async(req:Request)=>{

@@ -1,5 +1,4 @@
 
-import { NAreaController } from "@/app/(Back)/(modules)/area/infrastructure/controllers/NAreaController"
 import { NCargoController } from "@/app/(Back)/(modules)/cargo/infrastructure/controllers/NCargoController"
 import { NextResponse } from "next/server"
 // import { AreaNextjsController } from "@/app/(Back)/(modules)/area/infrastructure/controllers/nextjs/AreaNextjsController"
