@@ -1,6 +1,5 @@
 
 import { NextResponse } from "next/server"
-import { tipoProyecto1 } from "./controller"
 import { NTipoControllers } from "../../(modules)/tipo/infrastructure/controllers/Nextjs/NTipoControllers"
 
 

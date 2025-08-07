@@ -27,7 +27,14 @@ export class CargoPrismaRepository implements CargoRepository{
     }
 
     async getAll(): Promise<Cargo[]> {
-        return await prisma.cargo.findMany()
+        return await prisma.cargo.findMany({
+            orderBy:{
+                nombreCargo:'asc'
+            },
+            include:{
+                users: true
+            }
+        })
 
     }
 

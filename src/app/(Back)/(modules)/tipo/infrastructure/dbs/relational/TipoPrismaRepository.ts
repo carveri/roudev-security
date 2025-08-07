@@ -25,7 +25,11 @@ export class TipoPrismaRepository implements TipoRepository{
 
     async getAll(): Promise<Tipo[]> {
         
-        return await prisma.tipoProyecto.findMany()
+        return await prisma.tipoProyecto.findMany({
+            orderBy:{
+                nombreTipoProyecto: 'asc'
+            }
+        })
     }
 
     async getOneById(id: string): Promise<Tipo> {
