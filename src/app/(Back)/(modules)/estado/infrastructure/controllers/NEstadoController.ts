@@ -16,8 +16,15 @@ export class NEstadoController {
         return EstadoContainer.estado.create.run(id, costosOperativos)
     }
 
-    async getAll(){
-        return EstadoContainer.estado.getAll.run()
+    async getAll(req:Request){
+
+        const url = new URL(req.url)
+
+        const id:any = url.searchParams.get("id")
+        const costosOperativos:any = url.searchParams.get("costosOperativos")
+
+        console.log('id:', id, 'costosoperativos:', costosOperativos);
+        return EstadoContainer.estado.getAll.run(id, costosOperativos)
     }
 
     async getOneById({params}:IParams4){
@@ -31,7 +38,7 @@ export class NEstadoController {
         return EstadoContainer.estado.update.run(id, costosOperativos)
     }
 
-    async delete({params}:IParams4){
+    async delete({params}){
         const {id} = await params
         return EstadoContainer.estado.delete.run(id)
     }

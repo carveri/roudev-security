@@ -5,7 +5,9 @@ export class EstadoGetAll{
 
     constructor(private repository:EstadoRepository){}
 
-    async run(){
-        return this.repository.getAll()
+    async run(id:string, costosOperativos:number){
+        console.log('id en el run:', id, 'costosenelran:', costosOperativos);
+        
+        return this.repository.getAll(id, costosOperativos)
     }
 }

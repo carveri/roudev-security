@@ -19,7 +19,7 @@ export const POST = async(req:Request)=>{
 // tuta get
 export const GET = async(req:Request)=>{
     try {
-        return NextResponse.json(await controller.getAll())
+        return NextResponse.json(await controller.getAll(req))
     } catch (error) {
         return NextResponse.json(error)
     }

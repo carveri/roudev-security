@@ -1,13 +1,14 @@
 
 
 import { NextResponse } from "next/server"
-import { plan1 } from "./controller"
+import { NPlanControllers } from "../../(modules)/plan/infrastructure/controllers/NPlanControllers"
 
+export const controller = new NPlanControllers()
 
 // ruta post
 export const POST = async(req:Request)=>{
     try {
-        return NextResponse.json(await plan1.postPlan(req))
+        return NextResponse.json(await controller.create(req))
     } catch (error) {
         return NextResponse.json(error)
     }
@@ -16,7 +17,7 @@ export const POST = async(req:Request)=>{
 // tuta get
 export const GET = async(req:Request)=>{
     try {
-        return NextResponse.json(await plan1.getPlan())
+        return NextResponse.json(await controller.getAll())
     } catch (error) {
         return NextResponse.json(error)
     }

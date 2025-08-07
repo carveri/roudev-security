@@ -20,8 +20,16 @@ export class EstadoPrismaRepository implements EstadoRepository {
     }
 
 
-    async getAll(): Promise<Estado[] > {
-        return await prisma.estadoDeResultados.findMany()
+    async getAll(id:string, costosOperativos:number): Promise<Estado[] > {
+
+        console.log('id:', id, 'costosoperativosrepository:', costosOperativos);
+
+        return await prisma.estadoDeResultados.findMany({
+           where:{
+                id:id,
+                costosOperativos:9
+           }
+        })
     }
 
     async getOneById(id: string | null): Promise<Estado> {

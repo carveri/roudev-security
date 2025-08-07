@@ -1,12 +1,13 @@
 
 import { NextResponse } from "next/server"
-import { equipo1 } from "./controller"
+import { NEquipoController } from "../../(modules)/equipo/infrastructure/controllers/NEquipoController"
 
+export const controller = new NEquipoController()
 
 // ruta post
 export const POST = async(req:Request)=>{
     try {
-        return NextResponse.json(await equipo1.postEquipo(req))
+        return NextResponse.json(await controller.create(req))
     } catch (error) {
         return NextResponse.json(error)
     }
@@ -15,7 +16,7 @@ export const POST = async(req:Request)=>{
 // tuta get
 export const GET = async(req:Request)=>{
     try {
-        return NextResponse.json(await equipo1.getEquipo(req))
+        return NextResponse.json(await controller.getAll())
     } catch (error) {
         return NextResponse.json(error)
     }
