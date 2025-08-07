@@ -1,7 +1,7 @@
 
 
 import { NextResponse } from "next/server"
-import { detalleFactura1 } from "./controller"
+import { NFacturaController } from "@/app/(Back)/(modules)/factura/infrastructure/controllers/Nextjs/NFacturaController"
 //import { IPermisoParams } from "@/app/Interfaces/IParams"
 
 interface Params {
@@ -12,9 +12,19 @@ export interface IParams {
     params: Params
 }
 
-export const GET = async(req:Request,{params}:IParams)=>{
+const controller = new NFacturaController()
+
+export const GET = async(req:Request, {params}:IParams)=>{
     try {
-        return NextResponse.json(await detalleFactura1.getOneFactura(req, {params}))
+        return NextResponse.json(await controller.getOneById(req, {params}))
+    } catch (error) {
+        return NextResponse.json(error)
+    }
+}
+
+export const PUT = async(req:Request,{params}:IParams)=>{
+    try {
+        return NextResponse.json(await controller.update(req,{params}))
     } catch (error) {
         return NextResponse.json(error)
     }
@@ -23,7 +33,7 @@ export const GET = async(req:Request,{params}:IParams)=>{
 
 export const DELETE = async(req:Request,{params}:IParams)=>{
     try {
-        return NextResponse.json(await detalleFactura1.deleteOneFactura(req,{params}))
+        return NextResponse.json(await controller.delete(req,{params}))
     } catch (error) {
         return NextResponse.json(error)
     }

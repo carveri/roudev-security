@@ -1,12 +1,13 @@
 
 import { NextResponse } from "next/server"
-import { tarea1} from "./controller"
+import { NTareaController } from "../../(modules)/tarea/infrastructure/controllers/Nextjs/NTareaController"
 
+const controller = new NTareaController()
 
 // ruta post
 export const POST = async(req:Request)=>{
     try {
-        return NextResponse.json(await tarea1.postTarea(req))
+        return NextResponse.json(await controller.create(req))
     } catch (error) {
         return NextResponse.json(error)
     }
@@ -15,7 +16,7 @@ export const POST = async(req:Request)=>{
 // tuta get
 export const GET = async(req:Request)=>{
     try {
-        return NextResponse.json(await tarea1.getTarea(req))
+        return NextResponse.json(await controller.getAll())
     } catch (error) {
         return NextResponse.json(error)
     }
