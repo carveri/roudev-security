@@ -4,7 +4,7 @@ import { dataNavbar } from "./utils/dataNavbar";
 import { useRouter } from "next/navigation";
 
 
-const Navbar = ({activarNotificacion, setActivarNotificacion, setActivarPerfil,activarPerfil, setActivarConectar, activarConectar, activarSoporte, setActivarSoporte, activarConfiguraciones, setActivarConfiguraciones}) => {
+const Navbar = ({activarPuntos, setActivarPuntos, activarNotificacion, setActivarNotificacion, setActivarPerfil,activarPerfil, setActivarConectar, activarConectar, activarSoporte, setActivarSoporte, activarConfiguraciones, setActivarConfiguraciones}) => {
 
 
   
@@ -13,6 +13,12 @@ const Navbar = ({activarNotificacion, setActivarNotificacion, setActivarPerfil,a
   const handleClickNavbar =(e)=>{
     if(e.target.name === 'Notificaciones'){
       setActivarNotificacion(!activarNotificacion)
+      setActivarPerfil(false)
+      setActivarSoporte(false)
+      setActivarConfiguraciones(false)
+    }
+    else if(e.target.name === 'Puntos'){
+      setActivarPuntos(!activarPuntos)
       setActivarPerfil(false)
       setActivarSoporte(false)
       setActivarConfiguraciones(false)
@@ -79,7 +85,7 @@ const Navbar = ({activarNotificacion, setActivarNotificacion, setActivarPerfil,a
               />
               
               {re === 1 && el.nombre === 'Notificaciones' &&
-                (<div className="w-4 h-4 p-2 rounded-full bg-red-600 font-semibold text-white flex self-start place-items-center justify-center text-[10px] ">
+                (<div className="w-4 h-4 p-2 rounded-full bg-red-600 font-semibold text-white flex self-start place-items-center justify-center text-[9.5px] ">
                   {lista.length}
                 </div>)
               }

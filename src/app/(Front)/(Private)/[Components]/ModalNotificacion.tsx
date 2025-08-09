@@ -1,38 +1,60 @@
 'use client'
 
-import React from 'react'
+import {useState} from 'react'
 import { dataCuerpoPerfil } from './utils/dataCuerpoPerfil';
 import { redirect, useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react"
+import { dataCuerpoNotificacion } from './utils/dataCuerpoNotificaciones';
 // para poder hacer el cierre de session
 //import { useAuth } from "react-oidc-context";
 
 
-const ModalNotificacion = ({setActivar}) => {
+const ModalNotificacion = ({setActivar, activarDetalleNotificacion,  setActivarModalDetalle}) => {
+
+
+    const [activarDetalle, setActivarDetalle] = useState(false)
+    const [nombreTarea, setNombreTarea] = useState('')
+    const [nombreProyecto, setNombreProyecto] = useState('')
 
     const router = useRouter()
     //const {} = useSession()
 
-    const handleClickPerfil =(e, id)=>{
+    const handleClickAbrirNoti =(e, id, nombre,  tarea)=>{
         e.preventDefault()
-        if(e.target.name === 'Perfil'){
-            router.push('/dashboard/perfil/perfilPersonal')
-            setActivar(false)
+        if(e.target.name === nombre){
+            //router.push('/dashboard/perfil/perfilPersonal')
+            //setActivar(false)
+            console.log(tarea);
+            setNombreTarea(tarea)
+            setNombreProyecto(nombreProyecto)
+            setActivarDetalle(!activarDetalle)
+            
+            
         }
-        else if(e.target.name === 'Configuración Personal'){
-            router.push('/dashboard/perfilLaboral')
+        else if(e.target.name === nombre){
+            //router.push('/dashboard/perfilLaboral')
+            console.log('tarea 2');
+            //setActivarDetalle(!activarDetalle)
         }
-        else if(e.target.name === 'Facturación'){
-            router.push('/dashboard/facturacion')
-            setActivar(false)
+        else if(e.target.name === nombre){
+            // router.push('/dashboard/facturacion')
+            // setActivar(false)
+            console.log('tarea 3');
         }
-        else if(e.target.name === 'Plan Expert'){
-            router.push('/dashboard/perfilProyectos')
+        else if(e.target.name === nombre){
+            //router.push('/dashboard/perfilProyectos')
+            console.log('tarea 4');
         }
         else {
             console.log('as');
             
         }
+        //console.log('sdsd');
+        
+    }
+
+    const handleClickAbrirTareaNotificacion =()=>{
+        setActivarModalDetalle(!activarDetalleNotificacion)
     }
 
     const handleClickSalir =()=>{
@@ -44,38 +66,56 @@ const ModalNotificacion = ({setActivar}) => {
     
 
   return (
-    <div className='w-[15%] h-[40%] z-50  fixed top-10  mr-[199px] border border-gray-200 bg-white p-3 text-(length:--tamañoLetraChica)'>
-        <section className='w-full h-[30%] '>
-            <header className='w-full h-[30%] flex px-3'>
+    <div className='w-[15%] h-[40%] z-50  fixed top-10  mr-[332px] border border-gray-200 bg-white p-3 text-(length:--tamañoLetraChica)'>
+        <section className='w-full h-[15%] '>
+            <header className='w-full h-full flex px-3 items-center'>
                 <div className='w-[90%] grid items-center '>
-                    notificaciones
+                    Notificaciones
                 </div>
                 <div onClick={()=>setActivar(false)} className='w-[10%] h-full grid place-items-center cursor-pointer p-1 hover:border-b border-gray-500'>
                     <img className='' src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/cruz3.png' width={10} height={10} alt='as'/>
                 </div>
             </header>
-            {/* <article className='w-full h-[70%]  flex py-1 '>
-                <div className='w-[25%] h-full grid place-items-center'>
-                    <img  src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/adminClientes2.png' width={35} height={35} alt='as' />
-                </div>
-                <div className='w-[75%] h-full  grid  items-center py-3'>
-                    <div className='font-semibold'>
-                        Juan Perez Lopez
-                    </div>
-                    <div>
-                        juanperezl@gmail.com
-                    </div>
-                </div>
-            </article> */}
         </section>
-        <section className='w-full h-[60%] '>
+        <section className='w-full h-[75%] '>
             <ul className='flex-col justify-start z-50  max-h-[79%] overflow-auto'>
-                {dataCuerpoPerfil.map((el)=>{
-                    return <button onClick={(e)=>handleClickPerfil(e, el.id)} name={el.nombre} className='cursor-pointer w-full hover:bg-gray-100 h-10 border border-gray-50 flex justify-start pl-2 items-center' key={el.id}>
-                        {el.nombre}
+                {dataCuerpoNotificacion.map((el)=>{
+                    return <>
+                        <button onClick={(e)=>handleClickAbrirNoti(e, el.id, el.nombre, el.tarea)} name={el.nombre} className={` flex cursor-pointer w-full hover:bg-gray-100 h-10 border border-gray-50 px-3 items-center`} key={el.id}>
+                        <div className='w-4 h-4 mr-1 grid place-items-center rounded-full bg-blue-500 text-white font-semibold'>
+                            3
+                        </div>
+                        <div  className='flex justify-between w-full ml-3'>
+                            <div className='text-(length:--tamañoLetraChica) w-auto h-auto '>
+                                {el.nombre}
+                            </div>
+                            <img className=' w-3 h-3' src={el.icono} alt="sa" />
+                        </div>
                     </button>
+                    <div>
+                        {activarDetalle && el.tarea===nombreTarea &&
+                        <div className='ml-1 fixed   w-[250px] max-h-[72px] overflow-auto'>
+                                        <ul className={`text-(length:--tamañoLetraChica) grid grid-rows-${nombreTarea.length} bg-white   `}>
+                                            {nombreTarea.map((el)=>{
+                                                return <button onClick={handleClickAbrirTareaNotificacion} className=' cursor-pointer  flex justify-between items-center border border-gray-100 py-2 hover:bg-gray-100 px-5' key={el.id}>
+                                                    <div className='flex '>
+                                                        <div className='w-4 h-4 bg-red-400 rounded-full text-white mr-2'>
+                                                            2
+                                                        </div>
+                                                        {el}
+                                                    </div>
+                                                    <img className='w-2 h-2' src="https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/cruz3.png" alt="sd" />
+                                                </button>
+                                            })}
+                                        </ul>
+                                    </div>
+                    
+                    }
+                    </div>
+                    </>
                 })}
             </ul>
+            
         </section>
         <form action="">
         <button type='button' onClick={handleClickSalir} className='w-full py-3 cursor-pointer h-[12%] border-t border-gray-200 grid items-center pl-2 hover:bg-gray-50'>

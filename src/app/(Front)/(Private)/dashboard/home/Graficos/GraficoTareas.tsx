@@ -108,7 +108,7 @@ import dynamic from "next/dynamic";
    
   export default function GraficoTareas() {
     return (
-        <div className="z-40">
+        <div className="z-20">
             <header className="w-full h-10 grid place-items-center">
                 Evolución de Facturación mensual por proyecto (CLP)
             </header>
@@ -124,7 +124,7 @@ import dynamic from "next/dynamic";
                 </div>
               </div>
               <div className="w-full h-7 flex justify-end">
-                <div className="w-32 h-full border-b z-50 border-gray-100 flex items-center justify-between px-2 cursor-pointer ">
+                <div className="w-32 h-full border-b z-20 border-gray-100 flex items-center justify-between px-2 cursor-pointer ">
                   <div>
                     2025
                   </div>

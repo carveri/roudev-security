@@ -15,6 +15,8 @@ import ModalMisEquipos from "../../[Components]/ModalMisEquipos";
 import ModalFinanzas from "../../[Components]/ModalFinanzas";
 import Navbar from "../../../React/Components/Navbar";
 import ModalNotificacion from "../../[Components]/ModalNotificacion";
+import ModalPuntos from "../../[Components]/ModalPuntos";
+import ModalDetalleNotificaciones from "../../[Components]/ModalDetalleNotificaciones";
 
 
 const PageLayout = ({children1, session}) => {
@@ -27,6 +29,8 @@ const PageLayout = ({children1, session}) => {
   const [activarConfiguraciones, setActivarConfiguraciones] = useState(false)
   //const [activarVideoCorfo, setActivarVideoCorfo] = useState(false)
   const [activarNotificacion, setActivarNotificacion] = useState(false)
+  const [activarDetalleNotificacion, setActivarDetalleNotificacion] = useState(true)
+  const [activarPuntos, setActivarPuntos] = useState(false)
 
   // SIDEBAR
   const [activarIniciar, setActivarIniciar] = useState(false)
@@ -117,6 +121,8 @@ const PageLayout = ({children1, session}) => {
                 setActivarConfiguraciones={setActivarConfiguraciones}
                 activarNotificacion={activarNotificacion}
                 setActivarNotificacion={setActivarNotificacion}
+                activarPuntos={activarPuntos}
+                setActivarPuntos={setActivarPuntos}
               />
 
 
@@ -126,6 +132,24 @@ const PageLayout = ({children1, session}) => {
               <div className="w-[100%] flex justify-end bg-red-400 ">
                 <ModalNotificacion
                 setActivar={setActivarNotificacion}
+                activarDetalleNotificacion={activarDetalleNotificacion}
+                setActivarModalDetalle={setActivarDetalleNotificacion}
+                
+                />
+              </div>
+            }
+            {activarDetalleNotificacion &&
+              <div className="w-[100%] flex justify-end bg-red-400 ">
+                <ModalDetalleNotificaciones
+                setActivar={setActivarDetalleNotificacion}
+                
+                />
+              </div>
+            }
+            {activarPuntos &&
+              <div className="w-[100%] flex justify-end bg-red-400 ">
+                <ModalPuntos
+                setActivar={setActivarPuntos}
                 
                 />
               </div>
