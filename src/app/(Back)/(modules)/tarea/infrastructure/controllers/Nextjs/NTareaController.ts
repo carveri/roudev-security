@@ -4,8 +4,8 @@ import { IParams } from "@/app/Interfaces/IParametros";
 export class NTareaController {
     
     async create(req:Request){
-        const {id, nombreTarea, fechaInicio, fechaTermino, creadorTarea, responsableTarea, equipoResponsableTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId} = await req.json()
-        return TareaContainer.tarea.create.run(id, nombreTarea, fechaInicio, fechaTermino, creadorTarea, responsableTarea, equipoResponsableTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId)
+        const {id, nombreTarea, fechaInicio, fechaTermino, etapaTarea, creadorTarea, responsableTarea, equipoResponsableTarea, urgenciaTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId} = await req.json()
+        return TareaContainer.tarea.create.run(id, nombreTarea, fechaInicio, fechaTermino, etapaTarea, creadorTarea, responsableTarea, equipoResponsableTarea, urgenciaTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId)
     }
 
     async getAll(){
@@ -19,8 +19,9 @@ export class NTareaController {
 
     async update(req:Request, {params}:IParams){
         const {id} = await params
-        const {nombreTarea, fechaInicio, fechaTermino, creadorTarea, responsableTarea, equipoResponsableTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId} = await req.json()
-        return TareaContainer.tarea.update.run(id, nombreTarea, fechaInicio, fechaTermino, creadorTarea, responsableTarea, equipoResponsableTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId)
+        const {nombreTarea,  fechaInicio, fechaTermino, etapaTarea, creadorTarea, responsableTarea, equipoResponsableTarea, urgenciaTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId} = await req.json()
+        console.log('urgencia tarea en contrrtrt:', urgenciaTarea);
+        return TareaContainer.tarea.update.run(id, nombreTarea,  fechaInicio, fechaTermino, etapaTarea, creadorTarea, responsableTarea, equipoResponsableTarea, urgenciaTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId)
     }
 
     async delete(req:Request, {params}:IParams){

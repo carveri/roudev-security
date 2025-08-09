@@ -49,15 +49,20 @@ const ModalConfiguraciones = ({setActivar}) => {
         <section className='w-full h-[59%] mt-10'>
             <ul className='flex-col justify-start z-50  max-h-[81%] overflow-auto'>
                 {dataConfiguraciones.map((el)=>{
-                    return <button className='w-full hover:bg-gray-100 h-10 border border-gray-50 flex justify-start pl-2 items-center' key={el.id}>
-                        {el.nombreConfiguracion}
+                    return <button className='cursor-pointer justify-between w-full hover:bg-gray-100 h-10 border border-gray-50 flex  pl-2 items-center' key={el.id}>
+                        <div>
+                            {el?.nombreConfiguracion}
+                        </div>
+                        <div className='mr-3'>
+                            <img className='w-3 h-3' src={el?.iconoConfiguraciones} alt="df" />
+                        </div>
                     </button>
                 })}
             </ul>
         </section>
-        <section onClick={()=>setActivar(false)} className='w-full py-3 cursor-pointer h-[12%] border-t border-gray-200 grid items-center pl-2 hover:bg-gray-50'>
+        <button onClick={()=>setActivar(false)} className='w-full py-3 cursor-pointer h-[12%] border-t border-gray-200 grid items-center pl-2 hover:bg-gray-50'>
             Salir
-        </section>
+        </button>
     </div>
   )
 }

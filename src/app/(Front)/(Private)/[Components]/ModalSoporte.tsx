@@ -18,7 +18,7 @@ const ModalSoporte = ({setActivar}) => {
         } 
 
   return (
-    <div className='w-[15%] h-[40%] z-50 fixed top-10  mr-[105px] border border-gray-200 bg-white p-3 text-(length:--tamañoLetraChica)'>
+    <div className='w-[15%] h-[40%] z-50 fixed top-10  mr-[115px] border border-gray-200 bg-white p-3 text-(length:--tamañoLetraChica)'>
         <section className='w-full h-[30%] '>
             <header className='w-full h-[30%] flex px-3'>
                 <div className='w-[90%] grid items-center '>
@@ -45,7 +45,7 @@ const ModalSoporte = ({setActivar}) => {
         <section className='w-full h-[60%] '>
             <ul className='flex-col justify-start z-50  max-h-[79%] overflow-auto'>
                 {dataSoporte.map((el)=>{
-                    return <button className='w-full hover:bg-gray-100 h-10 border border-gray-50 flex justify-start pl-2 items-center' key={el.id}>
+                    return <button className='cursor-pointer w-full hover:bg-gray-100 h-10 border border-gray-50 flex justify-start pl-2 items-center' key={el.id}>
                         <div className='mr-2'>
                             <img src={el.imagen} width={12} height={12} alt="sd" />
                         </div>
@@ -56,9 +56,9 @@ const ModalSoporte = ({setActivar}) => {
                 })}
             </ul>
         </section>
-        <section onClick={()=>setActivar(false)} className='w-full py-3 cursor-pointer h-[12%] border-t border-gray-200 grid items-center pl-2 hover:bg-gray-50'>
+        <button onClick={()=>setActivar(false)} className='w-full py-3 cursor-pointer h-[12%] border-t border-gray-200 grid items-center pl-2 hover:bg-gray-50'>
             Salir
-        </section>
+        </button>
     </div>
   )
 }

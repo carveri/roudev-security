@@ -23,7 +23,7 @@ import {
     options: {
       chart: {
         toolbar: {
-          show: false,
+          show: true,
         },
       },
       title: {
@@ -32,11 +32,11 @@ import {
       dataLabels: {
         enabled: false,
       },
-      colors: ["#121d23"],
+      colors: ["#161616"],
       plotOptions: {
         bar: {
           columnWidth: "40%",
-          borderRadius: 2,
+          borderRadius: 4,
         },
       },
       xaxis: {
@@ -48,7 +48,7 @@ import {
         },
         labels: {
           style: {
-            colors: "#616161",
+            colors: "#000000",
             fontSize: "12px",
             fontFamily: "inherit",
             fontWeight: 400,
@@ -108,7 +108,7 @@ import {
             <header className="w-full h-10 7 grid place-items-center mt-7">
                 Tareas Terminadas por mes
             </header>
-            <div className="-mt-10">
+            <div className="-mt-3">
               <Card shadow={false}>
                   <CardHeader
                   floated={false}

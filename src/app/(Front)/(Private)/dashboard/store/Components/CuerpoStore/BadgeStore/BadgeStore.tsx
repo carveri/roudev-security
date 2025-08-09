@@ -72,10 +72,10 @@ const BadgeStore = ({el}:IEBadgeStore) => {
           {el.descripcionPlugin}
       </section>
       <section className='w-full h-[35%] flex justify-end pr-2 text-tamañoLetra'>
-        <button onClick={handleClickVerPlugin} className="w-12 h-9 bg-colorBotonVer text-tamañoLetraChica rounded mr-2 text-colorTextoTitulo1 font-semibold">
+        <button onClick={handleClickVerPlugin} className="cursor-pointer w-12 h-9 bg-gray-100 text-tamañoLetraChica rounded mr-2 text-colorTextoTitulo1 font-semibold">
           Ver
         </button>
-        <button className="w-24 h-9 bg-colorBotonAceptar text-tamañoLetraChica rounded text-colorTextoBoton font-semibold">
+        <button className="cursor-pointer w-24 h-9 bg-gradient-to-r from-green-400 to-[#01b307] text-tamañoLetraChica rounded text-white font-semibold">
           Comprar
         </button>
       </section>

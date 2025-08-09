@@ -21,7 +21,7 @@ const ModalConectar = ({setActivar}) => {
     
 
   return (
-    <div className='w-[15%] h-[40%] z-50  fixed top-10  mr-[146px] border border-gray-200 bg-white p-3 text-(length:--tamañoLetraChica)'>
+    <div className='w-[15%] h-[40%] z-50  fixed top-10  mr-[156px] border border-gray-200 bg-white p-3 text-(length:--tamañoLetraChica)'>
         <section className='w-full h-[30%] '>
             <header className='w-full h-[30%] flex px-3'>
                 <div className='w-[90%] grid items-center '>
@@ -48,15 +48,15 @@ const ModalConectar = ({setActivar}) => {
         <section className='w-full h-[60%] '>
             <ul className='flex-col justify-start z-50  max-h-[79%] overflow-auto'>
                 {dataCuerpoConectar.map((el)=>{
-                    return <button onClick={()=>handleClickPincharConectar(el)} className='w-full hover:bg-gray-100 h-10 border border-gray-50 flex justify-start pl-2 items-center' key={el.id}>
+                    return <button onClick={()=>handleClickPincharConectar(el)} className='cursor-pointer w-full hover:bg-gray-100 h-10 border border-gray-50 flex justify-start pl-2 items-center' key={el.id}>
                         {el.nombre}
                     </button>
                 })}
             </ul>
         </section>
-        <section onClick={()=>setActivar(false)} className='w-full py-3 cursor-pointer h-[12%] border-t border-gray-200 grid items-center pl-2 hover:bg-gray-50'>
+        <button onClick={()=>setActivar(false)} className='w-full py-3 cursor-pointer h-[12%] border-t border-gray-200 grid items-center pl-2 hover:bg-gray-50'>
             Salir
-        </section>
+        </button>
     </div>
   )
 }

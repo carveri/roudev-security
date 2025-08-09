@@ -50,11 +50,11 @@ const FormLogin = () => {
               <main className='h-3/6'>
                 <div className='h-2/5 grid'>
                   <label className='w-20 ' htmlFor="">Email</label>
-                  <input name='email' onChange={handleChangeLogin} className='h-12 pl-3 bg-gray-100 text-gray-700 rounded' type="email" placeholder='usuario@correo.com'/>
+                  <input name='email' onChange={handleChangeLogin} className='focus:outline-none h-12 pl-3 bg-gray-100 text-gray-700 rounded' type="email" placeholder='usuario@correo.com'/>
                 </div>
                 <div className='h-2/5 grid'>
                   <label className='w-20 ' htmlFor="">Password</label>
-                  <input name='password' onChange={handleChangeLogin} className='h-12 pl-3 bg-gray-100 text-gray-700 rounded' type="password" placeholder='*******************'/>
+                  <input name='password' onChange={handleChangeLogin} className='focus:outline-none h-12 pl-3 bg-gray-100 text-gray-700 rounded' type="password" placeholder='*******************'/>
                 </div>
                 <div className='grid justify-end '>
                   <Link href={'/'}>¿Olvidaste tu contraseña?</Link>

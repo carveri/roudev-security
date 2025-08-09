@@ -6,7 +6,7 @@ import { format } from "date-fns";
 
 export class TareaPrismaRepository implements TareaRepository {
     async create(tarea: Tarea): Promise<void> {
-        const {id, nombreTarea, fechaInicio, fechaTermino, creadorTarea, responsableTarea, equipoResponsableTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId} = tarea
+        const {id, nombreTarea,  fechaInicio, fechaTermino, etapaTarea,  creadorTarea, responsableTarea, equipoResponsableTarea, urgenciaTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId} = tarea
 
         await prisma.tarea.create({
             data:{
@@ -14,9 +14,11 @@ export class TareaPrismaRepository implements TareaRepository {
                 nombreTarea,
                 fechaInicio,
                 fechaTermino,
+                etapaTarea,
                 creadorTarea,
                 responsableTarea,
                 equipoResponsableTarea,
+                urgenciaTarea,
                 descripcionDeTarea,
                 aportantes, 
                 equipoId, 
@@ -42,7 +44,15 @@ export class TareaPrismaRepository implements TareaRepository {
     }
 
     async update(tarea: Tarea): Promise<void> {
-        const {id, nombreTarea, fechaInicio, fechaTermino, creadorTarea, responsableTarea, equipoResponsableTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId} = tarea
+
+        console.log('tarea:', tarea);
+        
+
+        const {id, nombreTarea, fechaInicio, fechaTermino, etapaTarea, creadorTarea, responsableTarea, equipoResponsableTarea, urgenciaTarea,  descripcionDeTarea, aportantes, equipoId, proyectoId, userId} = tarea
+        
+        console.log('urgencia tarea en reposi:', equipoResponsableTarea);
+        
+
         await prisma.tarea.update({
             where:{
                 id:id
@@ -51,9 +61,11 @@ export class TareaPrismaRepository implements TareaRepository {
                 nombreTarea, 
                 fechaInicio, 
                 fechaTermino, 
+                etapaTarea,
                 creadorTarea, 
                 responsableTarea, 
                 equipoResponsableTarea, 
+                urgenciaTarea,
                 descripcionDeTarea, 
                 aportantes, 
                 equipoId, 

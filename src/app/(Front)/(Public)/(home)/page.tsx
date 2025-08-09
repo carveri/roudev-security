@@ -13,9 +13,9 @@ const page = async() => {
 
   return (
     <>
-      <div className='w-[95%] h-screen flex px-12'>
-      <section className='w-[50%] h-auto  grid place-items-center'>
-        <div className='w-5/6 h-3/5   mt-4'>
+      <div className='w-[95%] h-screen flex px-12 bg-white'>
+      <section className='w-[50%] h-auto  grid place-items-center bg-white'>
+        <div className='w-5/6 h-[50%] '>
           <article className='w-full h-12 text-xl flex'>
             <header className='pr-2'>
               <img
@@ -101,13 +101,13 @@ const page = async() => {
 
 
 
-      <div className='w-[95%] h-screen  px-12  grid items-center justify-center'>
+      <div className='w-[100%] h-screen  px-12  grid items-center justify-center'>
       <div className="w-full h-[85%] ">
         <header className="w-full h-[18%] text-center ">
           <h1 className="text-xl text-gray-800 font-bold mb-3">
             Video del Dashboard
           </h1>
-          <h2 className=" text-gray-700 w-3/4 mx-auto text-[15px]">
+          <h2 className=" text-gray-700 w-full mx-auto text-[15px]">
             Si tu empresa es del sector tradicional, nosotros no somos la mejor opción para ti, pero si tu empresa es del sector de Software, StartUp o Tecnología, entonces Decosof es la mejor opción para ti.
           </h2>
         </header>
@@ -120,7 +120,7 @@ const page = async() => {
 
 
 
-    <div className='w-[95%] h-screen  px-12  grid items-center justify-center'>
+    <div className='w-[100%] h-screen  px-12  grid items-center justify-center'>
       <div className="w-full h-[85%]">
         <header className="w-full h-[18%] text-center ">
           <h1 className="text-xl text-gray-800 font-bold mb-3">
@@ -130,8 +130,8 @@ const page = async() => {
             Si tu empresa es del sector tradicional, nosotros no somos la mejor opción para ti, pero si tu empresa es del sector de Software, StartUp o Tecnología, entonces Decosof es la mejor opción para ti.
           </h2>
         </header>
-        <div className='grid justify-items-center w-full h-[800px] px-4'>
-                <section className='w-[85%] h-[85%]  grid grid-cols-3 place-items-center gap-x-11 mt-6 '>
+        <div className='grid justify-items-center w-full h-[800px]'>
+                <section className='w-[100%] h-[85%]  grid grid-cols-4 place-items-center gap-x-5 mt-6 '>
                 {dataPlanes.map((el)=>{
                   return <article key={el.id} className='w-full h-full border border-gray-200 py-8'>
                     <header className='w-full h-20 text-xl grid place-content-center'>
@@ -141,13 +141,13 @@ const page = async() => {
                       {el.descripcion}
                     </main>
                     <section className='w-full h-1/6 text-xl grid place-content-center text-colorTexto '>
-                      USD {el.valor}
+                      {el.valor}
                     </section>
                     <section className='w-full h-1/6 text-base grid place-content-center text-colorTexto '>
                       {el.tipoPago}
                     </section>
                     <section className='w-full h-1/6 grid place-items-center'>
-                      <button className='bg-blue-500 w-60 h-14 rounded text-white font-bold'>
+                      <button className='bg-gradient-to-r from-cyan-600 to-cyan-900 w-60 h-14 rounded text-white font-bold'>
                         Seleccionar
                       </button>
                     </section>
@@ -160,7 +160,7 @@ const page = async() => {
     </div>
 
 
-    <div className='w-[95%] h-screen  px-12  grid items-center justify-center '>
+    <div className='w-[100%] h-screen  px-12  grid items-center justify-center '>
       <div className="w-full h-[75%]">
         <header className="w-full h-[18%] text-center ">
           <h1 className="text-xl text-gray-800 font-bold mb-3">
@@ -170,7 +170,7 @@ const page = async() => {
             ¿Que opinan de nosotros?
           </h2>
         </header>
-        <main className="h-[75%]  grid grid-cols-4 gap-y-4 gap-x-4 px-4">
+        <main className="h-[75%] w-full  grid grid-cols-4 gap-y-4 gap-x-4 px-4">
           {dataComentarios.map((el)=>{
             return <div key={el.id} className="h-[500px] ">
               <BadgeComentarios

@@ -46,13 +46,17 @@ const page = async() => {
                           <TablaProyectos />
                         </div>
                       </div>
+                      
                       <div className='mt-1 w-full ml-3'>
+                        
                         <GraficoTareasTerminadas />
                       </div>
                   </main>
         </div>:
       <div className='w-full h-full grid place-items-center'>
-        <BadgeVacio />
+        <BadgeVacio
+            session={session}
+        />
       </div> 
     }  
     </>

@@ -1,6 +1,5 @@
 
 import { NextResponse } from "next/server"
-import { detalleTarea1 } from "./controller"
 import { IParams } from "@/app/Interfaces/IParametros"
 import { NTareaController } from "@/app/(Back)/(modules)/tarea/infrastructure/controllers/Nextjs/NTareaController"
 //import { IPermisoParams } from "@/app/Interfaces/IParams"

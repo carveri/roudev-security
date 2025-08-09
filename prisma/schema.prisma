@@ -110,12 +110,10 @@ model User {
   facturas Factura[]
 
 
+  // TABLAS INTERMEDIAS
   UsersOnProductos UsersOnProyectos[]
-
   UsersOnEquipos    UsersOnEquipos[]
-
   UsersOnCargos   UsersOnCargos[]
-
   UsersOnFormaDePago UsersOnFormaDePago[]
   
 }
@@ -428,6 +426,7 @@ model FormaDePago {
   //MuchosAMuchos user LISTO
   users User[]
 
+  //TABLA INTERMEDIA
   UsersOnFormaDePago UsersOnFormaDePago[]
 
 }

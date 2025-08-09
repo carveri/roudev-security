@@ -10,27 +10,27 @@ import BadgeStore from '../../(Private)/dashboard/store/Components/CuerpoStore/B
 const page = () => {
   return (
     <div className='w-full h-[800px] text-tamañoLetraChica'>
-       <div className='w-full h-14  pt-4 pl-32'>
+       <div className='w-full h-14  pt-4 pl-16'>
         Home {'>'} Productos
        
       </div>
-      <div className='w-[100%] h-full bg-gray-50 grid justify-items-center' >
-        <div className=''>
-        <header className=' w-full h-[8%] grid place-content-center  text-colorTextoNavbar font-semibold'>
+      <div className='w-[100%] h-full  grid justify-items-center' >
+        <div className='w-[90%]'>
+        <header className=' w-full h-[8%] grid place-content-center  text-colorTextoNavbar font-semibold text-cyan-700'>
             Plugins
         </header>
         <main className='w-full h-[92%] '>
-            <section className='w-full h-[7%]  flex items-center px-3'>
+            <section className='w-[100%] h-[7%]  flex items-center px-3'>
                 <article className='w-[80%]'>
                     <label htmlFor="">Buscar:</label>
-                    <input className='w-[90%] pl-2 h-9 rounded ml-2 border border-gray-200' placeholder='database...' type="text" />
+                    <input className='focus:outline-none w-[90%] pl-2 h-9 rounded ml-2 border border-gray-200' placeholder='database...' type="text" />
                 </article>
-                <article className='w-[10%] h-8 border border-b-colorTextoNavbar  grid place-content-center mr-3 cursor-pointer'>
+                <button className='w-[10%] font-semibold text-tamañoLetraChica h-8 bg-gradient-to-r from-cyan-600 to-cyan-900 text-white  grid place-content-center mr-3 cursor-pointer'>
                     Todos 
-                </article>
-                <article className='w-[10%] h-8 border border-b-colorTextoNavbar  grid place-content-center mr-3 cursor-pointer'>
+                </button>
+                <button className='w-[10%] font-semibold text-tamañoLetraChica h-8  bg-gradient-to-r from-green-400 to-[#10a6bd] text-white grid place-content-center mr-3 cursor-pointer'>
                     Departamento
-                </article>
+                </button>
                 {/* <article className='w-[10%] h-8 border border-b-colorTextoNavbar grid place-content-center cursor-pointer'>
                     Clasificación
                 </article> */}

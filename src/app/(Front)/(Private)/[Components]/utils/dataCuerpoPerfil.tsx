@@ -15,7 +15,7 @@ export const dataCuerpoPerfil = [
     },
     {
         id:'4',
-        nombre: 'Plan Expert',
+        nombre: 'Prueba Gratis - Quedan 9 dias',
     },
    
     

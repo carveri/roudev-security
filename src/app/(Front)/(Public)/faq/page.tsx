@@ -7,12 +7,12 @@ import Image from "next/image";
 const page = () => {
   return (
     <div className='w-full h-full text-tamañoLetraChica'>
-      <div className='w-full h-14  pt-4 pl-32 '>
+      <div className='w-full h-14  pt-4 pl-16'>
         Home {'>'} Preguntas Frecuentes
       </div>
       <div className='grid  justify-items-center w-full h-[800px] '>
-          <section className='w-5/6 h-2/5  mt-8 '>
-            <header className=' pb-6 text-xl font-semibold text-colorTextoTitulo1'>
+          <section className='w-[90%] h-2/5  mt-8 '>
+            <header className=' pb-6 text-xl font-semibold text-colorTextoTitulo1 text-blue-800'>
               Preguntas Frecuentes
             </header>
             <main>

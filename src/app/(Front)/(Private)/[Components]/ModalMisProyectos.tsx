@@ -76,7 +76,7 @@ const ModalMisProyectos = ({setActivar, session}) => {
         <section className='w-[93%] h-[60%] -mt-3 '>
             <ul className='flex-col justify-start z-50  max-h-[81%] overflow-auto'>
                 {misProyectos[0]?.proyectos?.map((el)=>{
-                    return <button onClick={(e)=>handleClickSelecMisProyectos(e, el.id, el.nombreProyecto)} className='w-[93%] gap-x-2 h-10 border  border-gray-50 flex justify-start pl-2 items-center hover:bg-gray-100' key={el.id}>
+                    return <button onClick={(e)=>handleClickSelecMisProyectos(e, el.id, el.nombreProyecto)} className='cursor-pointer w-[93%] gap-x-2 h-10 border  border-gray-50 flex justify-start pl-2 items-center hover:bg-gray-100' key={el.id}>
                         <img className="flex -mt-1" src={el?.iconoProyecto ? el.iconoProyecto: 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/medicina.png'} width={15} height={15} alt="sd"/>
                         <div>
                             {el?.nombreProyecto.length > 30 ? el?.nombreProyecto.slice(0,30) + '...' : el?.nombreProyecto}

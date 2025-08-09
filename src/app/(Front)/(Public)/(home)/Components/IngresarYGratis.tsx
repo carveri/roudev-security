@@ -19,11 +19,11 @@ const IngresarYGratis = () => {
         }}
 
   return (
-    <article className='w-[95%] h-[12%] grid grid-cols-2 place-items-center gap-x-6 py-3 text-tamañoLetra'>
-            <button name="ingresar" onClick={handleClickBotonesHome} className="bg-[#00ff33] cursor-pointer delay-150 transition-shadow hover:bg-green-400 w-full h-full text-white font-semibold rounded">
+    <article className='w-[100%] h-[15%] grid grid-cols-2 place-items-center gap-x-6 py-3 text-tamañoLetra'>
+            <button name="ingresar" onClick={handleClickBotonesHome} className="bg-gradient-to-r from-green-400 to-[#01b307] cursor-pointer delay-150 transition-shadow hover:bg-green-400 w-full h-full text-white font-semibold rounded">
               Ingresar
             </button>
-            <button name="prueba" onClick={handleClickBotonesHome} className="bg-cyan-800 cursor-pointer delay-150 transition-shadow hover:bg-cyan-900 opacity-80 w-full h-full text-gray-100 font-semibold rounded">
+            <button name="prueba" onClick={handleClickBotonesHome} className="bg-gradient-to-r from-cyan-600 to-cyan-900 cursor-pointer delay-150 transition-shadow hover:bg-cyan-900 opacity-80 w-full h-full text-gray-100 font-semibold rounded">
               Prueba Gratuita 
             </button>
           </article>

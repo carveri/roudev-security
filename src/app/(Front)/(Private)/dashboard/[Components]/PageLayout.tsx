@@ -14,6 +14,7 @@ import ModalMisProyectos from "../../[Components]/ModalMisProyectos";
 import ModalMisEquipos from "../../[Components]/ModalMisEquipos";
 import ModalFinanzas from "../../[Components]/ModalFinanzas";
 import Navbar from "../../../React/Components/Navbar";
+import ModalNotificacion from "../../[Components]/ModalNotificacion";
 
 
 const PageLayout = ({children1, session}) => {
@@ -25,6 +26,7 @@ const PageLayout = ({children1, session}) => {
   const [activarSoporte, setActivarSoporte] = useState(false)
   const [activarConfiguraciones, setActivarConfiguraciones] = useState(false)
   //const [activarVideoCorfo, setActivarVideoCorfo] = useState(false)
+  const [activarNotificacion, setActivarNotificacion] = useState(false)
 
   // SIDEBAR
   const [activarIniciar, setActivarIniciar] = useState(false)
@@ -113,11 +115,21 @@ const PageLayout = ({children1, session}) => {
                 setActivarSoporte={setActivarSoporte}
                 activarConfiguraciones={activarConfiguraciones}
                 setActivarConfiguraciones={setActivarConfiguraciones}
+                activarNotificacion={activarNotificacion}
+                setActivarNotificacion={setActivarNotificacion}
               />
 
 
              
             </div>
+            {activarNotificacion &&
+              <div className="w-[100%] flex justify-end bg-red-400 ">
+                <ModalNotificacion
+                setActivar={setActivarNotificacion}
+                
+                />
+              </div>
+            }
             {activarPerfil &&
               <div className="w-[100%] flex justify-end bg-red-400 ">
                 <ModalPerfil
