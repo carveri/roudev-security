@@ -17,6 +17,7 @@ import Navbar from "../../../React/Components/Navbar";
 import ModalNotificacion from "../../[Components]/ModalNotificacion";
 import ModalPuntos from "../../[Components]/ModalPuntos";
 import ModalDetalleNotificaciones from "../../[Components]/ModalDetalleNotificaciones";
+import ModalConfirmarAportantes from "../../[Components]/utils/ModalConfirmarAportantes";
 
 
 const PageLayout = ({children1, session}) => {
@@ -29,8 +30,10 @@ const PageLayout = ({children1, session}) => {
   const [activarConfiguraciones, setActivarConfiguraciones] = useState(false)
   //const [activarVideoCorfo, setActivarVideoCorfo] = useState(false)
   const [activarNotificacion, setActivarNotificacion] = useState(false)
-  const [activarDetalleNotificacion, setActivarDetalleNotificacion] = useState(true)
+  const [activarDetalleNotificacion, setActivarDetalleNotificacion] = useState(false)
   const [activarPuntos, setActivarPuntos] = useState(false)
+
+  const [activarModalConfirmar, setActivarModalConfirmar] = useState(false)
 
   // SIDEBAR
   const [activarIniciar, setActivarIniciar] = useState(false)
@@ -40,6 +43,8 @@ const PageLayout = ({children1, session}) => {
   const [activarEquipos, setActivarEquipos] = useState(false)
   const [activarFinazas, setActivarFinanzas] = useState(false)
   const [activarVideoCorfo, setActivarVideoCorfo] = useState(false)
+
+
 
 
   const handleClickSidebar =(e, href)=>{
@@ -142,6 +147,9 @@ const PageLayout = ({children1, session}) => {
               <div className="w-[100%] flex justify-end bg-red-400 ">
                 <ModalDetalleNotificaciones
                 setActivar={setActivarDetalleNotificacion}
+                activarModalConfirmar={activarModalConfirmar}
+                setActivarModalConfirmar={setActivarModalConfirmar}
+                setActivarNotificacion={setActivarNotificacion}
                 
                 />
               </div>
@@ -232,7 +240,10 @@ const PageLayout = ({children1, session}) => {
               
               
               
-          
+          {/* {activarModalConfirmar && 
+            <ModalConfirmarAportantes />
+
+          } */}
         </div>
 }
 

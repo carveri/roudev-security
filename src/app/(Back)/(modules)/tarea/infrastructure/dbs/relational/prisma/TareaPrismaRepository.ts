@@ -67,15 +67,40 @@ export class TareaPrismaRepository implements TareaRepository {
                 equipoResponsableTarea, 
                 urgenciaTarea,
                 descripcionDeTarea, 
-                aportantes, 
+                aportantes: {
+                    push: aportantes
+                }, 
                 equipoId, 
                 proyectoId, 
                 userId,
                 createdAt: format(new Date(), 'dd/MM/yyyy'),
                 horaAt: format(new Date(), 'H:mm')
-            }
+            }}
+            
+        //     update:{
+        //         nombreTarea, 
+        //     },
+        //     create:{
+        //         id:id,
+        //         nombreTarea, 
+        //         fechaInicio, 
+        //         fechaTermino, 
+        //         etapaTarea,
+        //         creadorTarea, 
+        //         responsableTarea, 
+        //         equipoResponsableTarea, 
+        //         urgenciaTarea,
+        //         descripcionDeTarea, 
+        //         aportantes, 
+        //         equipoId, 
+        //         proyectoId, 
+        //         userId,
+        //         createdAt: format(new Date(), 'dd/MM/yyyy'),
+        //         horaAt: format(new Date(), 'H:mm')
+        //     }
 
-        })
+        // }
+    )
     }
 
     async delete(id: string): Promise<void> {

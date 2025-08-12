@@ -86,15 +86,13 @@ const ModalNotificacion = ({setActivar, activarDetalleNotificacion,  setActivarM
                             3
                         </div>
                         <div  className='flex justify-between w-full ml-3'>
-                            <div className='text-(length:--tamañoLetraChica) w-auto h-auto '>
-                                {el.nombre}
-                            </div>
+                            {el.nombre}
                             <img className=' w-3 h-3' src={el.icono} alt="sa" />
                         </div>
                     </button>
                     <div>
                         {activarDetalle && el.tarea===nombreTarea &&
-                        <div className='ml-1 fixed   w-[250px] max-h-[72px] overflow-auto'>
+                        <div className='ml-[265px] fixed   w-[250px] max-h-[108px] overflow-auto'>
                                         <ul className={`text-(length:--tamañoLetraChica) grid grid-rows-${nombreTarea.length} bg-white   `}>
                                             {nombreTarea.map((el)=>{
                                                 return <button onClick={handleClickAbrirTareaNotificacion} className=' cursor-pointer  flex justify-between items-center border border-gray-100 py-2 hover:bg-gray-100 px-5' key={el.id}>
