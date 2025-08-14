@@ -19,6 +19,11 @@ export const useIdCeo = create((set)=>({
   updateIdCeo: (newIdCeo:[string]) => set({ idCeo: newIdCeo }),
 }))
 
+export const useProyectosNavbar = create((set)=>({
+  proyectos: [],
+  updateProyectosNavbar: (newProyectos:[]) => set({ proyectos: newProyectos }),
+}))
+
 
 export const useIdProyectoPro = create((set)=>({
   idProyecto: '',
@@ -95,6 +100,26 @@ export const useTareaStatus = create((set)=>
         set(state => ({
             ...state, 
             tareasStatus
+        }))
+    }
+}))
+
+
+export const useTareaForUserId = create((set)=>
+({
+    tareaForUserId: [],
+    
+    getTareaForUserId: async(userId)=>{
+        const ruta = 'tareaForUserId'
+        
+        //const elem2 = 'id'
+        const url = userId
+        
+        const tareaForUserId = await getDataLista({ruta, url})
+                        
+        set(state => ({
+            ...state, 
+            tareaForUserId
         }))
     }
 }))

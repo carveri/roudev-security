@@ -14,6 +14,8 @@ export const GET = async(req:Request,{params}:IParams)=>{
     }
 }
 
+
+
 export const PUT = async(req:Request,{params}:IParams)=>{
     try {
         return NextResponse.json(await controller.update(req,{params}))

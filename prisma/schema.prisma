@@ -452,13 +452,13 @@ model FlujoDeCaja {
   updatedAt       DateTime   @updatedAt
   ingresosPorVentas Int
   valorTicket       Int
-  creciemientoDelTicket Int
-  usuarioGratuitos Int
-  usuariosActivos  Int
-  nuevosUsuarios   Int
-  churnedUsers     Int
-  disminucionDeUsuarios Int
-  usuariosActivosFlujo Int
+  crecimientoDelTicket Int
+  usuarioGratuitos Int      @default(0)
+  usuariosActivos  Int      @default(0)
+  nuevosUsuarios   Int      @default(0)
+  churnedUsers     Int      @default(0)
+  disminucionDeUsuarios Int @default(0)
+  usuariosActivosFlujo Int  @default(0)
 
 }
 

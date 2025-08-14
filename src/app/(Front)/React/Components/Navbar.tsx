@@ -1,12 +1,25 @@
 'use client'
 
+import { useEffect, useState } from "react";
 import { dataNavbar } from "./utils/dataNavbar";
 import { useRouter } from "next/navigation";
+import { useProyectosNavbar, useTareaForUserId } from "../../(Private)/[stores]/homeStore";
 
 
-const Navbar = ({activarPuntos, setActivarPuntos, activarNotificacion, setActivarNotificacion, setActivarPerfil,activarPerfil, setActivarConectar, activarConectar, activarSoporte, setActivarSoporte, activarConfiguraciones, setActivarConfiguraciones}) => {
+const Navbar = ({session, activarPuntos, setActivarPuntos, activarNotificacion, setActivarNotificacion, setActivarPerfil,activarPerfil, setActivarConectar, activarConectar, activarSoporte, setActivarSoporte, activarConfiguraciones, setActivarConfiguraciones}) => {
 
 
+  //const [tareasAll, setTareasAll] = useState([])
+
+  const {tareaForUserId, getTareaForUserId} = useTareaForUserId()
+
+  useEffect(()=>{
+    getTareaForUserId(session.user.id)
+  },[])
+
+  //console.log('tareasforuser:', tareaForUserId);
+  //const proyectos = useProyectosNavbar((state) => state.proyectos)
+  const updateProyectosNavbar = useProyectosNavbar((state) => state.updateProyectosNavbar)
   
   const router = useRouter()
 
@@ -16,6 +29,7 @@ const Navbar = ({activarPuntos, setActivarPuntos, activarNotificacion, setActiva
       setActivarPerfil(false)
       setActivarSoporte(false)
       setActivarConfiguraciones(false)
+      updateProyectosNavbar(nombreProy())
     }
     else if(e.target.name === 'Puntos'){
       setActivarPuntos(!activarPuntos)
@@ -48,13 +62,45 @@ const Navbar = ({activarPuntos, setActivarPuntos, activarNotificacion, setActiva
       setActivarSoporte(false)
     }
     else{
-      console.log('otra cosa');
+      console.log('otra cosa !!!');
       
     }
   }
 
   const re = 1
-  const lista = ['','','','']
+  const lista = tareaForUserId
+
+  console.log('tareaforusers;', lista);
+  
+
+  const apor = lista.map((el)=>{
+    return el.aportantes
+  })
+
+  
+
+  const nombreProy = ()=>{
+    
+    const res = lista.map((el)=>{
+      //if(el.proyecto?.nombreProyecto)
+      return el?.proyecto
+    })
+    return res
+  }
+
+  // const {proyectos, updateProyectosNavbar} =  useProyectosNavbar()
+
+
+  console.log('nombrepro:', nombreProy());
+
+
+
+  // const [proyecto] = lista
+  // const [nombreProyecto] = proyecto
+  
+  
+  
+
 
   //const imagenLupa = <img src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/azure.png' alt="o" />
   return (
@@ -85,8 +131,8 @@ const Navbar = ({activarPuntos, setActivarPuntos, activarNotificacion, setActiva
               />
               
               {re === 1 && el.nombre === 'Notificaciones' &&
-                (<div className="w-4 h-4 p-2 rounded-full bg-red-600 font-semibold text-white flex self-start place-items-center justify-center text-[9.5px] ">
-                  {lista.length}
+                (<div className="w-4 h-4 p-2 rounded-full bg-red-600 font-bold text-white flex self-start place-items-center justify-center text-[9.5px] ">
+                  {apor.flat().length > 99 ? apor.flat().length + '+': apor.flat().length}
                 </div>)
               }
               

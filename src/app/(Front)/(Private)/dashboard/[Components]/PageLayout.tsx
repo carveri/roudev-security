@@ -128,6 +128,7 @@ const PageLayout = ({children1, session}) => {
                 setActivarNotificacion={setActivarNotificacion}
                 activarPuntos={activarPuntos}
                 setActivarPuntos={setActivarPuntos}
+                session={session}
               />
 
 

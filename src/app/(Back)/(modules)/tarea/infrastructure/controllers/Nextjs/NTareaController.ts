@@ -17,6 +17,11 @@ export class NTareaController {
         return TareaContainer.tarea.getOneById.run(id)
     }
 
+    async getForUser(req:Request, {params}:IParams){
+        const {id} = await params
+        return TareaContainer.tarea.getForUser.run(id)
+    }
+
     async update(req:Request, {params}:IParams){
         const {id} = await params
         const {nombreTarea,  fechaInicio, fechaTermino, etapaTarea, creadorTarea, responsableTarea, equipoResponsableTarea, urgenciaTarea, descripcionDeTarea, aportantes, equipoId, proyectoId, userId} = await req.json()

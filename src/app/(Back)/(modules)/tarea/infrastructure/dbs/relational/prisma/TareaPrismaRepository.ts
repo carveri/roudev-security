@@ -43,6 +43,18 @@ export class TareaPrismaRepository implements TareaRepository {
         })
     }
 
+    async getForUserId(id:string):Promise<Tarea[]>{
+        return await prisma.tarea.findMany({
+            where:{
+                userId: id
+            },
+            include:{
+                proyecto: true
+            }
+        })
+
+    }
+
     async update(tarea: Tarea): Promise<void> {
 
         console.log('tarea:', tarea);

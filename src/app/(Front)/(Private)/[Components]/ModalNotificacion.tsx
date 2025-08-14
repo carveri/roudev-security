@@ -5,6 +5,7 @@ import { dataCuerpoPerfil } from './utils/dataCuerpoPerfil';
 import { redirect, useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react"
 import { dataCuerpoNotificacion } from './utils/dataCuerpoNotificaciones';
+import { useProyectosNavbar } from '../[stores]/homeStore';
 // para poder hacer el cierre de session
 //import { useAuth } from "react-oidc-context";
 
@@ -15,6 +16,27 @@ const ModalNotificacion = ({setActivar, activarDetalleNotificacion,  setActivarM
     const [activarDetalle, setActivarDetalle] = useState(false)
     const [nombreTarea, setNombreTarea] = useState('')
     const [nombreProyecto, setNombreProyecto] = useState('')
+
+
+    const proyectos = useProyectosNavbar((state) => state.proyectos)
+
+    console.log('proooo;', proyectos);
+
+    const nombreProy2 = ()=>{
+    
+    const res = proyectos.map((el)=>{
+      //if(el.proyecto?.nombreProyecto)
+      return el?.nombreProyecto
+    })
+    return res
+  }
+  const unicos= [...new Set(nombreProy2())]
+
+
+  console.log('nombreproyeto:', nombreProy2());
+  
+  console.log('sin en la notii:', unicos);
+    
 
     const router = useRouter()
     //const {} = useSession()
@@ -79,15 +101,15 @@ const ModalNotificacion = ({setActivar, activarDetalleNotificacion,  setActivarM
         </section>
         <section className='w-full h-[75%] '>
             <ul className='flex-col justify-start z-50  max-h-[79%] overflow-auto'>
-                {dataCuerpoNotificacion.map((el)=>{
-                    return <>
-                        <button onClick={(e)=>handleClickAbrirNoti(e, el.id, el.nombre, el.tarea)} name={el.nombre} className={` flex cursor-pointer w-full hover:bg-gray-100 h-10 border border-gray-50 px-3 items-center`} key={el.id}>
+                {proyectos.map((el)=>{
+                    return <div key={el.id}>
+                        <button  onClick={(e)=>handleClickAbrirNoti(e, el.id, el.nombre, el.tarea)} name={el.nombre} className={` flex cursor-pointer w-full hover:bg-gray-100 h-10 border border-gray-50 px-3 items-center`}>
                         <div className='w-4 h-4 mr-1 grid place-items-center rounded-full bg-blue-500 text-white font-semibold'>
                             3
                         </div>
                         <div  className='flex justify-between w-full ml-3'>
-                            {el.nombre}
-                            <img className=' w-3 h-3' src={el.icono} alt="sa" />
+                            {el.nombreProyecto}
+                            <img className=' w-3 h-3' src={`${!el.iconoProyecto ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/comida.png': el.iconoProyecto}`} alt="sa" />
                         </div>
                     </button>
                     <div>
@@ -95,22 +117,26 @@ const ModalNotificacion = ({setActivar, activarDetalleNotificacion,  setActivarM
                         <div className='ml-[265px] fixed   w-[250px] max-h-[108px] overflow-auto'>
                                         <ul className={`text-(length:--tamañoLetraChica) grid grid-rows-${nombreTarea.length} bg-white   `}>
                                             {nombreTarea.map((el)=>{
-                                                return <button onClick={handleClickAbrirTareaNotificacion} className=' cursor-pointer  flex justify-between items-center border border-gray-100 py-2 hover:bg-gray-100 px-5' key={el.id}>
+                                                return <div className='ml-3' key={el.id}>
+
+                                                    <button onClick={handleClickAbrirTareaNotificacion} className=' w-full cursor-pointer  flex justify-between items-center  py-2 hover:bg-gray-100 px-5' >
                                                     <div className='flex '>
                                                         <div className='w-4 h-4 bg-red-400 rounded-full text-white mr-2'>
                                                             2
                                                         </div>
                                                         {el}
                                                     </div>
-                                                    <img className='w-2 h-2' src="https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/cruz3.png" alt="sd" />
+                                                    <img className='w-3 h-3' src="https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png" alt="sd" />
                                                 </button>
+
+                                                </div>
                                             })}
                                         </ul>
                                     </div>
                     
                     }
                     </div>
-                    </>
+                    </div>
                 })}
             </ul>
             

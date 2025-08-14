@@ -114,21 +114,27 @@ const ModalTareas = ({setAbrirModalTareas, acepColaborador, session}) => {
   
 
   const pintar = ()=>{
+    if(tareas[0]?.responsableTarea !== session.user.id){
+      return <>
+        <input onClick={handleClickCheckBox} onChange={handleChangeCheckBox} checked={activarCheck}  className="cursor-pointer w-[16px] h-[16px] "  type="checkbox" /><div  onClick={()=>setActivarCheck(!activarCheck)} className={`pl-2 font-semibold text-blue-500 cursor-pointer hover:underline py-3`}>Quiero aportar a la Tarea</div>
+      </>
+    }
+
+    
+
+    if(tareas[0].aportantes.some((el)=>el === session.user.id)){
+      return <div className="text-red-600 font-semibold pl-1 underline">
+            Ya Aportas a esta tarea
+      </div>
+    }
+
     if(tareas[0]?.responsableTarea === session.user.id){
     return <div className="text-violet-600 font-semibold pl-1 underline">
           Eres el Responsable de esta tarea
     </div>
     }
-    else if(tareas[0].aportantes.some((el)=>el === session.user.id)){
-      return <div className="text-red-600 font-semibold pl-1 underline">
-            Ya Aportas a esta tarea
-      </div>
-    }
-    else{
-      return <>
-        <input onClick={handleClickCheckBox} onChange={handleChangeCheckBox} checked={activarCheck}  className="cursor-pointer w-[16px] h-[16px] "  type="checkbox" /><div  onClick={()=>setActivarCheck(!activarCheck)} className={`pl-2 font-semibold text-blue-500 cursor-pointer hover:underline py-3`}>Quiero aportar a la Tarea</div>
-      </>
-    }
+
+    
   }
   
 

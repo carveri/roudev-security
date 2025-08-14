@@ -1,6 +1,7 @@
 
 import { NextResponse } from "next/server"
 import { detalleFlujoDeCaja } from "./controller"
+import { NFlujoController } from "@/app/(Back)/(modules)/flujo/infrastructure/controllers/NextJs/NFlujoController"
 //import { IPermisoParams } from "@/app/Interfaces/IParams"
 
 interface Params {
@@ -11,9 +12,20 @@ export interface IParams {
     params: Params
 }
 
-export const GET = async(req:Request,{params}:IParams)=>{
+const controller = new NFlujoController()
+
+export const GET = async(req:Request, {params}:IParams)=>{
     try {
-        return NextResponse.json(await detalleFlujoDeCaja.getOneFlujoDeCaja(req, {params}))
+        return NextResponse.json(await controller.getOneById({params}))
+    } catch (error) {
+        return NextResponse.json(error)
+    }
+}
+
+
+export const PUT = async(req:Request, {params}:IParams)=>{
+    try {
+        return NextResponse.json(await controller.update(req, {params}))
     } catch (error) {
         return NextResponse.json(error)
     }
@@ -22,7 +34,7 @@ export const GET = async(req:Request,{params}:IParams)=>{
 
 export const DELETE = async(req:Request,{params}:IParams)=>{
     try {
-        return NextResponse.json(await detalleFlujoDeCaja.deleteOneFlujoDeCaja(req,{params}))
+        return NextResponse.json(await controller.delete(req,{params}))
     } catch (error) {
         return NextResponse.json(error)
     }
