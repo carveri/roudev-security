@@ -86,14 +86,66 @@ const FiltrosMisProyectos = ({misProy, session}) => {
   return (
     <>
     <div className={`${abrirModal && ' opacity-15'} h-[8%] w-[75%] flex items-end justify-end mb-3 -mt-5 `}>
-          <button onClick={handleClickAbrirFiltroFechaInicio} className='w-24 px-1 h-7 cursor-pointer flex items-center justify-between text-(length:--tamañoLetraChica) border-b border-gray-200'>
+          <button onClick={handleClickAbrirFiltroStatus} className='cursor-pointer ml-4 w-24 px-1 h-7 flex items-center justify-between text-(length:--tamañoLetraChica) border-b border-gray-200'>
             <div>
-              Fecha Inicio
+              Finalidad
             </div>
             <div>
               <img className='w-3 h-3' src="https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png" alt="x" />
             </div>
           </button>
+          <div>
+            {abrirFiltrosStatus &&
+            <div className='w-[5%] -ml-[97px] h-[90px] mt-[5px] z-50   absolute   max-h-[90px] overflow-auto bg-white'>
+              {dataStatus.map((el)=>{
+                return <div onClick={(e)=>handleClickSelectStatus(e, el.id)} className='text-(length:--tamañoLetraChica) py-[6px] pl-2 cursor-pointer hover:bg-gray-100' key={el.id}>
+                  {el.status}
+                </div>
+              })}
+            </div>
+          }
+          </div>
+
+          <button onClick={handleClickAbrirFiltroStatus} className='cursor-pointer ml-4 w-24 px-1 h-7 flex items-center justify-between text-(length:--tamañoLetraChica) border-b border-gray-200'>
+            <div>
+              Tipo
+            </div>
+            <div>
+              <img className='w-3 h-3' src="https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png" alt="x" />
+            </div>
+          </button>
+          <div>
+            {abrirFiltrosStatus &&
+            <div className='w-[5%] -ml-[97px] h-[90px] mt-[5px] z-50   absolute   max-h-[90px] overflow-auto bg-white'>
+              {dataStatus.map((el)=>{
+                return <div onClick={(e)=>handleClickSelectStatus(e, el.id)} className='text-(length:--tamañoLetraChica) py-[6px] pl-2 cursor-pointer hover:bg-gray-100' key={el.id}>
+                  {el.status}
+                </div>
+              })}
+            </div>
+          }
+          </div>
+
+
+          <button onClick={handleClickAbrirFiltroStatus} className='cursor-pointer ml-4 w-24 px-1 h-7 flex items-center justify-between text-(length:--tamañoLetraChica) border-b border-gray-200'>
+            <div>
+              Fechas 
+            </div>
+            <div>
+              <img className='w-3 h-3' src="https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png" alt="x" />
+            </div>
+          </button>
+          <div>
+            {abrirFiltrosStatus &&
+            <div className='w-[5%] -ml-[97px] h-[90px] mt-[5px] z-50   absolute   max-h-[90px] overflow-auto bg-white'>
+              {dataStatus.map((el)=>{
+                return <div onClick={(e)=>handleClickSelectStatus(e, el.id)} className='text-(length:--tamañoLetraChica) py-[6px] pl-2 cursor-pointer hover:bg-gray-100' key={el.id}>
+                  {el.status}
+                </div>
+              })}
+            </div>
+          }
+          </div>
           
           <button onClick={handleClickAbrirFiltroStatus} className='cursor-pointer ml-4 w-24 px-1 h-7 flex items-center justify-between text-(length:--tamañoLetraChica) border-b border-gray-200'>
             <div>
@@ -114,6 +166,7 @@ const FiltrosMisProyectos = ({misProy, session}) => {
             </div>
           }
           </div>
+
           <button onClick={handleClickCrearProyecto} className="ml-4 rounded px-1 flex h-[60%]  w-[10%] justify-between items-center border-b-2 hover:border-b hover:border-blue-500 border-blue-300  text-black text-(length:--tamañoLetraChica)">
             <div className="w-[9%] grid items-center">
               <img className="w-[100%] h-[100%]" src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/mas.png' width={15} height={15} alt="s"/> 

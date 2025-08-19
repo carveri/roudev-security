@@ -21,6 +21,11 @@ export class NTareaController {
         const {id} = await params
         return TareaContainer.tarea.getForUser.run(id)
     }
+    
+    async getForProyectoId(req:Request, {params}:IParams){
+        const {id} = await params
+        return TareaContainer.tarea.getForProyectoId.run(id)
+    }
 
     async update(req:Request, {params}:IParams){
         const {id} = await params

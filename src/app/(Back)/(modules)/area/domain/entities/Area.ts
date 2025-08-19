@@ -1,3 +1,5 @@
+import * as z from "zod";
+
 interface Todos {
     id:string
 }
@@ -5,7 +7,6 @@ interface Todos {
 export interface ITodos {
     todos: Todos[] 
 }
-
 
 
 export class Area {

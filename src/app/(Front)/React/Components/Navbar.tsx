@@ -88,18 +88,10 @@ const Navbar = ({session, activarPuntos, setActivarPuntos, activarNotificacion, 
     return res
   }
 
-  // const {proyectos, updateProyectosNavbar} =  useProyectosNavbar()
-
-
   console.log('nombrepro:', nombreProy());
-
-
-
-  // const [proyecto] = lista
-  // const [nombreProyecto] = proyecto
+  console.log('aporta;', apor);
   
-  
-  
+
 
 
   //const imagenLupa = <img src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/azure.png' alt="o" />

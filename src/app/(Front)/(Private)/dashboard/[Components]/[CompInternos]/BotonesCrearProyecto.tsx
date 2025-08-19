@@ -23,12 +23,12 @@ const BotonesCrearProyecto = ({setAbrirModal, presupuestoDelProyecto,  session, 
     const finalidadProyectoId = idFinalidadProyecto
     const tipoProyectoId = idTipoProyecto
     const ceo = [userIdSession]
-    const todos =
+    const manyUsers =
       {id: userIdSession}
     
 
 
-    const data = {nombreProyecto, presupuestoDelProyecto, id1, fechaInicio, todos, statusProyecto,  responsableProyecto, finalidadProyectoId, tipoProyectoId, fechaTermino, ceo}
+    const data = {nombreProyecto, presupuestoDelProyecto, id1, fechaInicio, manyUsers, statusProyecto,  responsableProyecto, finalidadProyectoId, tipoProyectoId, fechaTermino, ceo}
     console.log(data);
     const ruta = 'proyecto'
     postData({ruta, data})
@@ -43,13 +43,13 @@ const BotonesCrearProyecto = ({setAbrirModal, presupuestoDelProyecto,  session, 
   }
 
   return (
-    <div className='h-[35%] w-full flex justify-end items-end gap-x-2'>
+    <div className='h-[35%] w-full flex justify-end items-end gap-x-2 text-[11px]'>
                 {nombreProyecto !== '' && 
-                    <button onClick={handleClickCrearProyecto}  className='h-[100%] w-[30%]  rounded cursor-pointer bg-blue-500 hover:bg-blue-600  hover:duration-300  text-white font-bold text-(length:--tamañoLetraChica)'>
+                    <button onClick={handleClickCrearProyecto}  className='h-[100%] w-[30%]  rounded cursor-pointer bg-blue-500 hover:bg-blue-600  hover:duration-300  text-white font-bold '>
                     Crear Proyecto
                   </button>
                 }
-                  <button onClick={handleClickVolverCrearProyecto}  className='h-[100%] w-[20%]  rounded cursor-pointer bg-black hover:bg-hoverColorBotonCerrar  hover:duration-300  text-white font-bold text-(length:--tamañoLetraChica)'>
+                  <button onClick={handleClickVolverCrearProyecto}  className='h-[100%] w-[20%]  rounded cursor-pointer bg-black hover:bg-hoverColorBotonCerrar  hover:duration-300  text-white font-bold '>
                     Cerrar
                   </button>
                 </div>

@@ -8,7 +8,7 @@ export class AreaPrismaRepository implements AreaRepository{
 
     async create(area:Area):Promise<void>{
         const {id, nombreArea, todos} = await area
-        console.log('todos:', todos, 'id', id, 'nombrearea:', nombreArea);
+        //console.log('todos:', todos, 'id', id, 'nombrearea:', nombreArea);
         
         await prisma.area.create({
             data:{

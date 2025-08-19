@@ -14,6 +14,7 @@ export const TareaContainer = {
         getAll: new TareaGetAll(tareaRepository),
         getOneById: new TareaGetOneById(tareaRepository),
         getForUser: new TareaForUserId(tareaRepository),
+        getForProyectoId: new TareaForUserId(tareaRepository),
         update: new TareaUpdate(tareaRepository),
         delete: new TareaDelete(tareaRepository)
     }

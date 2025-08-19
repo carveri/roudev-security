@@ -1,6 +1,9 @@
-import React from 'react'
 
+//import IDataComentarios from "../../../../Interfaces/IPublic/IDataComentarios";
+
+// padre: Front/Public/home/page
 const BadgeComentarios = ({el}) => {
+
   return (
     <div className="w-full h-full border border-gray-200 rounded-lg p-4 grid grid-rows-5 py-10">
         <section className='text-lg'> 

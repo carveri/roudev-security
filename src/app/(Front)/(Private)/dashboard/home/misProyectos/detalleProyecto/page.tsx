@@ -126,7 +126,7 @@ useEffect(()=>{
 
       <div className='w-[70%] '>
         <header className='w-full h-12 grid place-content-center font-semibold text-gray-600'>
-          Modificar el Cargo del Usuario
+          Cargos de Usuarios
         </header>
         <TablaCargoUsuario
           usersOnProyectos={usersOnProyectos}
@@ -142,7 +142,7 @@ useEffect(()=>{
     </div>
     <div className='w-[75%] h-[6%] flex items-end justify-end '>
       <div className='w-[19%] h-[80%] flex items-center justify-end gap-x-2 '>
-        <button onClick={()=>router.back()} className='cursor-pointer w-[80%] font-semibold h-[100%] bg-violet-300 hover:bg-violet-500 text-white text-[11px] rounded'>
+        <button onClick={()=>router.back()} className='cursor-pointer w-[80%] font-semibold h-[100%] bg-violet-500 hover:bg-violet-600 text-white text-[11px] rounded'>
           Volver
         </button>
         {/* <button onClick={()=>router.back()} className='cursor-pointer w-[80%] font-semibold h-[100%] bg-blue-500 hover:bg-blue-600 text-white text-[11px] rounded'>

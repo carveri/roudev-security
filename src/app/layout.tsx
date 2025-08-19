@@ -31,7 +31,7 @@ import "./globals.css";
 // });
 
 export const metadata: Metadata = {
-  title: "Roudev-sep",
+  title: "Roudev",
   description: "Gestiona bien tu startUp",
 };
 

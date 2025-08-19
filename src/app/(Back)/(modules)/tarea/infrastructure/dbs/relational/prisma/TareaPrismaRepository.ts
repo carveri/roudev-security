@@ -32,7 +32,25 @@ export class TareaPrismaRepository implements TareaRepository {
 
     async getAll(): Promise<Tarea[]> {
         
-        return await prisma.tarea.findMany()
+        const url = new URL(req.url)
+
+        const proyectoId:any = url.searchParams.get("proyectoId")
+        const userId:any = url.searchParams.get("userId")
+        const status:any = url.searchParams.get("status")
+        //const filtro:any = url.searchParams.get("filtro")
+
+        //const {id} = await params
+        const oneTarea = await prisma.tarea.findMany({
+            where:{
+                proyectoId: proyectoId,
+                AND:{
+                
+                    statusTarea: status,
+                   // etapaTarea: filtro
+                }
+            }
+        })
+        return oneTarea
     }
 
     async getOneById(id: string): Promise<Tarea> {
@@ -53,6 +71,20 @@ export class TareaPrismaRepository implements TareaRepository {
             }
         })
 
+    }
+
+
+    async getForProyectoId(id:string):Promise<Tarea[]>{
+        return await prisma.tarea.findMany({
+            where:{
+                proyectoId:{
+                    equals: id
+                }
+            },
+            include:{
+                user: true
+            }
+        })
     }
 
     async update(tarea: Tarea): Promise<void> {

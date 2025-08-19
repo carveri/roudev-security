@@ -1,11 +1,12 @@
 'use client'
 
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { dataCuerpoPerfil } from './utils/dataCuerpoPerfil';
 import { redirect, useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react"
 import { dataCuerpoNotificacion } from './utils/dataCuerpoNotificaciones';
-import { useProyectosNavbar } from '../[stores]/homeStore';
+import { useGetTareas, useProyectosNavbar } from '../[stores]/homeStore';
+import { getDataLista } from '../../React/Fetch/getDataLista';
 // para poder hacer el cierre de session
 //import { useAuth } from "react-oidc-context";
 
@@ -22,20 +23,49 @@ const ModalNotificacion = ({setActivar, activarDetalleNotificacion,  setActivarM
 
     console.log('proooo;', proyectos);
 
-    const nombreProy2 = ()=>{
-    
-    const res = proyectos.map((el)=>{
-      //if(el.proyecto?.nombreProyecto)
-      return el?.nombreProyecto
-    })
-    return res
+
+
+function eliminarDuplicados(array, propiedad) {
+  const uniqueObjects = {};
+  const result = [];
+
+  for (const item of array) {
+    const key = item[propiedad];
+    if (!uniqueObjects[key]) {
+      uniqueObjects[key] = true;
+      result.push(item);
+    }
   }
-  const unicos= [...new Set(nombreProy2())]
+  return result;
+}
+
+const {tareas, getTareas} = useGetTareas()
+
+const myArraySinDuplicados = eliminarDuplicados(proyectos, 'nombreProyecto');
+
+console.log('saas 22xx', myArraySinDuplicados);
+
+    // const getTareas = ()=>{
+    //     const ruta = ''
+    //     const url = ''
+    //     getDataLista({ruta, url})
+    // }
+
+    useEffect(()=>{
+        getTareas('9c1e5fda-e9c2-4b7c-af3e-e5597179ac0a', '7a4bc8f8-e520-40fa-9ed0-e548a4be3c5c')
+    }, [])
+
+    console.log('tareas desde zusx:', tareas);
+    
 
 
-  console.log('nombreproyeto:', nombreProy2());
+
+  //const unicos= [...new Set(nombreProy2().nombre)]
+
+
+//   console.log('nombreproyeto:', nombreProy2());
   
-  console.log('sin en la notii:', unicos);
+//   console.log('sin en la notii:', unicos);
     
 
     const router = useRouter()
@@ -101,15 +131,15 @@ const ModalNotificacion = ({setActivar, activarDetalleNotificacion,  setActivarM
         </section>
         <section className='w-full h-[75%] '>
             <ul className='flex-col justify-start z-50  max-h-[79%] overflow-auto'>
-                {proyectos.map((el)=>{
+                {myArraySinDuplicados.map((el)=>{
                     return <div key={el.id}>
                         <button  onClick={(e)=>handleClickAbrirNoti(e, el.id, el.nombre, el.tarea)} name={el.nombre} className={` flex cursor-pointer w-full hover:bg-gray-100 h-10 border border-gray-50 px-3 items-center`}>
-                        <div className='w-4 h-4 mr-1 grid place-items-center rounded-full bg-blue-500 text-white font-semibold'>
+                        <div className='w-5 h-4 mr-1 grid place-items-center rounded-full bg-blue-500 text-white font-semibold'>
                             3
                         </div>
-                        <div  className='flex justify-between w-full ml-3'>
-                            {el.nombreProyecto}
-                            <img className=' w-3 h-3' src={`${!el.iconoProyecto ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/comida.png': el.iconoProyecto}`} alt="sa" />
+                        <div  className='flex justify-between w-full ml-3 capitalize'>
+                            {el?.nombreProyecto.length > 25 ? el.nombreProyecto.slice(0,25) + '...' : el.nombreProyecto}
+                            <img className=' w-3 h-3 ' src={`${!el.iconoProyecto ? 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png': el.iconoProyecto}`} alt="sa" />
                         </div>
                     </button>
                     <div>

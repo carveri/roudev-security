@@ -24,8 +24,8 @@ const ModalTareas = ({setAbrirModalTareas, acepColaborador, session}) => {
           getTareas(tareaSeleccionadaId)
         }, [idTareaSeleccioando])
   
-        console.log('tareas desde zusss:', tareas);
-        console.log('sess:', session.user.id);
+        // console.log('tareas desde zusss:', tareas);
+        // console.log('sess:', session.user.id);
 
         const idUser = session.user.id
         

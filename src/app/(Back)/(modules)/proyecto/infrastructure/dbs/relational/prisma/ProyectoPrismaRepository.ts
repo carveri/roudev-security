@@ -38,7 +38,8 @@ export class ProyectoPrismaRepository implements ProyectoRepository{
         
         return await prisma.proyecto.findMany({
             include:{
-                users: true
+                users: true,
+                tareas: true
             },
             orderBy:{
                 nombreProyecto:'asc'

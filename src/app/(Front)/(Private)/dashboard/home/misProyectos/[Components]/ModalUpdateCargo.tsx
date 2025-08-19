@@ -87,10 +87,10 @@ const ModalUpdateCargo = ({setabrirModalUpdateCargo}) => {
 
   return (
     <div className=' w-[400px] h-[640px] '>
-        <header className='w-full text-[13px] h-20 grid place-items-center font-semibold text-gray-600'>
-          Actualizar laboralmente al Usuario
+        <header className='w-full text-[13px] h-20 grid place-items-center font-semibold text-gray-500'>
+          Actualizar cargo del Usuario
         </header>
-        <main className='w-full h-full'>
+        <main className='w-full h-full text-(length:--tamañoLetraChica) text-gray-700'>
           <section className='w-full h-[11%] grid '>
             <div className='h-[30%] '>
               Nombre del Usuario:
@@ -157,11 +157,11 @@ const ModalUpdateCargo = ({setabrirModalUpdateCargo}) => {
               lista...
             </div>
           </section>
-          <section className='w-full h-8  flex gap-x-2 text-white  justify-end font-semibold'>
-            <button className='w-[40%] bg-blue-500 rounded cursor-pointer' >
+          <section className='w-full h-8  flex gap-x-2 text-white  justify-end font-semibold text-[11px]'>
+            <button className='w-[35%] bg-blue-700 hover:bg-blue-800 rounded cursor-pointer' >
               Confirmar Cambios
             </button>
-            <button onClick={()=>{setabrirModalUpdateCargo(false)}} className='w-[15%] bg-black rounded cursor-pointer'>
+            <button onClick={()=>{setabrirModalUpdateCargo(false)}} className='w-[15%] bg-gray-900 hover:bg-black rounded cursor-pointer'>
               Cerrar
             </button>
           </section>

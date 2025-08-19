@@ -6,6 +6,7 @@ export interface TareaRepository {
     getAll():Promise<Tarea[]>
     getOneById(id:string):Promise<Tarea | null>
     getForUserId(id:string):Promise<Tarea[]>
+    getForProyectoId(id:string):Promise<Tarea[]>
     update(tarea:Tarea):Promise<void>
     delete(id:string):Promise<void>
 }

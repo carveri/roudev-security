@@ -7,6 +7,7 @@ import { useFinalidadProyectos, useIdProyectoProUpdated, useProyectoUpdate, useT
 import { getDataLista } from "../../../../../React/Fetch/getDataLista";
 import BadgeAbrirLista from "./Componentes/BadgeAbrirLista";
 import { dataStatus } from "../utils/dataStatus";
+import { updateData } from "../../../../../React/Fetch/updateData";
 
 const page = () => {
 
@@ -158,13 +159,14 @@ const handleClickCrearProyecto=(e)=>{
       const nombreProyecto = nombrePro
       //const statusProyecto = status
       //const finalidadProyectoId = fina
-      const data = {nombrePro}
+      const presupuestoProyecto = valorInicial5
+      const data = {nombreProyecto, presupuestoProyecto}
       console.log({data});
-      // const ruta= 'proyecto'
-      // const id = idProyectoUpdated
-      // updateData({ruta, id, data})
+      const ruta= 'proyecto'
+      const id = idProyectoUpdated
+      updateData({ruta, id, data})
 
-      // alert('Se modfico el proyecto correctamente')
+      alert('Se modfico el proyecto correctamente')
 
       
    }
@@ -312,7 +314,7 @@ const handleClickCrearProyecto=(e)=>{
               <div className='h-[55%] w-full grid justify-items-end items-end'>
                
                 
-                  <div className="flex w-full h-full justify-end gap-x-2 text-[12px]">
+                  <div className="flex w-full h-full justify-end gap-x-2 text-[11px]">
                     <button  onClick={handleVolverCrearProyecto}  className={` h-[90%] w-[7%] rounded cursor-pointer bg-violet-600 hover:bg-hoverColorBotonVolver  hover:duration-300  text-white font-bold `}>
                       Volver
                     </button>
