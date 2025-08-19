@@ -167,12 +167,12 @@ const FiltrosMisProyectos = ({misProy, session}) => {
           }
           </div>
 
-          <button onClick={handleClickCrearProyecto} className="ml-4 rounded px-1 flex h-[60%]  w-[10%] justify-between items-center border-b-2 hover:border-b hover:border-blue-500 border-blue-300  text-black text-(length:--tamañoLetraChica)">
+          <button onClick={handleClickCrearProyecto} className="cursor-pointer ml-4 rounded px-1 flex h-[60%]  w-[9%] justify-between items-center border-b-2 hover:border-b hover:border-green-500 border-green-300  text-black text-(length:--tamañoLetraChica)">
             <div className="w-[9%] grid items-center">
               <img className="w-[100%] h-[100%]" src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/mas.png' width={15} height={15} alt="s"/> 
             </div>
             <div className="text-(length:--tamañoLetraChica) cursor-pointer w-[90%] grid items-center text-gray-800 ">
-              Crear un Proyecto
+              Crear Proyecto
             </div> 
           </button>
           </div>

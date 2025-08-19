@@ -22,12 +22,12 @@ export class EstadoPrismaRepository implements EstadoRepository {
 
     async getAll(id:string, costosOperativos:number): Promise<Estado[] > {
 
-        console.log('id:', id, 'costosoperativosrepository:', costosOperativos);
+        //console.log('id:', id, 'costosoperativosrepository:', costosOperativos);
 
         return await prisma.estadoDeResultados.findMany({
            where:{
                 id:id,
-                costosOperativos:9
+                costosOperativos: costosOperativos
            }
         })
     }

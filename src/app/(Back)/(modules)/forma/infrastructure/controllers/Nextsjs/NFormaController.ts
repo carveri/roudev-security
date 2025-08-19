@@ -1,12 +1,25 @@
 import { FormaContainer } from "@/app/(Back)/(modules)/shared/infrastructure/FormaContainer";
 import { IParams } from "@/app/Interfaces/IParametros";
+import { z } from "zod";
+
+
+const list = z.object({
+    manyUsers: z.string().array()
+})
+// schemas de zod
+const createFormaSchema = z.object({
+    id: z.string().nonempty(),
+    nombreFormaPago: z.string().array(),
+    numeroCuotas: z.number(),
+    manyUsers: z.object(z.string())
+})
 
 
 export class NFormaController {
 
     async create(req:Request){
 
-        const {id, nombreFormaPago, numeroCuotas, manyUsers} = await req.json()
+        const {id, nombreFormaPago, numeroCuotas, manyUsers} = await createFormaSchema.parse(req.json()) 
         return FormaContainer.forma.create.run(id, nombreFormaPago, numeroCuotas, manyUsers)
     }
 

@@ -1,5 +1,6 @@
 import { Interface } from "readline"
 import { EstadoContainer } from "../../../shared/infrastructure/EstadoContainer"
+import { z } from "zod";
 
 interface IParams {
     id:string
@@ -9,10 +10,15 @@ export interface IParams4{
     params: IParams
 }
 
+const createEstadoSchema = z.object({
+    id: z.string(),
+    costosOperativos: z.number()
+})
+
 export class NEstadoController {
 
     async create(req:Request){
-        const {id, costosOperativos} = await req.json()
+        const {id, costosOperativos} = await createEstadoSchema.parse(req.json()) 
         return EstadoContainer.estado.create.run(id, costosOperativos)
     }
 
@@ -25,6 +31,8 @@ export class NEstadoController {
 
         console.log('id:', id, 'costosoperativos:', costosOperativos);
         return EstadoContainer.estado.getAll.run(id, costosOperativos)
+
+        
     }
 
     async getOneById({params}:IParams4){
@@ -34,11 +42,11 @@ export class NEstadoController {
 
     async update(req:Request, {params}: IParams4){
         const {id} = await params
-        const {costosOperativos} = await req.json()
+        const {costosOperativos} = await createEstadoSchema.parse(req.json())
         return EstadoContainer.estado.update.run(id, costosOperativos)
     }
 
-    async delete({params}){
+    async delete({params}:IParams4){
         const {id} = await params
         return EstadoContainer.estado.delete.run(id)
     }

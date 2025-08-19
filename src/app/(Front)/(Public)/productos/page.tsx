@@ -28,7 +28,7 @@ const page = () => {
                 <button className='w-[10%] font-semibold text-tamañoLetraChica h-8 bg-gradient-to-r from-cyan-600 to-cyan-900 text-white  grid place-content-center mr-3 cursor-pointer'>
                     Todos 
                 </button>
-                <button className='w-[10%] font-semibold text-tamañoLetraChica h-8  bg-gradient-to-r from-green-400 to-[#10a6bd] text-white grid place-content-center mr-3 cursor-pointer'>
+                <button className='w-[10%] font-semibold text-tamañoLetraChica h-8  bg-gradient-to-r from-gray-400 to-gray-900  text-white grid place-content-center mr-3 cursor-pointer'>
                     Departamento
                 </button>
                 {/* <article className='w-[10%] h-8 border border-b-colorTextoNavbar grid place-content-center cursor-pointer'>

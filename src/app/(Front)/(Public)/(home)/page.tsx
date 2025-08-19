@@ -172,9 +172,15 @@ const page = async() => {
         </header>
         <main className="h-[75%] w-full  grid grid-cols-4 gap-y-4 gap-x-4 px-4">
           {dataComentarios.map((el)=>{
+            const {id, titulo, comentario, estrellas, fecha, nombre} = el
             return <div key={el.id} className="h-[500px] ">
               <BadgeComentarios
-              el={el}
+              id={id} 
+              titulo={titulo} 
+              comentario={comentario} 
+              estrellas={estrellas}
+              fecha = {fecha}
+              nombre = {nombre}
             />
             </div>
           })}

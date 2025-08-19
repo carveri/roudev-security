@@ -4,7 +4,7 @@ export const dataPerfil1 = [
     {
         id: '1',
         icono: 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/aws.png',
-        titulo: 'Decosof',
+        titulo: 'Roudev',
         descripcion: 'Decosof es el Software especializado en la gestion financiera de empresas de Software'
     },
     {
