@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --verde: #c71414;
+  --verde: #00ff22;
   --tamañoLetra: 14px;
   --tamañoLetraChica: 12px;
   
@@ -25,6 +25,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
   }
 }
 

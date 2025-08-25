@@ -1,0 +1,42 @@
+
+
+main{
+
+    background-color: #d9ffd7;
+    width: 200px;
+    height: 600px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    display: grid;
+    place-items: center;
+
+    
+}
+
+div{
+    width: 150px;
+    height: 500px;
+    background-color: blueviolet;
+    border: 1px solid rgb(211, 211, 211);
+    display: grid;
+    justify-items: center;
+    
+
+
+}
+
+
+button{
+    border: none;
+    width: 100px;
+    height: 30px;
+    font: bold;
+    display: grid;
+    justify-self: center;
+    cursor: pointer;
+    color: white;
+    font-size: 10px;
+    
+    
+}

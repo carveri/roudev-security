@@ -1,6 +1,7 @@
 'use server'
 
 import { postData } from "@/app/(Front)/React/Fetch/postData"
+import { sendEmail } from "@/lib/brevo"
 import { redirect } from "next/navigation"
 //import { redirect } from "next/dist/server/api-utils"
 
@@ -44,6 +45,18 @@ export const createUser = async(formData:FormData)=>{
 
     const ruta = 'user'
     await postData({ruta, data})
+
+    // acá le mando el correo de bienvenida al usuario
+    await sendEmail({
+      title: `Bienvenid@ a Roudev`,
+      to: [
+        {
+          email:email as string,
+          name:primerNombre as string
+        }
+      ],
+      htmlContent:'Tú cuenta de prueba comienza hoy y durara 30 dias corridos, en cualquier momento puedes darte de baja, 3 dias antes de terminar tú prueba se va a activar tú medio de pago, si no necesitas seguir utilizando Roudev.com, puedes rechazarlo sin problemas. Espero que tú prueba te ayude a mejorar la gestion de tus proyectos. Suerte'
+    })
 
 
     //console.log({data});

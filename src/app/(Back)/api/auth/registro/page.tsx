@@ -18,7 +18,7 @@ const page = async() => {
                     alt="Picture of the author"
                 />
               </header> 
-              <p className='text-lg text-blue-800 font-semibold'>
+              <p className='text-lg text-cyan-800 font-semibold'>
                 Roudev
               </p>
             </article>
@@ -34,7 +34,7 @@ const page = async() => {
                   />
                 </header>
                 <main className='w-[90%] text-(length:--tamañoLetra)'>
-                  <header className='font-bold text-[#267c61] pb-1 text-base'>
+                  <header className='font-bold  text-cyan-800 pb-1 text-base'>
                     {el.titulo}
                   </header>
                     <article>
