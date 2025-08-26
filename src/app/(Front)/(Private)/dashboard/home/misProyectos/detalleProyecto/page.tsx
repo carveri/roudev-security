@@ -44,7 +44,7 @@ useEffect(()=>{
 
   return (
     <>
-      <header className='w-[75%] h-[10%] flex items-center  pl-8 font-semibold text-gray-700 '>
+      <header className='w-[75%] h-[10%] flex items-center  pl-8 font-semibold text-gray-700 text-(length:--tamañoLetra)'>
         <div>
           Detalles del Proyecto -
         </div> 

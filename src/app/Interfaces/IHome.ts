@@ -59,3 +59,15 @@ export interface IGestion {
     ruta: string
     url: string
 }
+
+
+export interface IDataCuadrosHome{
+    id:number
+    nombre: string
+    icono: string
+    numero: string
+  }
+
+  export interface IEDataCuadrosHome{
+    e: IDataCuadrosHome
+  }

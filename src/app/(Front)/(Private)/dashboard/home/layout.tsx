@@ -9,7 +9,7 @@ export default async  function RootLayout({children,}: Readonly<{children: React
   
   return  <div className='w-full h-full grid place-items-center '>
   <div className='w-[95%] h-[95%] '>
-    <header className='w-full h-[5%] font-semibold text-gray-600 text-(length:--tamañoLetra) '>
+    <header className='w-full h-[5%] font-semibold text-blue-700 text-(length:--tamañoLetra) '>
       Home
     </header>
     <div className="w-full  h-[5%] flex">

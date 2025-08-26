@@ -4,9 +4,9 @@ import React from 'react'
 
 const BadgeContacto = ({id, avatar, nombre, apellido, cargo, trabajando, email, empresa, siguiendo, proyectos}) => {
   return (
-    <div className='w-full h-full flex shadow-md py-1'>
+    <div className='w-full h-full flex border border-gray-100 py-1 text-(length:--tamañoLetraChica)'>
       <header className='w-[20%] flex items-center justify-center'>
-        <img src={avatar} className='w-10 h-10' alt="d" />
+        <img src={avatar} className='w-8 h-8' alt="d" />
       </header>
       <main className='w-[40%] grid items-center py-1'>
         <div>

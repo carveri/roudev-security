@@ -4,43 +4,28 @@ import React, { useEffect, useState } from 'react'
 import { useIdProyectoPro, useProyectoPorUser } from '../../../../[stores]/homeStore'
 import { getData } from '../../../../../React/Fetch/getData'
 import { getDataLista } from '../../../../../React/Fetch/getDataLista'
-import { postData } from '../../../../../React/Fetch/postData'
 import { updateData } from '../../../../../React/Fetch/updateData'
+import { sendEmailAgregarUser } from "../../../../../../../lib/brevoAgregarUser";
 
 //import { usePathname } from 'next/navigation'
 
 const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
 
-    //const abrirTipos = false
-
-    //const {proyectosUser, getProyectosUser} = useProyectoPorUser()
     const [usuarios, setUsuarios] = useState([])
 
     const idProyy = useIdProyectoPro((state) => state.idProyecto)
-
     const [proyecto, setProyecto] = useState([])
-
-
     const [abrirTipos, setAbrirTipos] = useState(false)
     const [abrirUsuario, setAbrirUsuario] = useState(true)
-
     const [imgPinchado, setImgPinchado] = useState('https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/check2.png')
     const [pinchado, setPinchado] = useState('Email')
-
     const [usuariosAll, setUsuariosAll] = useState([])
-
     const [todos, setTodos] = useState([])
     const [empleado, setempleado] = useState([])
-
-
     const [activarChecked, setActivarChecked] = useState(false)
-
-    //const clonUsuarioAll = [...usuariosAll]
-
     // traer usuarios
     const [usuario, setUsuario] = useState('')
     const [apellido, setApellido] = useState('')
-
 
     const formasDeInvitacion = [
         {
@@ -83,19 +68,12 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
         setPinchado(nombre)
         setImgPinchado(icono)
         traerUsuarios()
-
-
-
         setAbrirTipos(false)
-
-        
-        
     }
 
     // traer usuarios
     const handleChangeSearchRed =(e)=>{
         setUsuario(e.target.value)
-        
     }
 
     const handleClickBiscarUsuario =(e)=>{
@@ -106,11 +84,6 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
         setUsuariosAll(res)
     }
     
-
-    //console.log({usuario});
-
-    //let todos1 = []
-    //let inicio: string[] = []
     
     const handleClickUsarioClick =(e, id, nombre, apellido)=>{
         
@@ -126,16 +99,6 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
         //para empleados 
         empleado.push(id)
         setempleado([...empleado])
-        // if(e.target.name === nombre){
-        //     console.log('pincho el correctp');
-            
-        // }
-        // else {
-        //     console.log('mala la wea');
-            
-        // }
-
-
     }
 
 
@@ -149,27 +112,45 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
     useEffect(()=>{
       traerProyecto()
     }, [])
-  //console.log('proyecto es un objeto:', proyecto);
-    
 
-    //console.log('id del proyecto desde zustand: ', idProyy);
 
     const handleChangeCheckedUsers =(e)=>{
         if(e.target.value === 'on'){
             setActivarChecked(true)
         }
-        //console.log(e.target.value);
-        
     }
 
     const handleClickSeleccionarUsers = ()=>{
         console.log('todos al enviar desde el select:', 'x');
-        //setTodos(todos)
     }
 
 
-    const handleClickConfirmarAgregarUsuario =()=>{
-        console.log('todos al enviar:', {todos});
+    // agregra user por email
+    const handleChangeAgregarUserPorEmail =async(e)=>{
+        console.log(e.target.value);
+        
+    }
+
+    const handleClickConfirmarAgregarUsuarioEmail = async()=>{
+        
+        console.log('emailll');
+        await sendEmailAgregarUser({
+        title: `Invitación a Proyecto en Roudev`,
+        to: [
+                {
+                    email: 'carvajal.cortes.e19@gmail.com',
+                    name: 'Eric Carvajal'
+                }
+            ],
+        htmlContent:'XXXx te a invitado a unirte al Proyecto PROYECTO 1!, tú tienes la decicion de aceptar la invitacion o rechazarla'
+    })
+
+    //alert('Peticion enviada por email')
+        
+    }
+
+    const handleClickConfirmarAgregarUsuarioRed =()=>{
+        //console.log('todos al enviar:', {todos});
 
         const ruta = 'proyecto'
         const id = idProyy
@@ -185,8 +166,20 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
         alert('usuarios agregados al proyecto !!')
         //console.log('que me da empleados:', empleado);
         location.reload()
+    }
+
+    const handleClickConfirmarAgregarUsuarioSlack =()=>{
+        console.log('slack');
         
+    }
+
+    const handleClickConfirmarAgregarUsuarioTeams =()=>{
+        console.log('teams');
         
+    }
+
+    const handleClickConfirmarAgregarUsuarioZoom =()=>{
+        console.log('zooom');
         
     }
     
@@ -194,7 +187,7 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
 
   return (
     <div className='w-[25%] h-[700px] -mt-[700px]  text-(length:--tamañoLetraChica) px-8'>
-        <header className='h-[15%] grid place-items-center font-semibold text-blue-600'>
+        <header className='h-[15%] grid place-items-center font-semibold text-blue-700 text-[12px]'>
             Agregar Usuarios al Proyecto
         </header>
         <main className='h-[70%]'>
@@ -255,7 +248,7 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
                 }
                 {pinchado ==='Email' &&
                     <div className=' h-20 mt-2 z-10'>
-                        <input  type="text" placeholder='juan@gmail.com' className='focus:outline-none pl-4 border border-gray-200 h-10 w-full'/>
+                        <input onChange={handleChangeAgregarUserPorEmail} type="text" placeholder='juan@gmail.com' className='focus:outline-none pl-4 border border-gray-200 h-10 w-full'/>
                     </div>
                 }
 
@@ -313,15 +306,56 @@ const ModalAgregarUsuarios = ({setAbrirAgregar}) => {
                     </div> 
                 }
             </section>
-           
-                  <div className='z-10 flex h-[70px] text-white  gap-x-2 justify-end font-semibold text-(length:--tamañoLetraChica)'>
-                    <button onClick={handleClickConfirmarAgregarUsuario} type='button' className='bg-blue-500 w-[100px] h-[45%] rounded cursor-pointer'>
-                        Confirmar
-                    </button>
-                    <button type='button' onClick={()=>setAbrirAgregar(false)} className='bg-black w-[60px] h-[45%] rounded cursor-pointer'>
-                        Cerrar
-                    </button>
-                  </div>
+                    {pinchado === 'Email' && 
+                        <div className='z-10 flex h-[70px] text-white  gap-x-2 justify-end font-semibold text-(length:--tamañoLetraChica)'>
+                            <button onClick={handleClickConfirmarAgregarUsuarioEmail} type='button' className='bg-blue-500 w-[100px] h-[45%] rounded cursor-pointer'>
+                                Enviar
+                            </button>
+                            <button type='button' onClick={()=>setAbrirAgregar(false)} className='bg-black w-[60px] h-[45%] rounded cursor-pointer'>
+                                Cerrar
+                            </button>
+                        </div>
+                    }
+                    {pinchado === 'Red' && 
+                        <div className='z-10 flex h-[70px] text-white  gap-x-2 justify-end font-semibold text-(length:--tamañoLetraChica)'>
+                            <button onClick={handleClickConfirmarAgregarUsuarioRed} type='button' className='bg-blue-500 w-[100px] h-[45%] rounded cursor-pointer'>
+                                Confirmar
+                            </button>
+                            <button type='button' onClick={()=>setAbrirAgregar(false)} className='bg-black w-[60px] h-[45%] rounded cursor-pointer'>
+                                Cerrar
+                            </button>
+                        </div>
+                    }
+                    {pinchado === 'Slack' && 
+                        <div className='z-10 flex h-[70px] text-white  gap-x-2 justify-end font-semibold text-(length:--tamañoLetraChica)'>
+                            <button onClick={handleClickConfirmarAgregarUsuarioSlack} type='button' className='bg-blue-500 w-[100px] h-[45%] rounded cursor-pointer'>
+                                Buscar
+                            </button>
+                            <button type='button' onClick={()=>setAbrirAgregar(false)} className='bg-black w-[60px] h-[45%] rounded cursor-pointer'>
+                                Cerrar
+                            </button>
+                        </div>
+                    }
+                    {pinchado === 'Teams' && 
+                        <div className='z-10 flex h-[70px] text-white  gap-x-2 justify-end font-semibold text-(length:--tamañoLetraChica)'>
+                            <button onClick={handleClickConfirmarAgregarUsuarioTeams} type='button' className='bg-blue-500 w-[100px] h-[45%] rounded cursor-pointer'>
+                                Conectar
+                            </button>
+                            <button type='button' onClick={()=>setAbrirAgregar(false)} className='bg-black w-[60px] h-[45%] rounded cursor-pointer'>
+                                Cerrar
+                            </button>
+                        </div>
+                    }
+                    {pinchado === 'Zoom' && 
+                        <div className='z-10 flex h-[70px] text-white  gap-x-2 justify-end font-semibold text-(length:--tamañoLetraChica)'>
+                            <button onClick={handleClickConfirmarAgregarUsuarioZoom} type='button' className='bg-blue-500 w-[100px] h-[45%] rounded cursor-pointer'>
+                                Videollamada
+                            </button>
+                            <button type='button' onClick={()=>setAbrirAgregar(false)} className='bg-black w-[60px] h-[45%] rounded cursor-pointer'>
+                                Cerrar
+                            </button>
+                        </div>
+                    }
         </main>
     </div>
   )

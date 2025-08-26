@@ -1,5 +1,3 @@
-import React from 'react'
-
 const BadgeFacturacion = () => {
 
     const factActual = 270602

@@ -1,11 +1,5 @@
 'use client'
 
-import Image from "next/image";
-
-import logo from "../../../React/Assets/Icons/retrospectiveSm.png";
-import lapiz from "../../../React/Assets/Icons/lapiz.png";
-import eliminar from "../../../React/Assets/Icons/eliminar.png";
-//import { dataCabecera } from './../../dashboard/utils/dataSidebar';
 import { useRouter } from "next/navigation";
 import { dataCabecera } from "../proyectos/utils/dataCabecera";
 import { dataCabeceraIniciar } from "../iniciar/utils/dataCabeceraIniciar";

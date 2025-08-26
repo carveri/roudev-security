@@ -16,7 +16,7 @@ export default  function RootLayout({children,}: Readonly<{children: React.React
 
   return  <div className='w-full h-full  grid place-items-center'>
   <div className='w-[95%] h-[95%] '>
-    <header className='w-full h-[5%] font-semibold text-gray-600 text-tamañoLetra '>
+    <header className='w-full h-[5%] font-semibold text-gray-600 text-(length:--tamañoLetra) '>
       Mi Red de Contactos
     </header>
     
@@ -29,7 +29,7 @@ export default  function RootLayout({children,}: Readonly<{children: React.React
             alt='as'
           />
           <div className="flex items-center gap-x-1">
-            <div className="mr-1 text-tamañoLetraChica">
+            <div className="mr-1 text-(length:--tamañoLetraChica)">
               StartUps
             </div>
             
@@ -38,15 +38,15 @@ export default  function RootLayout({children,}: Readonly<{children: React.React
     </div>
     <div className="w-[75%] h-[5%] flex items-center justify-end">
       
-        <header className="w-full h-[7%] font-semibold text-gray-600 text-tamañoLetra">
+        <header className="w-full h-[7%] font-semibold text-gray-600 text-(length:--tamañoLetraChica)">
           Mis Contactos
         </header>
-        <section onClick={()=>setActivarFiltroStartUps(!activarFiltroStartUps)} className="mt-16 text-tamañoLetraChica px-2 cursor-pointer w-[9%] h-[4%] py-3 flex items-center justify-between border-b border-gray-200  duration-75   text-black">
+        <section onClick={()=>setActivarFiltroStartUps(!activarFiltroStartUps)} className="mt-16 text-(length:--tamañoLetraChica) px-2 cursor-pointer w-[9%] h-[6%] py-2 flex items-center justify-between border-b border-gray-200  duration-75   text-black">
             <div>
               Filtros
             </div>
             <div>
-              <img className="w-3 h-3" src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png' alt="" />
+              <img className="w-2 h-2" src='https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/flechaAbajo5.png' alt="" />
             </div>
         </section>
         {activarFiltroStartUps && 
@@ -55,14 +55,9 @@ export default  function RootLayout({children,}: Readonly<{children: React.React
           </div>
         }
     </div>
-    <main className="w-[75%] h-[100%] mt-12 text-tamañoLetraChica">
+    <main className="w-[75%] h-[100%] mt-12 text-(length:--tamañoLetraChica)">
       {children}
     </main>
-    
-      
-        
-        
-    
   </div>
 </div>
 }

@@ -22,11 +22,7 @@ const ModalEliminar = ({setActivarEliminar, nombre, id}) => {
     }
     
 
-    
     const idTareaSeleccioandoPintar = useIdTareaSelecccionado((state) => state.tareaSeleccionadoId)
-    
-    console.log('IDDDDDDDDDD2222:', idTareaSeleccioandoPintar);
-    //console.log();
     
     
 

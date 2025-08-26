@@ -1,35 +1,20 @@
 'use client'
 
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import { dataStatus } from '../utils/dataStatus'
 import Tabla from '../../[Components]/Tabla'
 import ModalCrearProyecto from '../../../[Components]/ModalCrearProyecto'
-import { IFiltrosMisProyectos } from "../../../../../../Interfaces/IHome";
 import ModalAgregarUsuarios from './ModalAgregarUsuarios'
-import { useIdProyectoPro, useIdProyectoProUpdated, useProyectoPorUser } from '../../../../[stores]/homeStore'
-import { getData } from '../../../../../React/Fetch/getData'
-import { getDataLista } from '../../../../../React/Fetch/getDataLista'
+import { useIdProyectoPro} from '../../../../[stores]/homeStore'
 
 const FiltrosMisProyectos = ({misProy, session}) => {
 
-
-
     const [abrirModal, setAbrirModal] = useState(false)
     const [abrirFiltrosStatus, setAbrirFiltrosStatus] = useState(false)
-
     const [status, setStatus] = useState('Activo')
-
     const [abrirAgregar, setAbrirAgregar] = useState(false)
-
-    
-    //const {proyectosUser, getProyectosUser} = useProyectoPorUser()
     const idProyy = useIdProyectoPro((state) => state.updateIdProyecto)
 
-
-
-    
-
-    
 
     const handleClickCrearProyecto =()=>{
     setAbrirModal(!abrirModal)
@@ -77,10 +62,6 @@ const FiltrosMisProyectos = ({misProy, session}) => {
     idProyy(id)
     setAbrirAgregar(!abrirAgregar)
   } 
-
-
-  
-  
 
 
   return (

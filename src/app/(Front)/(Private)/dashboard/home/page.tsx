@@ -9,7 +9,9 @@ import BadgeFacturacion from './[Components]/BadgeFacturacion'
 import { getDataLista } from '../../../React/Fetch/getDataLista'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../../../../(Back)/api/auth/[...nextauth]/route'
+import { IDataCuadrosHome } from '../../../../Interfaces/IHome'
 
+ 
 
 const page = async() => {
 
@@ -23,17 +25,17 @@ const page = async() => {
   const numeroDeProyectos = await gestion('proyectoUser', session?.user?.id)
   const numeroDeEmpleados = await gestion('usersOnProyectos', '77bd7d73-4575-4c3b-b23e-e4de0bf5a44c')
 
-  //console.log('n: proyec:', numeroDeProyectos);
-  
-  //console.log('¿numero de emple', numeroDeEmpleados);
+ 
+
   
 
-  const dataCuadrosHome =[
+
+  const dataCuadrosHome:IDataCuadrosHome[] =[
     {
         id:1,
         nombre: 'N° Proyectos Activos',
         icono: 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/proyecto.png',
-        numero: numeroDeProyectos[0]?.proyectos.length
+        numero: `${numeroDeProyectos[0]?.proyectos.length}`
     },
     {
         id:2,
@@ -43,15 +45,15 @@ const page = async() => {
     },
     {
         id:3,
-        nombre: 'N° Empleados Totales',
+        nombre: 'Facturación Agosto (CLP)',
         icono: 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/ceoSm.png',
-        numero: 19,
+        numero: '190.000'
     },
     {
         id:4,
         nombre: 'Dinero Disponible Total (USD)',
         icono: 'https://roudev-s3-assets.s3.us-east-1.amazonaws.com/AssetsRoudev/Icons/check.png',
-        numero: 36,
+        numero: '35'
     },
     
 ]
@@ -62,10 +64,13 @@ const page = async() => {
         <div className='w-[75%] h-full   '>
           <div className='w-full h-[8%] grid grid-cols-4 gap-x-24 text-(length:--tamañoLetraChica)'>
             {dataCuadrosHome.map((el)=>{
-              
+              const {id, nombre, icono, numero} = el
               return <ComHome
-                el={el}  
-                key={el.id}
+                id = {id}
+                nombre = {nombre}
+                icono = {icono}
+                numero = {numero}
+                key={id}
               />
             })}
           </div>
@@ -82,7 +87,6 @@ const page = async() => {
               <div className='w-[900px] h-[200px] '>
                 <header className='w-full h-12 flex items-center justify-center '>Unit Economics por Proyecto</header>
                 <TablaFinancieroHome
-                  dataMisProyectos={dataMisProyectosDummy}
                   ruta={true}
                 />
               </div>

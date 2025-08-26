@@ -15,12 +15,9 @@ main{
 }
 
 div{
-    width: 150px;
-    height: 500px;
-    background-color: blueviolet;
-    border: 1px solid rgb(211, 211, 211);
-    display: grid;
-    justify-items: center;
+    
+    display: flex;
+    
     
 
 
@@ -37,6 +34,7 @@ button{
     cursor: pointer;
     color: white;
     font-size: 10px;
+    background-color: #b00213;
     
     
 }

@@ -25,7 +25,7 @@ const smtpEmail = new SendSmtpEmail()
 
 export const sendEmail = async({title, to, htmlContent}:ParamsEmail)=>{
     try {
-        smtpEmail.subject = title,
+        smtpEmail.subject = title
         smtpEmail.to = to
 
         smtpEmail.htmlContent = `<html>
@@ -74,3 +74,76 @@ export const sendEmail = async({title, to, htmlContent}:ParamsEmail)=>{
         
     }
 }
+
+// export const sendEmailAgregarUser = async({title, to, htmlContent}:ParamsEmail)=>{
+//     try {
+//         smtpEmail.subject = title
+//         smtpEmail.to = to
+
+//         smtpEmail.htmlContent = `<html>
+//             <style>
+//                 main{
+//                     background-color: #d9ffd7;
+//                     width: 200px;
+//                     height: 600px;
+//                     display: grid;
+//                     place-items: center;
+//                 }
+                
+//                 div{
+//                     display: flex;
+//                 }
+               
+//                 h3{
+//                     color: #5908a5;
+//                 }
+
+//                 p{
+//                     color: #d9ffd7;    
+//                 }
+
+//                 .b1{
+//                     border: none;
+//                     width: 100px;
+//                     height: 30px;
+//                     font: bold;
+//                     display: grid;
+//                     justify-self: center;
+//                     cursor: pointer;
+//                     color: white;
+//                     font-size: 10px;
+//                     background-color: #1818b2;
+//                 }
+
+//                 .b2{
+//                     border: none;
+//                     width: 100px;
+//                     height: 30px;
+//                     font: bold;
+//                     display: grid;
+//                     justify-self: center;
+//                     cursor: pointer;
+//                     color: white;
+//                     font-size: 10px;
+//                     background-color: #b00213;
+//                 }
+//             </style>
+//             <body>
+//                 <main>
+//                     <h3>YYYYYYY te invito a sumarte al proyecto PROYECTO 1</h3>
+//                     <p>${htmlContent}</p>
+//                     <div>
+//                         <button class="b1">Aceptar</button>
+//                         <button class="b2">Rechazar</button>
+//                     </div>
+//                 </main>
+//             </body>
+//         </html>`
+//         smtpEmail.sender = {name: "Roudev", email: "roudev.contactos@gmail.com"}
+
+//         await apiInstance.sendTransacEmail(smtpEmail)
+//     } catch (error) {
+//         console.log('error del email:', error);
+        
+//     }
+// }

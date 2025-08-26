@@ -4,10 +4,9 @@
 import React, { useState } from 'react'
 import { useRouter } from "next/navigation";
 import ModalEliminar from '../../[Components]/ModalEliminar';
-import { dataMisProyectosDummy } from '../misProyectos/utils/dataMisProyectos';
 import { dataFinancieroHome } from '../utils/dataFinancieroHome';
 
-const TablaFinancieroHome = ({dataMisProyectos, ruta}) => {
+const TablaFinancieroHome = ({ruta}:any) => {
 
   const router = useRouter()
 
@@ -69,6 +68,8 @@ const TablaFinancieroHome = ({dataMisProyectos, ruta}) => {
           <div className='w-full flex justify-center '>
             <ModalEliminar
               setActivarEliminar={setActivarEliminar}
+              nombre
+              id
             />
           </div>
         
